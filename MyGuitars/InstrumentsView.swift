@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InstrumentsView: View {
     
+    static let tag: String? = "Instruments"
     let showOnlyGuitars: Bool
     let instruments: FetchRequest<Instruments>
     
