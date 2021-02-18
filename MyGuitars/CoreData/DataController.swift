@@ -43,7 +43,7 @@ class DataController: ObservableObject {
             
             let instruments = Instruments(context: viewContext)
             
-            instruments.type              = "Guitar"
+            instruments.type              = "Acoustic"
             instruments.brand             = "Seagull"
             instruments.model             = "Guitar Number \(i)"
             instruments.category          = "Dreadnought"

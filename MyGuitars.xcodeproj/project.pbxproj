@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD08B91425DEE59500E4E95A /* Binding-OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */; };
+		DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */; };
 		DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */; };
 		DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A6A25DDABF50038D6DD /* ContentView.swift */; };
 		DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */; };
@@ -16,9 +18,14 @@
 		DD0F7A8425DDACB00038D6DD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0F7A8325DDACB00038D6DD /* CloudKit.framework */; };
 		DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666425DDADD1007C3F05 /* HomeView.swift */; };
 		DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */; };
+		DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044725DED565004CD13B /* InstrumentsEditView.swift */; };
+		DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */; };
+		DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift"; sourceTree = "<group>"; };
+		DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit-Helpers.swift"; sourceTree = "<group>"; };
 		DD0F7A6525DDABF50038D6DD /* MyGuitars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuitars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGuitarsApp.swift; sourceTree = "<group>"; };
 		DD0F7A6A25DDABF50038D6DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,6 +38,9 @@
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DD62666425DDADD1007C3F05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsView.swift; sourceTree = "<group>"; };
+		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
+		DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsRow.swift; sourceTree = "<group>"; };
+		DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instruments-CoreData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD08B91125DEE47B00E4E95A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */,
+				DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DD0F7A5C25DDABF50038D6DD = {
 			isa = PBXGroup;
 			children = (
@@ -69,12 +88,12 @@
 				DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */,
 				DD0F7A6A25DDABF50038D6DD /* ContentView.swift */,
 				DD62666425DDADD1007C3F05 /* HomeView.swift */,
-				DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */,
+				DD08B91125DEE47B00E4E95A /* Extensions */,
+				DDE6044B25DEDC7F004CD13B /* Instruments */,
 				DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */,
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
 				DD0F7A6E25DDABF60038D6DD /* Preview Content */,
-				DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */,
-				DD0F7A7C25DDAC560038D6DD /* DataController.swift */,
+				DDE6044F25DEDE9B004CD13B /* CoreData */,
 			);
 			path = MyGuitars;
 			sourceTree = "<group>";
@@ -93,6 +112,26 @@
 				DD0F7A8325DDACB00038D6DD /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDE6044B25DEDC7F004CD13B /* Instruments */ = {
+			isa = PBXGroup;
+			children = (
+				DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */,
+				DDE6044725DED565004CD13B /* InstrumentsEditView.swift */,
+				DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */,
+			);
+			path = Instruments;
+			sourceTree = "<group>";
+		};
+		DDE6044F25DEDE9B004CD13B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */,
+				DD0F7A7C25DDAC560038D6DD /* DataController.swift */,
+				DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,12 +203,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD08B91425DEE59500E4E95A /* Binding-OnChange.swift in Sources */,
 				DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */,
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
+				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
+				DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */,
 				DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */,
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
+				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
+				DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

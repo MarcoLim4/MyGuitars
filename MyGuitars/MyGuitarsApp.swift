@@ -1,10 +1,3 @@
-//
-//  MyGuitarsApp.swift
-//  MyGuitars
-//
-//  Created by Marco Lima on 2021-02-17.
-//
-
 import SwiftUI
 
 @main
@@ -24,7 +17,14 @@ struct MyGuitarsApp: App {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: save)
             
         }
     }
+    
+    // Every time the app goes into background mode, we save the data
+    func save(_ note: Notification) {
+        dataController.save()
+    }
+    
 }

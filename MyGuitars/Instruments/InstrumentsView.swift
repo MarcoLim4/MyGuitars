@@ -20,8 +20,13 @@ struct InstrumentsView: View {
 
         instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
                                                 sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.datemanufactured,
-                                                                                   ascending: true)],
-                                                predicate: NSPredicate(format: "type != %@", "Guitars"))
+                                                                                   ascending: true)])
+
+        // I don/t need a filter as per PH's tutorial, so I just sort the data
+//        instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
+//                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.datemanufactured,
+//                                                                                   ascending: true)],
+//                                                predicate: NSPredicate(format: "type != %@", "Guitars"))
     }
     
     
@@ -33,16 +38,7 @@ struct InstrumentsView: View {
                 
                 ForEach(instruments.wrappedValue) { instrument in
                     
-                    VStack(alignment: .leading) {
-                        
-                        Text(instrument.model ?? "")
-                            .font(.headline)
-                        
-                        
-                        Text(instrument.brand ?? "")
-                            .font(.footnote)
-                            
-                    }
+                    InstrumentsRow(instrument: instrument)
                     
                 }
 

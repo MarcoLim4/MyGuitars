@@ -25,14 +25,37 @@
         <attribute name="topmaterial" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photos" inverseName="instruments" inverseEntity="Photos"/>
+        <relationship name="strings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Strings" inverseName="instruments" inverseEntity="Strings"/>
+        <relationship name="work" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkPerformed" inverseName="instruments" inverseEntity="WorkPerformed"/>
     </entity>
     <entity name="Photos" representedClassName="Photos" syncable="YES" codeGenerationType="class">
         <attribute name="comments" optional="YES" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
         <relationship name="instruments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instruments" inverseName="photos" inverseEntity="Instruments"/>
     </entity>
+    <entity name="Strings" representedClassName="Strings" syncable="YES" codeGenerationType="class">
+        <attribute name="brand" optional="YES" attributeType="String"/>
+        <attribute name="comments" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="guage" optional="YES" attributeType="String"/>
+        <attribute name="lifespan" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="myrating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="remembertochange" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="instruments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instruments" inverseName="strings" inverseEntity="Instruments"/>
+    </entity>
+    <entity name="WorkPerformed" representedClassName="WorkPerformed" syncable="YES" codeGenerationType="class">
+        <attribute name="comments" optional="YES" attributeType="String"/>
+        <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="dateperformed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="duedate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="kindofwork" optional="YES" attributeType="String"/>
+        <relationship name="instruments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instruments" inverseName="work" inverseEntity="Instruments"/>
+    </entity>
     <elements>
-        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="389"/>
+        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="419"/>
         <element name="Photos" positionX="-54" positionY="153" width="128" height="74"/>
+        <element name="Strings" positionX="-54" positionY="144" width="128" height="164"/>
+        <element name="WorkPerformed" positionX="-45" positionY="153" width="128" height="119"/>
     </elements>
 </model>
