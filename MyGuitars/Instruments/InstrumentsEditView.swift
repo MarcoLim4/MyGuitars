@@ -5,6 +5,10 @@ struct InstrumentsEditView: View {
     let instrument: Instruments
     
     @EnvironmentObject var dataController: DataController
+    @Environment(\.presentationMode) var presentation
+    @State private var isShowingDeleteMessage = false
+    
+//MARK: - Data
     
     @State private var type: String
     @State private var brand: String
@@ -29,24 +33,20 @@ struct InstrumentsEditView: View {
         
         self.instrument = instrument
         
-        _type        = State(wrappedValue: instrument.instType)
-        _brand       = State(wrappedValue: instrument.instBrand)
-        _model       = State(wrappedValue: instrument.instModel)
-        _category    = State(wrappedValue: instrument.category ?? "")
-        _madeIn      = State(wrappedValue: instrument.madein ?? "")
-        _finishStyle = State(wrappedValue: instrument.finishstyle ?? "")
-        _bodyShape   = State(wrappedValue: instrument.bodyshape ?? "")
-        
-        _dateMade      = State(wrappedValue: instrument.datemanufactured ?? Date())
-        _serialNummber = State(wrappedValue: instrument.serialnumber ?? "")
-        
-        
+        _type              = State(wrappedValue: instrument.instType)
+        _brand             = State(wrappedValue: instrument.instBrand)
+        _model             = State(wrappedValue: instrument.instModel)
+        _category          = State(wrappedValue: instrument.category ?? "")
+        _madeIn            = State(wrappedValue: instrument.madein ?? "")
+        _finishStyle       = State(wrappedValue: instrument.finishstyle ?? "")
+        _bodyShape         = State(wrappedValue: instrument.bodyshape ?? "")
+        _dateMade          = State(wrappedValue: instrument.datemanufactured ?? Date())
+        _serialNummber     = State(wrappedValue: instrument.serialnumber ?? "")
         _eletronics        = State(wrappedValue: instrument.eletronics ?? "")
         _topMaterial       = State(wrappedValue: instrument.topmaterial ?? "")
         _sidesMaterial     = State(wrappedValue: instrument.sidesmaterial ?? "")
         _backMaterial      = State(wrappedValue: instrument.backmaterial ?? "")
         _fretboardMaterial = State(wrappedValue: instrument.fretboardmaterial ?? "")
-        
         
     }
     
@@ -94,7 +94,7 @@ struct InstrumentsEditView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
                     
-                    TextField("Finidh Style", text: $finishStyle.onChange(updateValues))
+                    TextField("Finish Style", text: $finishStyle.onChange(updateValues))
                         .font(.callout)
                 }
                 
@@ -117,6 +117,8 @@ struct InstrumentsEditView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
 
+                    Spacer()
+                    
                     DatePicker("Select Date", selection: $dateMade, displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
@@ -189,6 +191,31 @@ struct InstrumentsEditView: View {
                 
             }
 
+            
+            Section {
+
+                Button("Delete Instrument") {
+                    isShowingDeleteMessage = true
+                }
+                .foregroundColor(.red)
+                .alert(isPresented: $isShowingDeleteMessage) {
+
+                    Alert(
+                        title: Text("Are you sure you want to delete this?"),
+                        message: Text("By confirming this action, it will permanently delete the instrument and all associated data!"),
+                        primaryButton: .destructive(Text("Yes, delete it!")) {
+                            
+                            dataController.delete(instrument)
+                            self.presentation.wrappedValue.dismiss()
+                            
+                        },
+                        secondaryButton: .cancel()
+                    )
+                        
+                }
+
+            }
+            
             
         }
 //        .onTapGesture { hideKeyboard() }

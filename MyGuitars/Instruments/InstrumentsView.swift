@@ -9,9 +9,15 @@ import SwiftUI
 
 struct InstrumentsView: View {
     
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     static let tag: String? = "Instruments"
     let showOnlyGuitars: Bool
     let instruments: FetchRequest<Instruments>
+    
+    
+    
     
     init(showOnlyGuitars: Bool) {
         
@@ -37,14 +43,31 @@ struct InstrumentsView: View {
             List {
                 
                 ForEach(instruments.wrappedValue) { instrument in
-                    
                     InstrumentsRow(instrument: instrument)
-                    
                 }
+                
 
             }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Guitars")
+            .toolbar {
+                
+                Button {
+                    withAnimation {
+                        
+                        let newInstrument = Instruments(context: managedObjectContext)
+                        newInstrument.type              = "Acoustic"
+                        newInstrument.brand             = "Brand Name"
+                        newInstrument.model             = "New Guitar"
+                        newInstrument.rightleft         = 1 // 1-Right 2-Left
+                        newInstrument.numberofstrings   = 6
+                        
+                        dataController.save()
+                    }
+                } label: {
+                    Label("Add New Guitar", systemImage: "plus")
+                }
+            }
             
         }
         
