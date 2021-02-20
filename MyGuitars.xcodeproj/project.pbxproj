@@ -18,6 +18,11 @@
 		DD0F7A8425DDACB00038D6DD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0F7A8325DDACB00038D6DD /* CloudKit.framework */; };
 		DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666425DDADD1007C3F05 /* HomeView.swift */; };
 		DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */; };
+		DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098225E06BA20094ED36 /* ImagePicker.swift */; };
+		DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098925E06C860094ED36 /* ImagesAddNew.swift */; };
+		DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */; };
+		DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */; };
+		DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD92099225E06DF60094ED36 /* ImagesSample.xcassets */; };
 		DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044725DED565004CD13B /* InstrumentsEditView.swift */; };
 		DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */; };
 		DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */; };
@@ -38,6 +43,11 @@
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DD62666425DDADD1007C3F05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsView.swift; sourceTree = "<group>"; };
+		DD92098225E06BA20094ED36 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DD92098925E06C860094ED36 /* ImagesAddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesAddNew.swift; sourceTree = "<group>"; };
+		DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstrumentsImagesRow.swift; path = MyGuitars/Images/InstrumentsImagesRow.swift; sourceTree = SOURCE_ROOT; };
+		DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesShowImageView.swift; sourceTree = "<group>"; };
+		DD92099225E06DF60094ED36 /* ImagesSample.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImagesSample.xcassets; sourceTree = "<group>"; };
 		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
 		DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsRow.swift; sourceTree = "<group>"; };
 		DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instruments-CoreData.swift"; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 				DD62666425DDADD1007C3F05 /* HomeView.swift */,
 				DD08B91125DEE47B00E4E95A /* Extensions */,
 				DDE6044B25DEDC7F004CD13B /* Instruments */,
+				DD92098125E06A750094ED36 /* Images */,
 				DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */,
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
 				DD0F7A6E25DDABF60038D6DD /* Preview Content */,
@@ -114,12 +125,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD92098125E06A750094ED36 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DD92098225E06BA20094ED36 /* ImagePicker.swift */,
+				DD92098925E06C860094ED36 /* ImagesAddNew.swift */,
+				DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */,
+				DD92099225E06DF60094ED36 /* ImagesSample.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		DDE6044B25DEDC7F004CD13B /* Instruments */ = {
 			isa = PBXGroup;
 			children = (
 				DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */,
 				DDE6044725DED565004CD13B /* InstrumentsEditView.swift */,
 				DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */,
+				DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */,
 			);
 			path = Instruments;
 			sourceTree = "<group>";
@@ -192,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0F7A7025DDABF60038D6DD /* Preview Assets.xcassets in Resources */,
+				DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */,
 				DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,11 +232,15 @@
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
+				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */,
 				DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */,
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
+				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
+				DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */,
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
+				DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */,
 				DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

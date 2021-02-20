@@ -1,11 +1,27 @@
 import SwiftUI
+import Foundation
+import UIKit
 
 struct InstrumentsEditView: View {
     
+    let testImages = [UIImage(named: "image01.png") ?? UIImage(),
+                      UIImage(named: "image02.png") ?? UIImage(),
+                      UIImage(named: "image03.png") ?? UIImage(),
+                      UIImage(named: "image04.png") ?? UIImage(),
+                      UIImage(named: "image05.png") ?? UIImage(),
+                      UIImage(named: "image06.png") ?? UIImage()]
+    
+    @State private var image: Image?
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    
+    
     let instrument: Instruments
     
+    @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var dataController: DataController
     @Environment(\.presentationMode) var presentation
+    
     @State private var isShowingDeleteMessage = false
     
 //MARK: - Data
@@ -27,6 +43,8 @@ struct InstrumentsEditView: View {
     @State private var backMaterial: String
     @State private var fretboardMaterial: String
     
+    @State private var comments: String
+    
     
     
     init(instrument: Instruments) {
@@ -47,6 +65,7 @@ struct InstrumentsEditView: View {
         _sidesMaterial     = State(wrappedValue: instrument.sidesmaterial ?? "")
         _backMaterial      = State(wrappedValue: instrument.backmaterial ?? "")
         _fretboardMaterial = State(wrappedValue: instrument.fretboardmaterial ?? "")
+        _comments          = State(wrappedValue: instrument.comments ?? "")
         
     }
     
@@ -85,8 +104,23 @@ struct InstrumentsEditView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    TextField("Category", text: $category.onChange(updateValues))
-                        .font(.callout)
+                    Picker("", selection: $category) {
+                        
+                        // Maybe later we can swith on different body types for Bass and other instruments as well
+                        if type == "Electric" {
+                            ForEach(instrument.electricBodyTypes, id: \.self) { type in
+                                Text("\(type)")
+                            }
+                        } else {
+                            ForEach(instrument.acosuticBodyTypes, id: \.self) { type in
+                                Text("\(type)")
+                            }
+
+                        }
+                    
+                    }
+                    .font(.callout)
+
                 }
                 
                 HStack {
@@ -109,6 +143,46 @@ struct InstrumentsEditView: View {
                 
                 
             }
+            
+            Section(header: Text("Images")) {
+
+                VStack {
+                    
+                    InstrumentsImagesRow(thePhotos: instrument.allPhotos)
+                        .frame(minHeight: 100)
+
+                    Button(action: {
+                        self.showingImagePicker = true
+                    }) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "plus.square")
+                            Text("New Image")
+                                .font(.callout)
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                    ImagePicker(image: self.$inputImage)
+                }
+
+                
+            }
+            
+//            Section(header: Text("image Picker")) {
+//                VStack {
+//
+//                    image?
+//                        .resizable()
+//                        .scaledToFit()
+//
+//
+//                }
+//                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+//                    ImagePicker(image: self.$inputImage)
+//                }
+//            }
+//
+//
             
             Section(header: Text("Other Info")) {
                 
@@ -190,6 +264,15 @@ struct InstrumentsEditView: View {
 
                 
             }
+            
+            Section(header: Text("Comments")) {
+                
+                TextEditor(text: $comments.onChange(updateValues))
+                    .font(.callout)
+                    .frame(minHeight: 100)
+                    .multilineTextAlignment(.leading)
+                
+            }
 
             
             Section {
@@ -207,6 +290,7 @@ struct InstrumentsEditView: View {
                             
                             dataController.delete(instrument)
                             self.presentation.wrappedValue.dismiss()
+//                            print(instrument.allPhotos.count)
                             
                         },
                         secondaryButton: .cancel()
@@ -247,8 +331,35 @@ struct InstrumentsEditView: View {
         instrument.fretboardmaterial = fretboardMaterial
         instrument.datemanufactured  = dateMade
         instrument.serialnumber      = serialNummber
+        instrument.comments          = comments
     }
     
+    
+    func loadImage() {
+        
+        guard let inputImage = inputImage else {
+            return
+        }
+        
+        image = Image(uiImage: inputImage)
+        
+        let newImage = Photos(context: managedObjectContext)
+        
+        newImage.instruments = instrument
+        newImage.comments = "Photo added as a test"
+        
+        newImage.photo = inputImage.pngData()
+        
+        //        newInstrument.type              = "Acoustic"
+//        newInstrument.brand             = "Brand Name"
+//        newInstrument.model             = "New Guitar"
+//        newInstrument.rightleft         = 1 // 1-Right 2-Left
+//        newInstrument.numberofstrings   = 6
+        
+        dataController.save()
+        
+        
+    }
     
     
 }
@@ -264,9 +375,3 @@ struct InstrumentsEditView_Previews: PreviewProvider {
     }
 }
 
-
-//Picker("Number Of People", selection: $numberOfPeople) {
-//    ForEach(2 ..< 40) {
-//        Text("\($0) people")
-//    }
-//}

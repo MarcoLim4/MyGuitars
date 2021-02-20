@@ -1,8 +1,9 @@
 import Foundation
+import CoreData
+import SwiftUI
 
 
 extension Instruments {
-
     
     // This is to help avoid all the nil coalescing on the main ViewControllers
     
@@ -36,6 +37,28 @@ extension Instruments {
         instrument.datemanufactured  = Date()
         
         return instrument
+        
+    }
+    
+    static var photosSample: [Photos] {
+
+        let controller = DataController(inMemory: true)
+        let viewContext = controller.container.viewContext
+        var someItems = [Photos]()
+        
+//        for index in 1...7 {
+            
+            let newImage = Photos(context: viewContext)
+//            newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
+//            newImage.comments = "image \(index)"
+
+        newImage.photo    = UIImage(named: "image01.png")?.pngData()
+        newImage.comments = "image 01"
+        
+        someItems.append(newImage)
+            
+//        }
+        return someItems as [Photos]
         
     }
     
