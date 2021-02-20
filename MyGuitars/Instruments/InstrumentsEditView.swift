@@ -271,7 +271,6 @@ struct InstrumentsEditView: View {
                             
                             dataController.delete(instrument)
                             self.presentation.wrappedValue.dismiss()
-//                            print(instrument.allPhotos.count)
                             
                         },
                         secondaryButton: .cancel()
@@ -325,17 +324,9 @@ struct InstrumentsEditView: View {
         image = Image(uiImage: inputImage)
         
         let newImage = Photos(context: managedObjectContext)
-        
         newImage.instruments = instrument
-        newImage.comments = "Photo added as a test"
-        
+        newImage.comments = "Details about this particular photo."
         newImage.photo = inputImage.pngData()
-        
-        //        newInstrument.type              = "Acoustic"
-//        newInstrument.brand             = "Brand Name"
-//        newInstrument.model             = "New Guitar"
-//        newInstrument.rightleft         = 1 // 1-Right 2-Left
-//        newInstrument.numberofstrings   = 6
         
         dataController.save()
         
