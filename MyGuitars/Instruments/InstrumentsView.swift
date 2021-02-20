@@ -70,6 +70,7 @@ struct InstrumentsView: View {
             }
             
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

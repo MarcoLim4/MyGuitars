@@ -21,19 +21,38 @@ struct InstrumentsImagesRow: View {
                         
                         Image(uiImage: instPhoto ?? UIImage())
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 50.0, height: 50.0, alignment: .center)
-                            .clipShape(Rectangle())
-
-                        NavigationLink(destination: ImagesShowImageView(image: instPhoto ?? UIImage())) {
+                            .clipShape(Circle())
+                            .shadow(radius: 8)
+                            
+                        NavigationLink(destination: ImagesShowImageView(photo: photoItem)) {
                             Label("", systemImage: "viewfinder")
-    //                            Text("View")
-    //                                .font(.footnote)
                         }
+
+                        
+                        
+//                        NavigationLink(destination: ImagesShowImageView(image: instPhoto ?? UIImage())) {
+//                            Label("", systemImage: "viewfinder")
+//                        }
+ 
+
+                        // I want to make this a sheet view but can't :(
+                        
+                        //                        Button("View") {
+                        //                            showingImageView.toggle()
+                        //                        }
+                        //                        .font(.footnote)
+                        //                        .sheet(isPresented: $showingImageView, content: {
+                        //                            ImagesShowImageView(image: instPhoto ?? UIImage())
+                        //                        })
+
 
                     }
                     
                 }
+
+                
 
             }
             .padding(.horizontal)

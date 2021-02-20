@@ -46,21 +46,35 @@ extension Instruments {
         let viewContext = controller.container.viewContext
         var someItems = [Photos]()
         
-//        for index in 1...7 {
+        for index in 1...7 {
             
             let newImage = Photos(context: viewContext)
-//            newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
-//            newImage.comments = "image \(index)"
+            newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
+            newImage.comments = "image \(index)"
 
-        newImage.photo    = UIImage(named: "image01.png")?.pngData()
-        newImage.comments = "image 01"
+//        newImage.photo    = UIImage(named: "image01.png")?.pngData()
+//        newImage.comments = "image 01"
         
         someItems.append(newImage)
             
-//        }
+        }
         return someItems as [Photos]
         
     }
+
+    static var photoSample: Photos {
+
+        let controller = DataController(inMemory: true)
+        let viewContext = controller.container.viewContext
+        
+        let newImage = Photos(context: viewContext)
+        newImage.photo    = UIImage(named: "image04.png")?.pngData()
+        newImage.comments = "Comments about image 04."
+
+        return newImage
+        
+    }
+
     
     
     // Also, to help cleat the code on the main views

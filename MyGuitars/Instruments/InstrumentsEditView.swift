@@ -145,44 +145,28 @@ struct InstrumentsEditView: View {
             }
             
             Section(header: Text("Images")) {
-
+                
                 VStack {
-                    
                     InstrumentsImagesRow(thePhotos: instrument.allPhotos)
                         .frame(minHeight: 100)
-
-                    Button(action: {
-                        self.showingImagePicker = true
-                    }) {
-                        HStack(spacing: 10) {
-                            Image(systemName: "plus.square")
-                            Text("New Image")
-                                .font(.callout)
-                        }
+                }
+                    
+                Button(action: {
+                    self.showingImagePicker = true
+                }) {
+                    HStack(spacing:10) {
+                        Image(systemName: "plus.square")
+                            .foregroundColor(.green)
+                        Text("New Image")
+                            .font(.subheadline)
+                            .foregroundColor(.green)
                     }
                 }
                 .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                     ImagePicker(image: self.$inputImage)
                 }
-
                 
             }
-            
-//            Section(header: Text("image Picker")) {
-//                VStack {
-//
-//                    image?
-//                        .resizable()
-//                        .scaledToFit()
-//
-//
-//                }
-//                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-//                    ImagePicker(image: self.$inputImage)
-//                }
-//            }
-//
-//
             
             Section(header: Text("Other Info")) {
                 
@@ -198,9 +182,6 @@ struct InstrumentsEditView: View {
                         .datePickerStyle(CompactDatePickerStyle())
                         .frame(maxHeight: 400)
                         
-                    //CompactDatePickerStyle
-                    //WheelDatePickerStyle
-                    //GraphicalDatePickerStyle
                 }
 
                 HStack {
