@@ -51,11 +51,8 @@ extension Instruments {
             let newImage = Photos(context: viewContext)
             newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
             newImage.comments = "image \(index)"
-
-//        newImage.photo    = UIImage(named: "image01.png")?.pngData()
-//        newImage.comments = "image 01"
         
-        someItems.append(newImage)
+            someItems.append(newImage)
             
         }
         return someItems as [Photos]

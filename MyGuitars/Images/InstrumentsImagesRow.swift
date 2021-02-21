@@ -5,7 +5,10 @@ struct InstrumentsImagesRow: View {
     let layout = [GridItem(.flexible(minimum : 80))]
     @State private var showingImageView = false
     
-    let thePhotos: [Photos]    
+    let thePhotos: [Photos]
+    
+    @State private var selectedIndex = 0
+
     
     var body: some View {
         
@@ -13,42 +16,40 @@ struct InstrumentsImagesRow: View {
 
             LazyHGrid(rows: layout, spacing: 20) {
 
-                ForEach(thePhotos, id: \.self) { photoItem in
+                ForEach(Array(thePhotos.enumerated()), id: \.offset) { index, photoItem in
+//                ForEach(thePhotos, id: \.self) { photoItem in
 
-                    let instPhoto = UIImage(data: photoItem.photo ?? Data()) ?? UIImage(named: "image01.png")
+                    let instPhoto = UIImage(data: photoItem.photo ?? Data()) ?? UIImage(named: "image05.png")
                     
-                    VStack(alignment: .center) {
+                    ZStack(alignment: .center) {
                         
                         Image(uiImage: instPhoto ?? UIImage())
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 50.0, height: 50.0, alignment: .center)
+                            .frame(width: 80.0, height: 80.0, alignment: .center)
                             .clipShape(Circle())
                             .shadow(radius: 8)
-                            
-                        NavigationLink(destination: ImagesShowImageView(photo: photoItem)) {
-                            Label("", systemImage: "viewfinder")
+
+                        Button(action: {
+                            self.selectedIndex    = index
+                            self.showingImageView = true
+                        }) {
+                            Image(systemName: "viewfinder")
+                                .foregroundColor(.green)
                         }
+                        .frame(width: 80.0, height: 80.0, alignment: .center)
 
                         
-                        
-//                        NavigationLink(destination: ImagesShowImageView(image: instPhoto ?? UIImage())) {
+//                        NavigationLink(destination: ImagesShowImageView(photo: photoItem)) {
 //                            Label("", systemImage: "viewfinder")
+//                                .frame(width: 80.0, height: 80.0, alignment: .center)
 //                        }
- 
-
-                        // I want to make this a sheet view but can't :(
-                        
-                        //                        Button("View") {
-                        //                            showingImageView.toggle()
-                        //                        }
-                        //                        .font(.footnote)
-                        //                        .sheet(isPresented: $showingImageView, content: {
-                        //                            ImagesShowImageView(image: instPhoto ?? UIImage())
-                        //                        })
-
-
                     }
+                    .sheet(isPresented: $showingImageView, content: {
+                        ImagesShowImageView(photo: thePhotos[selectedIndex])
+                    })
+
+
                     
                 }
 
@@ -69,12 +70,3 @@ struct InstrumentsImagesRow_Previews: PreviewProvider {
         InstrumentsImagesRow(thePhotos: Instruments.photosSample)
     }
 }
-
-
-//let myImages = [Image("image01.png"),
-//                Image("image02.png"),
-//                Image("image03.png"),
-//                Image("image04.png"),
-//                Image("image05.png"),
-//                Image("image06.png"),
-//                Image("image07.png")]

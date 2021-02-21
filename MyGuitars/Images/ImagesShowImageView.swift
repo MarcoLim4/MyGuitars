@@ -24,12 +24,20 @@ struct ImagesShowImageView: View {
         
         VStack {
             
+            Rectangle()
+                .frame(width: 180, height: 5, alignment: .center)
+                .foregroundColor(.gray)
+                .cornerRadius(3.0)
+                .padding(.top, 15)
+                .shadow(radius: 10)
+
 
             let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image02.png")
             
             Image(uiImage: instPhoto ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .padding(.top, 10)
             
             Spacer()
 

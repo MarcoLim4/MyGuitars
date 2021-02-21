@@ -13,11 +13,12 @@ struct InstrumentsRow: View {
                 
                 Text(instrument.model ?? "")
                     .font(.headline)
-                
+
                 Text(instrument.brand ?? "")
                     .font(.footnote)
                     
             }
+            .frame(height: 60)
             
         }
 

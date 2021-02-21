@@ -13,7 +13,7 @@ struct InstrumentsView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     static let tag: String? = "Instruments"
-    let showOnlyGuitars: Bool
+//    let showOnlyGuitars: Bool
     let instruments: FetchRequest<Instruments>
     
     
@@ -22,7 +22,7 @@ struct InstrumentsView: View {
     init(showOnlyGuitars: Bool) {
         
         // Not sure how we'll use this
-        self.showOnlyGuitars = showOnlyGuitars
+//        self.showOnlyGuitars = showOnlyGuitars
 
         instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
                                                 sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.datemanufactured,
@@ -44,6 +44,7 @@ struct InstrumentsView: View {
                 
                 ForEach(instruments.wrappedValue) { instrument in
                     InstrumentsRow(instrument: instrument)
+
                 }
                 
 
