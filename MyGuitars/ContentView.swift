@@ -15,7 +15,7 @@ struct ContentView: View {
                     Text("Home")
                 }
 
-            InstrumentsView(showOnlyGuitars: false)
+            InstrumentsView()
                 .tag(InstrumentsView.tag)
                 .tabItem {
                     Image(systemName: "guitars")

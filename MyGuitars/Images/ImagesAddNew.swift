@@ -27,7 +27,8 @@ struct ImagesAddNew: View {
 
         }
         .sheet(isPresented: $showingImagePicker) {
-            ImagePicker(image: self.$inputImage)
+//            ImagePicker(image: self.$inputImage)
+            ImagePicker(source: PhotoSource.library, image: self.$inputImage)
         }
     }
 }

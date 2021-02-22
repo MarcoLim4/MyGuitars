@@ -8,8 +8,28 @@
 
 import SwiftUI
 
+enum PhotoSource {
+    case camera
+    case library
+}
+
+class ImageSaver: NSObject {
+    
+    func writeToPhotoAlbum(image: UIImage) {
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+        
+    }
+    
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save Finished!")
+    }
+    
+}
 
 struct ImagePicker: UIViewControllerRepresentable {
+    
+    let source: PhotoSource
     
     @Binding var image: UIImage?
     @Environment(\.presentationMode) var presentationMode
@@ -43,6 +63,11 @@ struct ImagePicker: UIViewControllerRepresentable {
     
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        
+        if source == .camera {
+            picker.sourceType = .camera
+        }
+        
         return picker
         
     }

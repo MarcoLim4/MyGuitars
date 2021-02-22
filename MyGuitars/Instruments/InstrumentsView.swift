@@ -13,26 +13,14 @@ struct InstrumentsView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     static let tag: String? = "Instruments"
-//    let showOnlyGuitars: Bool
     let instruments: FetchRequest<Instruments>
     
-    
-    
-    
-    init(showOnlyGuitars: Bool) {
+    init() {
         
-        // Not sure how we'll use this
-//        self.showOnlyGuitars = showOnlyGuitars
-
         instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
-                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.datemanufactured,
-                                                                                   ascending: true)])
+                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
+                                                                  NSSortDescriptor(keyPath: \Instruments.model, ascending: true)])
 
-        // I don/t need a filter as per PH's tutorial, so I just sort the data
-//        instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
-//                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.datemanufactured,
-//                                                                                   ascending: true)],
-//                                                predicate: NSPredicate(format: "type != %@", "Guitars"))
     }
     
     
@@ -43,7 +31,7 @@ struct InstrumentsView: View {
             List {
                 
                 ForEach(instruments.wrappedValue) { instrument in
-                    InstrumentsRow(instrument: instrument)
+                    InstrumentsRow(instruments: instrument)
 
                 }
                 
@@ -58,7 +46,7 @@ struct InstrumentsView: View {
                         
                         let newInstrument = Instruments(context: managedObjectContext)
                         newInstrument.type              = "Acoustic"
-                        newInstrument.brand             = "Brand Name"
+                        newInstrument.brand             = "New Guitar"
                         newInstrument.model             = "New Guitar"
                         newInstrument.rightleft         = 1 // 1-Right 2-Left
                         newInstrument.numberofstrings   = 6
@@ -74,6 +62,7 @@ struct InstrumentsView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         
     }
+    
 }
 
 struct InstrumentsView_Previews: PreviewProvider {
@@ -81,7 +70,7 @@ struct InstrumentsView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     
     static var previews: some View {
-        InstrumentsView(showOnlyGuitars: false)
+        InstrumentsView()
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }

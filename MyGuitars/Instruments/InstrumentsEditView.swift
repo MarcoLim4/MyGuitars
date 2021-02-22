@@ -13,10 +13,12 @@ struct InstrumentsEditView: View {
     
     @State private var image: Image?
     @State private var showingImagePicker = false
+    @State private var imagePickerSource = PhotoSource.library
     @State private var inputImage: UIImage?
     
     
     let instrument: Instruments
+    
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var dataController: DataController
@@ -147,23 +149,46 @@ struct InstrumentsEditView: View {
             Section(header: Text("Images")) {
                 
                 VStack {
+                    
+                    Button(action: {
+                        self.showingImagePicker = true
+                        self.imagePickerSource = .library
+                    }) {
+                        HStack(spacing:10) {
+                            Image(systemName: "viewfinder.circle")
+                                .foregroundColor(.green)
+                            Text("Add Image from Lirbary")
+                                .font(.subheadline)
+                                .foregroundColor(.green)
+                        }
+                    }
+
+                }
+                
+                VStack {
                     InstrumentsImagesRow(thePhotos: instrument.allPhotos)
                         .frame(minHeight: 100)
                 }
+
+                VStack {
                     
-                Button(action: {
-                    self.showingImagePicker = true
-                }) {
-                    HStack(spacing:10) {
-                        Image(systemName: "plus.square")
-                            .foregroundColor(.green)
-                        Text("New Image")
-                            .font(.subheadline)
-                            .foregroundColor(.green)
+                    Button(action: {
+                        self.showingImagePicker = true
+                        self.imagePickerSource = .camera
+                    }) {
+                        HStack(spacing:10) {
+                            Image(systemName: "camera.viewfinder")
+                                .foregroundColor(.green)
+                            Text("Take New Image")
+                                .font(.subheadline)
+                                .foregroundColor(.green)
+                        }
                     }
+
+                    
                 }
                 .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                    ImagePicker(image: self.$inputImage)
+                    ImagePicker(source: self.imagePickerSource, image: self.$inputImage)
                 }
                 
             }
@@ -314,11 +339,19 @@ struct InstrumentsEditView: View {
         instrument.comments          = comments
     }
     
-    
     func loadImage() {
         
         guard let inputImage = inputImage else {
             return
+        }
+        
+        
+        if imagePickerSource == .camera {
+            print("Camera selected")
+
+            let imageSaver = ImageSaver()
+            imageSaver.writeToPhotoAlbum(image: inputImage)
+
         }
         
         image = Image(uiImage: inputImage)

@@ -11,7 +11,11 @@ extension Instruments {
     var instBrand:  String { brand ?? "" }
     var instModel:  String { model ?? "" }
     
-    
+    static var allRecords: [Instruments] {
+
+        return [Instruments]()
+        
+    }
     
     static var example: Instruments {
         
@@ -71,7 +75,6 @@ extension Instruments {
         return newImage
         
     }
-
     
     
     // Also, to help cleat the code on the main views

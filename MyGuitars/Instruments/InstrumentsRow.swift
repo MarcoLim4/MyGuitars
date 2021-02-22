@@ -2,19 +2,19 @@ import SwiftUI
 
 struct InstrumentsRow: View {
     
-    @ObservedObject var instrument: Instruments
+    @ObservedObject var instruments: Instruments
     
     var body: some View {
         
         
-        NavigationLink(destination: InstrumentsEditView(instrument: instrument)) {
+        NavigationLink(destination: InstrumentsEditView(instrument: instruments)) {
 
             VStack(alignment: .leading) {
                 
-                Text(instrument.model ?? "")
+                Text(instruments.model ?? "")
                     .font(.headline)
 
-                Text(instrument.brand ?? "")
+                Text(instruments.brand ?? "")
                     .font(.footnote)
                     
             }
@@ -27,6 +27,6 @@ struct InstrumentsRow: View {
 
 struct InstrumentsViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        InstrumentsRow(instrument: Instruments.example)
+        InstrumentsRow(instruments: Instruments.example)
     }
 }
