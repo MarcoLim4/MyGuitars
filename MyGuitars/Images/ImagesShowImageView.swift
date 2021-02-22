@@ -32,7 +32,7 @@ struct ImagesShowImageView: View {
                 .shadow(radius: 10)
 
 
-            let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image02.png")
+            let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image05.png")
             
             Image(uiImage: instPhoto ?? UIImage())
                 .resizable()

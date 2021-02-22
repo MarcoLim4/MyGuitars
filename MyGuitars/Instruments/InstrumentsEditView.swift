@@ -354,18 +354,18 @@ struct InstrumentsEditView: View {
 
         }
         
-        image = Image(uiImage: inputImage)
+        let fixingOrientation = inputImage.fixOrientation()
+        image = Image(uiImage: fixingOrientation)
         
         let newImage = Photos(context: managedObjectContext)
         newImage.instruments = instrument
         newImage.comments = "Details about this particular photo."
-        newImage.photo = inputImage.pngData()
+        newImage.photo = fixingOrientation.pngData()
         
         dataController.save()
         
         
     }
-    
     
 }
 

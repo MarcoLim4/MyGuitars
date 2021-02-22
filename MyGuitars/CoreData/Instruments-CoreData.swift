@@ -69,8 +69,8 @@ extension Instruments {
         let viewContext = controller.container.viewContext
         
         let newImage = Photos(context: viewContext)
-        newImage.photo    = UIImage(named: "image04.png")?.pngData()
-        newImage.comments = "Comments about image 04."
+        newImage.photo    = UIImage(named: "image05.png")?.pngData()
+        newImage.comments = "Comments about image 05."
 
         return newImage
         

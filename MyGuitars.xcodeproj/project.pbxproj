@@ -23,6 +23,7 @@
 		DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */; };
 		DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */; };
 		DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD92099225E06DF60094ED36 /* ImagesSample.xcassets */; };
+		DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB95E2425E4536500935673 /* UIImage+Extension.swift */; };
 		DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044725DED565004CD13B /* InstrumentsEditView.swift */; };
 		DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */; };
 		DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */; };
@@ -48,6 +49,7 @@
 		DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstrumentsImagesRow.swift; path = MyGuitars/Images/InstrumentsImagesRow.swift; sourceTree = SOURCE_ROOT; };
 		DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesShowImageView.swift; sourceTree = "<group>"; };
 		DD92099225E06DF60094ED36 /* ImagesSample.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImagesSample.xcassets; sourceTree = "<group>"; };
+		DDB95E2425E4536500935673 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
 		DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsRow.swift; sourceTree = "<group>"; };
 		DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instruments-CoreData.swift"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */,
 				DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */,
+				DDB95E2425E4536500935673 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
+				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
 				DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */,
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
 				DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */,
