@@ -16,6 +16,10 @@
 		DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */; };
 		DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7C25DDAC560038D6DD /* DataController.swift */; };
 		DD0F7A8425DDACB00038D6DD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0F7A8325DDACB00038D6DD /* CloudKit.framework */; };
+		DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A625E5D0D300138574 /* StringsView.swift */; };
+		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
+		DD52D6AD25E6073500138574 /* StringsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AC25E6073500138574 /* StringsHeaderView.swift */; };
+		DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AF25E7310300138574 /* UIColor+Extension.swift */; };
 		DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666425DDADD1007C3F05 /* HomeView.swift */; };
 		DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */; };
 		DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098225E06BA20094ED36 /* ImagePicker.swift */; };
@@ -42,6 +46,10 @@
 		DD0F7A7C25DDAC560038D6DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		DD0F7A8025DDACAD0038D6DD /* MyGuitars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGuitars.entitlements; sourceTree = "<group>"; };
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		DD52D6A625E5D0D300138574 /* StringsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsView.swift; sourceTree = "<group>"; };
+		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
+		DD52D6AC25E6073500138574 /* StringsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsHeaderView.swift; sourceTree = "<group>"; };
+		DD52D6AF25E7310300138574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DD62666425DDADD1007C3F05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsView.swift; sourceTree = "<group>"; };
 		DD92098225E06BA20094ED36 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -73,6 +81,7 @@
 				DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */,
 				DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */,
 				DDB95E2425E4536500935673 /* UIImage+Extension.swift */,
+				DD52D6AF25E7310300138574 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -104,6 +113,7 @@
 				DD08B91125DEE47B00E4E95A /* Extensions */,
 				DDE6044B25DEDC7F004CD13B /* Instruments */,
 				DD92098125E06A750094ED36 /* Images */,
+				DD52D6A525E5D0AD00138574 /* Strings */,
 				DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */,
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
 				DD0F7A6E25DDABF60038D6DD /* Preview Content */,
@@ -126,6 +136,16 @@
 				DD0F7A8325DDACB00038D6DD /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD52D6A525E5D0AD00138574 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				DD52D6A625E5D0D300138574 /* StringsView.swift */,
+				DD52D6A925E5FA8300138574 /* StringsEditView.swift */,
+				DD52D6AC25E6073500138574 /* StringsHeaderView.swift */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		DD92098125E06A750094ED36 /* Images */ = {
@@ -234,11 +254,14 @@
 				DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */,
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
+				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */,
 				DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */,
+				DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */,
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
+				DD52D6AD25E6073500138574 /* StringsHeaderView.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
@@ -246,6 +269,7 @@
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
 				DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */,
 				DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */,
+				DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,6 @@ struct InstrumentsImagesRow: View {
             LazyHGrid(rows: layout, spacing: 20) {
 
                 ForEach(Array(thePhotos.enumerated()), id: \.offset) { index, photoItem in
-//                ForEach(thePhotos, id: \.self) { photoItem in
 
                     let instPhoto = UIImage(data: photoItem.photo ?? Data()) ?? UIImage(named: "image05.png")
                     
@@ -39,11 +38,6 @@ struct InstrumentsImagesRow: View {
                         }
                         .frame(width: 80.0, height: 80.0, alignment: .center)
 
-                        
-//                        NavigationLink(destination: ImagesShowImageView(photo: photoItem)) {
-//                            Label("", systemImage: "viewfinder")
-//                                .frame(width: 80.0, height: 80.0, alignment: .center)
-//                        }
                     }
                     .sheet(isPresented: $showingImageView, content: {
                         ImagesShowImageView(photo: thePhotos[selectedIndex])

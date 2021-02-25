@@ -7,12 +7,14 @@
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="comments" optional="YES" attributeType="String"/>
         <attribute name="datemanufactured" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="eletronics" optional="YES" attributeType="String"/>
+        <attribute name="electronics" optional="YES" attributeType="String"/>
         <attribute name="finishstyle" optional="YES" attributeType="String"/>
         <attribute name="fretboardmaterial" optional="YES" attributeType="String"/>
         <attribute name="madein" optional="YES" attributeType="String"/>
         <attribute name="model" optional="YES" attributeType="String"/>
         <attribute name="neckmaterial" optional="YES" attributeType="String"/>
+        <attribute name="neckshape" optional="YES" attributeType="String"/>
+        <attribute name="numberoffrets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="numberofstrings" optional="YES" attributeType="Integer 16" minValueString="4" defaultValueString="6" usesScalarValueType="YES"/>
         <attribute name="purchasedate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="purchasevalue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -37,7 +39,7 @@
         <attribute name="brand" optional="YES" attributeType="String"/>
         <attribute name="comments" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="guage" optional="YES" attributeType="String"/>
+        <attribute name="gauge" optional="YES" attributeType="String"/>
         <attribute name="lifespan" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="myrating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -53,7 +55,7 @@
         <relationship name="instruments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instruments" inverseName="work" inverseEntity="Instruments"/>
     </entity>
     <elements>
-        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="419"/>
+        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="14"/>
         <element name="Photos" positionX="-54" positionY="153" width="128" height="74"/>
         <element name="Strings" positionX="-54" positionY="144" width="128" height="164"/>
         <element name="WorkPerformed" positionX="-45" positionY="153" width="128" height="119"/>

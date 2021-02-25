@@ -9,14 +9,26 @@ struct InstrumentsRow: View {
         
         NavigationLink(destination: InstrumentsEditView(instrument: instruments)) {
 
-            VStack(alignment: .leading) {
-                
-                Text(instruments.model ?? "")
-                    .font(.headline)
+            HStack {
 
-                Text(instruments.brand ?? "")
-                    .font(.footnote)
+                
+                if instruments.type == "Acoustic" {
+                    Image(systemName: "guitars")
+                } else {
+                    Image(systemName: "guitars.fill")
+                }
+                
+                VStack(alignment: .leading) {
                     
+                    Text(instruments.model ?? "")
+                        .font(.headline)
+
+                    Text(instruments.brand ?? "")
+                        .font(.footnote)
+                        
+                }
+
+                
             }
             .frame(height: 60)
             

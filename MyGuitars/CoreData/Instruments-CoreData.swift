@@ -37,7 +37,7 @@ extension Instruments {
         instrument.fretboardmaterial = "Indian RoseWood"
         instrument.topmaterial       = "Solid Wood - Spruce"
         instrument.bodyshape         = "Dreadnought"
-        instrument.eletronics        = "Q1"
+        instrument.electronics        = "Q1"
         instrument.datemanufactured  = Date()
         
         return instrument
@@ -76,6 +76,23 @@ extension Instruments {
         
     }
     
+    static var stringSample: Strings {
+        
+        let controller = DataController(inMemory: true)
+        let viewContext = controller.container.viewContext
+        
+        let newString = Strings(context: viewContext)
+        
+        newString.brand    = "Elixir"
+        newString.gauge    = "Custom Light 10-47"
+        newString.date     = Date()
+        newString.comments = "Brand new set of strings"
+        newString.lifespan = 1
+        
+        return newString
+        
+    }
+    
     
     // Also, to help cleat the code on the main views
     var allPhotos: [Photos] {
@@ -90,8 +107,10 @@ extension Instruments {
     }
     
     var allStrings: [Strings] {
+        
+        #warning("need to revisit this sorting")
         let stringsArray = strings?.allObjects as? [Strings] ?? []
-        return stringsArray
+        return stringsArray.sorted(by: { $0.date ?? Date() < $1.date ?? Date() })
         
     }
     

@@ -39,10 +39,21 @@ struct InstrumentsEditView: View {
     @State private var dateMade: Date
     @State private var serialNummber: String
     
-    @State private var eletronics: String
+    @State private var electronics: String
     @State private var topMaterial: String
     @State private var sidesMaterial: String
     @State private var backMaterial: String
+    @State private var neckMaterial: String
+    @State private var neckShape: String
+    
+    @State private var purchaseDate: Date
+    @State private var purchaseValue: Double
+    @State private var salesDate: Date
+    @State private var salesValue: Double
+    @State private var salesreason: String
+
+    
+    
     @State private var fretboardMaterial: String
     
     @State private var comments: String
@@ -53,7 +64,7 @@ struct InstrumentsEditView: View {
         
         self.instrument = instrument
         
-        _type              = State(wrappedValue: instrument.instType)
+        _type              = State(wrappedValue: instrument.type ?? "")
         _brand             = State(wrappedValue: instrument.instBrand)
         _model             = State(wrappedValue: instrument.instModel)
         _category          = State(wrappedValue: instrument.category ?? "")
@@ -62,11 +73,20 @@ struct InstrumentsEditView: View {
         _bodyShape         = State(wrappedValue: instrument.bodyshape ?? "")
         _dateMade          = State(wrappedValue: instrument.datemanufactured ?? Date())
         _serialNummber     = State(wrappedValue: instrument.serialnumber ?? "")
-        _eletronics        = State(wrappedValue: instrument.eletronics ?? "")
+        _electronics       = State(wrappedValue: instrument.electronics ?? "")
         _topMaterial       = State(wrappedValue: instrument.topmaterial ?? "")
         _sidesMaterial     = State(wrappedValue: instrument.sidesmaterial ?? "")
         _backMaterial      = State(wrappedValue: instrument.backmaterial ?? "")
         _fretboardMaterial = State(wrappedValue: instrument.fretboardmaterial ?? "")
+        _neckMaterial      = State(wrappedValue: instrument.neckmaterial ?? "")
+        _neckShape         = State(wrappedValue: instrument.neckshape ?? "")
+        
+        _purchaseDate      = State(wrappedValue: instrument.purchasedate ?? Date())
+        _purchaseValue     = State(wrappedValue: instrument.purchasevalue)
+        _salesDate         = State(wrappedValue: instrument.saledate ?? Date())
+        _salesValue        = State(wrappedValue: instrument.salevalue)
+        _salesreason       = State(wrappedValue: instrument.salereason ?? "")
+        
         _comments          = State(wrappedValue: instrument.comments ?? "")
         
     }
@@ -75,7 +95,7 @@ struct InstrumentsEditView: View {
         
         Form {
             
-            Picker("Instrument Type", selection: $type) {
+            Picker("Instrument Type", selection: $type.onChange(updateValues)) {
                 ForEach(instrument.instrumentTypes, id: \.self) { type in
                     Text("\(type)")
                 }
@@ -102,11 +122,11 @@ struct InstrumentsEditView: View {
                 }
                 
                 HStack {
-                    Text("Category")
+                    Text("Body Shape")
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    Picker("", selection: $category) {
+                    Picker("", selection: $category.onChange(updateValues)) {
                         
                         // Maybe later we can swith on different body types for Bass and other instruments as well
                         if type == "Electric" {
@@ -143,58 +163,6 @@ struct InstrumentsEditView: View {
                         .font(.callout)
                 }
                 
-                
-            }
-            
-            Section(header: Text("Images")) {
-                
-                VStack {
-                    
-                    Button(action: {
-                        self.showingImagePicker = true
-                        self.imagePickerSource = .library
-                    }) {
-                        HStack(spacing:10) {
-                            Image(systemName: "viewfinder.circle")
-                                .foregroundColor(.green)
-                            Text("Add Image from Lirbary")
-                                .font(.subheadline)
-                                .foregroundColor(.green)
-                        }
-                    }
-
-                }
-                
-                VStack {
-                    InstrumentsImagesRow(thePhotos: instrument.allPhotos)
-                        .frame(minHeight: 100)
-                }
-
-                VStack {
-                    
-                    Button(action: {
-                        self.showingImagePicker = true
-                        self.imagePickerSource = .camera
-                    }) {
-                        HStack(spacing:10) {
-                            Image(systemName: "camera.viewfinder")
-                                .foregroundColor(.green)
-                            Text("Take New Image")
-                                .font(.subheadline)
-                                .foregroundColor(.green)
-                        }
-                    }
-
-                    
-                }
-                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                    ImagePicker(source: self.imagePickerSource, image: self.$inputImage)
-                }
-                
-            }
-            
-            Section(header: Text("Other Info")) {
-                
                 HStack(alignment: .center) {
                     Text("Date Manufactured")
                         .font(.caption)
@@ -217,23 +185,41 @@ struct InstrumentsEditView: View {
                     TextField("Serial Number", text: $serialNummber.onChange(updateValues))
                         .font(.callout)
                 }
-
                 
                 
             }
+            .textCase(.none)
+            .font(.headline)
 
-            
-            Section(header: Text("Material")) {
+            Section(header: Text("Material/Electronics")) {
 
                 HStack {
-                    Text("Eletronics")
+                    Text("Electronics")
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    TextField("Eletronics", text: $eletronics.onChange(updateValues))
+                    TextField("Eletronics", text: $electronics.onChange(updateValues))
                         .font(.callout)
                 }
 
+                HStack {
+                    Text("Neck")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    TextField("Neck Material", text: $neckMaterial.onChange(updateValues))
+                        .font(.callout)
+                }
+
+                HStack {
+                    Text("Neck Shape")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    TextField("Neck Shape", text: $neckShape.onChange(updateValues))
+                        .font(.callout)
+                }
+                
                 HStack {
                     Text("Top")
                         .font(.caption)
@@ -270,6 +256,125 @@ struct InstrumentsEditView: View {
 
                 
             }
+            .textCase(.none)
+            .font(.headline)
+            
+            
+            Section(header: Text("Purchase/Sale Values")) {
+
+                HStack(alignment: .center) {
+                    Text("Purchase Date")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    Spacer()
+                    
+                    DatePicker("Purchase Date", selection: $purchaseDate, displayedComponents: .date)
+                        .labelsHidden()
+                        .datePickerStyle(CompactDatePickerStyle())
+                        .frame(maxHeight: 400)
+                        
+                }
+                
+                HStack {
+                    Text("Purchase Value")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+//                    TextField("Purchase Value", text: $purchaseValue)
+//                        .font(.callout)
+
+                }
+
+                HStack(alignment: .center) {
+                    Text("Sale Date")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    Spacer()
+                    
+                    DatePicker("Sale Date", selection: $salesDate.onChange(updateValues), displayedComponents: .date)
+                        .labelsHidden()
+                        .datePickerStyle(CompactDatePickerStyle())
+                        .frame(maxHeight: 400)
+                        
+                }
+                
+                HStack {
+                    Text("Sale Value")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+//                    TextField("Sale Value", text: $salesValue.onChange(updateValues))
+//                        .font(.callout)
+                }
+
+                
+                HStack {
+                    Text("Sale Reason")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    TextField("Sale Reason", text: $salesreason.onChange(updateValues))
+                        .font(.callout)
+                }
+
+
+                
+            }
+            .textCase(.none)
+            .font(.headline)
+
+            
+            Section(header: Text("Images")) {
+                
+                VStack {
+                    
+                    Button(action: {
+                        self.showingImagePicker.toggle()
+                        self.imagePickerSource = .library
+                    }) {
+                        HStack(spacing:10) {
+                            Image(systemName: "photo")
+                                .foregroundColor(.green)
+                            Text("Add Image from Lirbary")
+                                .font(.subheadline)
+                                .foregroundColor(.green)
+                        }
+                    }
+
+                }
+                
+                VStack {
+                    InstrumentsImagesRow(thePhotos: instrument.allPhotos)
+                        .frame(minHeight: 100)
+                }
+
+                VStack {
+                    
+                    Button(action: {
+                        self.showingImagePicker.toggle()
+                        self.imagePickerSource = .camera
+                    }) {
+                        HStack(spacing:10) {
+                            Image(systemName: "camera.circle")
+                                .foregroundColor(.green)
+                            Text("Take New Image")
+                                .font(.subheadline)
+                                .foregroundColor(.green)
+                        }
+                    }
+
+                    
+                }
+                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                    ImagePicker(source: self.imagePickerSource, image: self.$inputImage)
+                }
+                
+            }
+            .textCase(.none)
+            .font(.headline)
+
             
             Section(header: Text("Comments")) {
                 
@@ -279,6 +384,9 @@ struct InstrumentsEditView: View {
                     .multilineTextAlignment(.leading)
                 
             }
+            .textCase(.none)
+            .font(.headline)
+
 
             
             Section {
@@ -286,6 +394,7 @@ struct InstrumentsEditView: View {
                 Button("Delete Instrument") {
                     isShowingDeleteMessage = true
                 }
+                .font(.headline)
                 .foregroundColor(.red)
                 .alert(isPresented: $isShowingDeleteMessage) {
 
@@ -329,13 +438,20 @@ struct InstrumentsEditView: View {
         instrument.madein            = madeIn
         instrument.finishstyle       = finishStyle
         instrument.category          = category
-        instrument.eletronics        = eletronics
+        instrument.electronics       = electronics
         instrument.topmaterial       = topMaterial
         instrument.sidesmaterial     = sidesMaterial
         instrument.backmaterial      = backMaterial
         instrument.fretboardmaterial = fretboardMaterial
         instrument.datemanufactured  = dateMade
         instrument.serialnumber      = serialNummber
+        instrument.neckmaterial      = neckMaterial
+        instrument.neckshape         = neckShape
+        instrument.purchasedate      = purchaseDate
+        instrument.purchasevalue     = purchaseValue
+        instrument.saledate          = salesDate
+        instrument.salevalue         = salesValue
+        instrument.salereason        = salesreason
         instrument.comments          = comments
     }
     

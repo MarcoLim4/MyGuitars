@@ -56,7 +56,7 @@ class DataController: ObservableObject {
             instruments.fretboardmaterial = "Indian RoseWood"
             instruments.topmaterial       = "Solid Wood - Spruce"
             instruments.bodyshape         = "Dreadnought"
-            instruments.eletronics        = "Q1"
+            instruments.electronics       = "Q1"
             instruments.datemanufactured  = Date()
 
             instruments.photos = []
@@ -99,6 +99,9 @@ class DataController: ObservableObject {
         let batchDeleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
         _ = try? container.viewContext.execute(batchDeleteRequest2)
     }
-    
+
+    func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
+        (try? container.viewContext.count(for: fetchRequest)) ?? 0
+    }
     
 }

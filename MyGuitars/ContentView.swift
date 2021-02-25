@@ -22,6 +22,22 @@ struct ContentView: View {
                     Text("Guitars")
                 }
 
+            StringsView()
+                .tag(StringsView.tag)
+                .tabItem {
+                    Image(systemName: "line.horizontal.3.circle")
+                    Text("Strings")
+                }
+             
+//            StringsView()
+//                .tag("Empty")
+//                .tabItem {
+//                    Image(systemName: "wrench.and.screwdriver")
+//                    Text("Work")
+//                }
+
+            
+            
             
         }
 
