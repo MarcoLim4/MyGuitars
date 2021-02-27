@@ -8,7 +8,6 @@ struct InstrumentsImagesRow: View {
     let thePhotos: [Photos]
     
     @State private var selectedIndex = 0
-
     
     var body: some View {
         
@@ -43,11 +42,7 @@ struct InstrumentsImagesRow: View {
                         ImagesShowImageView(photo: thePhotos[selectedIndex])
                     })
 
-
-                    
                 }
-
-                
 
             }
             .padding(.horizontal)

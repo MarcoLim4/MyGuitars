@@ -1,10 +1,3 @@
-//
-//  InstrumentsView.swift
-//  MyGuitars
-//
-//  Created by Marco Lima on 2021-02-17.
-//
-
 import SwiftUI
 
 struct InstrumentsView: View {
@@ -23,7 +16,6 @@ struct InstrumentsView: View {
 
     }
     
-    
     var body: some View {
         
         NavigationView {
@@ -34,7 +26,6 @@ struct InstrumentsView: View {
                     InstrumentsRow(instruments: instrument)
 
                 }
-                
 
             }
             .listStyle(InsetGroupedListStyle())

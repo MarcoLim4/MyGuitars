@@ -1,26 +1,17 @@
 import SwiftUI
 
-struct StringsView: View {
-
+struct WorkPerformedView: View {
+    
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-
-    static let tag: String? = "Strings"
-//    let instruments: FetchRequest<Instruments>
-    
     @State private var showEditingScreen = false
     
     @FetchRequest(entity: Instruments.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true)]) var instruments: FetchedResults<Instruments>
+
     
-    
-//    init() {
-//
-////        instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
-////                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
-////                                                                  NSSortDescriptor(keyPath: \Instruments.model, ascending: true)])
-//
-//    }
+    static let tag: String? = "Work"
+
     
     var body: some View {
         
@@ -34,19 +25,23 @@ struct StringsView: View {
                         StringsHeaderView(instrument: instrument)
                     }
                     
-                    ForEach(instrument.allStrings) { stringInfo in
+                    ForEach(instrument.allWork) { workDetails in
 
                         HStack {
                             
                             VStack(alignment: .leading) {
                                 
-                                Text(stringInfo.brand ?? "")
+                                Text(workDetails.kindofwork ?? "")
                                     .font(.headline)
                                     .foregroundColor(.blue)
-                                
-                                Text(stringInfo.gauge ?? "")
+
+                                Text(workDetails.comments ?? "")
                                     .font(.footnote)
                                     .foregroundColor(.blue)
+                                
+//                                Text(workDetails.cost ?? "")
+//                                    .font(.footnote)
+//                                    .foregroundColor(.blue)
                             }
                             
                             Spacer()
@@ -60,9 +55,9 @@ struct StringsView: View {
                             
                         }
                         .padding()
-                        .sheet(isPresented: $showEditingScreen) {
-                            StringsEditView(stringSet: stringInfo, instrument: instrument)
-                        }
+//                        .sheet(isPresented: $showEditingScreen) {
+//                            StringsEditView(stringSet: stringInfo, instrument: instrument)
+//                        }
                         
                         
                     }
@@ -71,23 +66,23 @@ struct StringsView: View {
                 
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle("Strings History")
+            .navigationBarTitle("Work Performed")
             
         }
         .navigationViewStyle(StackNavigationViewStyle())
         
+        
     }
-    
 }
 
-struct StringsView_Previews: PreviewProvider {
+struct WorkPerformedView_Previews: PreviewProvider {
     
     static var dataController = DataController.preview
     
     static var previews: some View {
-        StringsView()
+        WorkPerformedView()
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
-        
+    
 }

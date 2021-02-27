@@ -5,13 +5,11 @@ struct InstrumentsRow: View {
     @ObservedObject var instruments: Instruments
     
     var body: some View {
-        
-        
+                
         NavigationLink(destination: InstrumentsEditView(instrument: instruments)) {
 
             HStack {
 
-                
                 if instruments.type == "Acoustic" {
                     Image(systemName: "guitars")
                 } else {
@@ -27,8 +25,6 @@ struct InstrumentsRow: View {
                         .font(.footnote)
                         
                 }
-
-                
             }
             .frame(height: 60)
             

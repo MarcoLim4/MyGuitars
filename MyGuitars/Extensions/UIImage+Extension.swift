@@ -1,10 +1,3 @@
-//
-//  UIImage+Extension.swift
-//  MyGuitars
-//
-//  Created by Marco Lima on 2021-02-22.
-//
-
 import SwiftUI
 
 

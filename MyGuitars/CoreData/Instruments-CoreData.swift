@@ -12,9 +12,7 @@ extension Instruments {
     var instModel:  String { model ?? "" }
     
     static var allRecords: [Instruments] {
-
-        return [Instruments]()
-        
+        return [Instruments]()        
     }
     
     static var example: Instruments {

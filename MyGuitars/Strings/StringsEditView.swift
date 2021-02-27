@@ -95,7 +95,7 @@ struct StringsEditView: View {
                             .keyboardType(.decimalPad)
 
                         
-//                        TextField("Price", text: self.$price)
+//                        TextField("Price", text: $price)
                     }
 
                     
@@ -159,7 +159,8 @@ struct StringsEditView: View {
                 }
                 
             }
-            .navigationTitle("String Details")
+//            .navigationTitle("String Details")
+            .navigationBarTitle("String Details", displayMode: .inline)
 
         }
         
@@ -170,6 +171,8 @@ struct StringsEditView: View {
         stringSet.objectWillChange.send()
         instrument.objectWillChange.send()
         
+        instrument.type = instrument.type
+        
         stringSet.brand            = brand
         stringSet.gauge            = gauge
         stringSet.date             = date        
@@ -178,6 +181,8 @@ struct StringsEditView: View {
         stringSet.price            = price
         stringSet.remembertochange = changereminder
         stringSet.comments         = comments
+        
+        dataController.save()
         
     }
     

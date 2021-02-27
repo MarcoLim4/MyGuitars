@@ -18,10 +18,8 @@ struct ImagesShowImageView: View {
     
     }
 
-    
     var body: some View {
-     
-        
+             
         VStack {
             
             Rectangle()
@@ -30,7 +28,6 @@ struct ImagesShowImageView: View {
                 .cornerRadius(3.0)
                 .padding(.top, 15)
                 .shadow(radius: 10)
-
 
             let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image05.png")
             
@@ -41,11 +38,6 @@ struct ImagesShowImageView: View {
             
             Spacer()
 
-//            TextEditor(text: $imageComments.onChange(updateValues))
-//                .font(.callout)
-//                .frame(minHeight: 50)
-//                .multilineTextAlignment(.leading)
-            
             Button("Delete Image") {
                 isShowingDeleteMessage = true
             }

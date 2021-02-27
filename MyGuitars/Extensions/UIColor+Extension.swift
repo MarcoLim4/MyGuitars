@@ -1,12 +1,4 @@
-//
-//  UIColor+Extension.swift
-//  MyGuitars
-//
-//  Created by Marco Lima on 2021-02-24.
-//
-
 import SwiftUI
-
 
 extension Color {
     

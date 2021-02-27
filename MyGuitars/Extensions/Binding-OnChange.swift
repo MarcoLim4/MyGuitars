@@ -1,8 +1,6 @@
 // Solution suggested by Paul Hudson.
 // Makes the code a little better to read on the main views.
 
-
-
 import SwiftUI
 
 extension Binding {

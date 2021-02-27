@@ -18,8 +18,6 @@ class DataController: ObservableObject {
         return dataController
     }()
     
-    
-    
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Main")
 
@@ -37,7 +35,6 @@ class DataController: ObservableObject {
     func createSampleData() throws {
         
         let viewContext = container.viewContext
-        
         
         for i in 1...2 {
             
@@ -72,8 +69,7 @@ class DataController: ObservableObject {
                 photos.instruments = instruments  // relationshtip
                 
             }
-            
-            
+                        
         }
 
         try viewContext.save()

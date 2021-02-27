@@ -28,16 +28,14 @@ struct ContentView: View {
                     Image(systemName: "line.horizontal.3.circle")
                     Text("Strings")
                 }
-             
-//            StringsView()
-//                .tag("Empty")
-//                .tabItem {
-//                    Image(systemName: "wrench.and.screwdriver")
-//                    Text("Work")
-//                }
 
-            
-            
+            WorkPerformedView()
+                .tag(WorkPerformedView.tag)
+                .tabItem {
+                    Image(systemName: "squareshape.squareshape.dashed")
+                    Text("Work Perfored")
+                }
+
             
         }
 

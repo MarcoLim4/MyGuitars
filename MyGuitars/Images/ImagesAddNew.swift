@@ -1,10 +1,3 @@
-//
-//  ImagesAddNew.swift
-//  MyGuitars
-//
-//  Created by Marco Lima on 2021-02-19.
-//
-
 import SwiftUI
 
 struct ImagesAddNew: View {

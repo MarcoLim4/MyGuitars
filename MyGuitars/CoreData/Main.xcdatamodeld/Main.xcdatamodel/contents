@@ -26,9 +26,9 @@
         <attribute name="sidesmaterial" optional="YES" attributeType="String"/>
         <attribute name="topmaterial" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photos" inverseName="instruments" inverseEntity="Photos"/>
-        <relationship name="strings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Strings" inverseName="instruments" inverseEntity="Strings"/>
-        <relationship name="work" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkPerformed" inverseName="instruments" inverseEntity="WorkPerformed"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photos" inverseName="instruments" inverseEntity="Photos"/>
+        <relationship name="strings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Strings" inverseName="instruments" inverseEntity="Strings"/>
+        <relationship name="work" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WorkPerformed" inverseName="instruments" inverseEntity="WorkPerformed"/>
     </entity>
     <entity name="Photos" representedClassName="Photos" syncable="YES" codeGenerationType="class">
         <attribute name="comments" optional="YES" attributeType="String"/>
@@ -55,7 +55,7 @@
         <relationship name="instruments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instruments" inverseName="work" inverseEntity="Instruments"/>
     </entity>
     <elements>
-        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="14"/>
+        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="449"/>
         <element name="Photos" positionX="-54" positionY="153" width="128" height="74"/>
         <element name="Strings" positionX="-54" positionY="144" width="128" height="164"/>
         <element name="WorkPerformed" positionX="-45" positionY="153" width="128" height="119"/>

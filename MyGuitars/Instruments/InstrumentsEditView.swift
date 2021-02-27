@@ -4,21 +4,12 @@ import UIKit
 
 struct InstrumentsEditView: View {
     
-    let testImages = [UIImage(named: "image01.png") ?? UIImage(),
-                      UIImage(named: "image02.png") ?? UIImage(),
-                      UIImage(named: "image03.png") ?? UIImage(),
-                      UIImage(named: "image04.png") ?? UIImage(),
-                      UIImage(named: "image05.png") ?? UIImage(),
-                      UIImage(named: "image06.png") ?? UIImage()]
-    
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var imagePickerSource = PhotoSource.library
     @State private var inputImage: UIImage?
     
-    
     let instrument: Instruments
-    
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var dataController: DataController
@@ -51,14 +42,8 @@ struct InstrumentsEditView: View {
     @State private var salesDate: Date
     @State private var salesValue: Double
     @State private var salesreason: String
-
-    
-    
     @State private var fretboardMaterial: String
-    
     @State private var comments: String
-    
-    
     
     init(instrument: Instruments) {
         
@@ -259,7 +244,6 @@ struct InstrumentsEditView: View {
             .textCase(.none)
             .font(.headline)
             
-            
             Section(header: Text("Purchase/Sale Values")) {
 
                 HStack(alignment: .center) {
@@ -319,8 +303,6 @@ struct InstrumentsEditView: View {
                         .font(.callout)
                 }
 
-
-                
             }
             .textCase(.none)
             .font(.headline)
@@ -386,8 +368,6 @@ struct InstrumentsEditView: View {
             }
             .textCase(.none)
             .font(.headline)
-
-
             
             Section {
 
@@ -416,16 +396,12 @@ struct InstrumentsEditView: View {
             
             
         }
-//        .onTapGesture { hideKeyboard() }
-        .navigationTitle("Edit Guitars")
+        .navigationBarTitle("Edit Guitars", displayMode: .inline)
         .onDisappear(perform: dataController.save)
 
     }
     
     func updateValues() {
-        
-        // I'd like a better way to do this but maybe this is it...
-        
         
         // notify that the items will change
         // if photos.... photos.instruments?.objectWillChange.send()
@@ -460,8 +436,7 @@ struct InstrumentsEditView: View {
         guard let inputImage = inputImage else {
             return
         }
-        
-        
+                
         if imagePickerSource == .camera {
             print("Camera selected")
 
@@ -479,7 +454,6 @@ struct InstrumentsEditView: View {
         newImage.photo = fixingOrientation.pngData()
         
         dataController.save()
-        
         
     }
     

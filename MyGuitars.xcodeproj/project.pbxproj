@@ -20,6 +20,8 @@
 		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
 		DD52D6AD25E6073500138574 /* StringsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AC25E6073500138574 /* StringsHeaderView.swift */; };
 		DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AF25E7310300138574 /* UIColor+Extension.swift */; };
+		DD52D6B625E80EC800138574 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD52D6B525E80EC800138574 /* Colors.xcassets */; };
+		DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6B925E80F2100138574 /* Bundle-Decodable.swift */; };
 		DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666425DDADD1007C3F05 /* HomeView.swift */; };
 		DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */; };
 		DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098225E06BA20094ED36 /* ImagePicker.swift */; };
@@ -27,6 +29,7 @@
 		DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */; };
 		DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */; };
 		DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD92099225E06DF60094ED36 /* ImagesSample.xcassets */; };
+		DD9D114125E9D7EB00AD2FAA /* WorkPerformedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D114025E9D7EB00AD2FAA /* WorkPerformedView.swift */; };
 		DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB95E2425E4536500935673 /* UIImage+Extension.swift */; };
 		DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044725DED565004CD13B /* InstrumentsEditView.swift */; };
 		DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */; };
@@ -50,6 +53,8 @@
 		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
 		DD52D6AC25E6073500138574 /* StringsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsHeaderView.swift; sourceTree = "<group>"; };
 		DD52D6AF25E7310300138574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		DD52D6B525E80EC800138574 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		DD52D6B925E80F2100138574 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		DD62666425DDADD1007C3F05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsView.swift; sourceTree = "<group>"; };
 		DD92098225E06BA20094ED36 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstrumentsImagesRow.swift; path = MyGuitars/Images/InstrumentsImagesRow.swift; sourceTree = SOURCE_ROOT; };
 		DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesShowImageView.swift; sourceTree = "<group>"; };
 		DD92099225E06DF60094ED36 /* ImagesSample.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImagesSample.xcassets; sourceTree = "<group>"; };
+		DD9D114025E9D7EB00AD2FAA /* WorkPerformedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkPerformedView.swift; sourceTree = "<group>"; };
 		DDB95E2425E4536500935673 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
 		DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsRow.swift; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 		DD08B91125DEE47B00E4E95A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DD52D6B925E80F2100138574 /* Bundle-Decodable.swift */,
 				DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */,
 				DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */,
 				DDB95E2425E4536500935673 /* UIImage+Extension.swift */,
@@ -114,7 +121,9 @@
 				DDE6044B25DEDC7F004CD13B /* Instruments */,
 				DD92098125E06A750094ED36 /* Images */,
 				DD52D6A525E5D0AD00138574 /* Strings */,
+				DD9D113F25E9D7D100AD2FAA /* Work */,
 				DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */,
+				DD52D6B525E80EC800138574 /* Colors.xcassets */,
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
 				DD0F7A6E25DDABF60038D6DD /* Preview Content */,
 				DDE6044F25DEDE9B004CD13B /* CoreData */,
@@ -157,6 +166,14 @@
 				DD92099225E06DF60094ED36 /* ImagesSample.xcassets */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		DD9D113F25E9D7D100AD2FAA /* Work */ = {
+			isa = PBXGroup;
+			children = (
+				DD9D114025E9D7EB00AD2FAA /* WorkPerformedView.swift */,
+			);
+			path = Work;
 			sourceTree = "<group>";
 		};
 		DDE6044B25DEDC7F004CD13B /* Instruments */ = {
@@ -238,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0F7A7025DDABF60038D6DD /* Preview Assets.xcassets in Resources */,
+				DD52D6B625E80EC800138574 /* Colors.xcassets in Resources */,
 				DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */,
 				DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */,
 			);
@@ -255,6 +273,7 @@
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
+				DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */,
@@ -265,6 +284,7 @@
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
+				DD9D114125E9D7EB00AD2FAA /* WorkPerformedView.swift in Sources */,
 				DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */,
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
 				DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */,
