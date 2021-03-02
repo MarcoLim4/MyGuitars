@@ -29,13 +29,12 @@ struct ContentView: View {
                     Text("Strings")
                 }
 
-            WorkPerformedView()
-                .tag(WorkPerformedView.tag)
+            RepairsView()
+                .tag(RepairsView.tag)
                 .tabItem {
                     Image(systemName: "squareshape.squareshape.dashed")
-                    Text("Work Perfored")
+                    Text("Repairs")
                 }
-
             
         }
 

@@ -90,7 +90,27 @@ extension Instruments {
         return newString
         
     }
+
     
+    static var repairSample: Repairs {
+        
+        let controller = DataController(inMemory: true)
+        let viewContext = controller.container.viewContext
+        
+        let newRepair = Repairs(context: viewContext)
+                
+        newRepair.dateperformed = Date()
+        newRepair.repairedby    = "Luthier Jimmy"
+        newRepair.cost          = 45.99
+        newRepair.comments      = "Perfect work"
+        newRepair.repairrate    = 4
+        newRepair.repairtype    = "Refret"
+        
+        
+        return newRepair
+        
+    }
+
     
     // Also, to help cleat the code on the main views
     var allPhotos: [Photos] {
@@ -99,8 +119,8 @@ extension Instruments {
         return photosArray
     }
     
-    var allWork: [WorkPerformed] {
-        let workArray = work?.allObjects as? [WorkPerformed] ?? []
+    var allRepairs: [Repairs] {
+        let workArray = repairs?.allObjects as? [Repairs] ?? []
         return workArray
     }
     

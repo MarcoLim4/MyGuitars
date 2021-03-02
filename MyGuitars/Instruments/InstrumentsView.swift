@@ -50,6 +50,7 @@ struct InstrumentsView: View {
             }
             
         }
+        .onDisappear(perform: dataController.save)
         .navigationViewStyle(StackNavigationViewStyle())
         
     }

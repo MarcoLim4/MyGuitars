@@ -1,25 +1,18 @@
 import SwiftUI
 
-struct StringsView: View {
-
+struct RepairsView: View {
+    
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-
-//    @FetchRequest(entity: Instruments.entity(),
-//                  sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true)]) var instruments: FetchedResults<Instruments>
-
     @State private var showEditingScreen = false
-
-    let instruments: FetchRequest<Instruments>
-    static let tag: String? = "Strings"
     
-    init() {
+    @FetchRequest(entity: Instruments.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
+                                    NSSortDescriptor(keyPath: \Instruments.model, ascending: true)]) var instruments: FetchedResults<Instruments>
 
-        instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
-                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
-                                                                  NSSortDescriptor(keyPath: \Instruments.model, ascending: true)])
+    
+    static let tag: String? = "Repairs"
 
-    }
     
     var body: some View {
         
@@ -27,18 +20,17 @@ struct StringsView: View {
             
             List {
                 
-                ForEach(instruments.wrappedValue) { instrument in
+                ForEach(instruments) { instrument in
 
-                    // This was on StringsHeaderView but was not refreshing instruments properly
                     HStack {
-
+//                        StringsHeaderView(instrument: instrument)
                         Text("\(instrument.instModel)")
                             .font(.headline)
-
+                        
                         Spacer()
-
+                        
                         Button(action: {
-                            addString(for: instrument)
+                            addNewRepair(for: instrument)
                         }, label: {
                             Label(
                                 title: { Text("") },
@@ -48,28 +40,23 @@ struct StringsView: View {
                             )
 
                         })
-                        
+
                     }
-//                    .padding()
                     
-                    ForEach(instrument.allStrings) { stringInfo in
-                        
+                    ForEach(instrument.allRepairs) { repairs in
+
                         HStack {
                             
                             VStack(alignment: .leading) {
                                 
-                                Text(stringInfo.brand ?? "")
+                                Text(repairs.repairtype ?? "")
                                     .font(.headline)
                                     .foregroundColor(.blue)
-                                
-                                Text(stringInfo.gauge ?? "")
-                                    .font(.footnote)
-                                    .foregroundColor(.blue)
-                                
-                                Text(stringInfo.date?.toString() ?? "")
-                                    .font(.footnote)
-                                    .foregroundColor(.blue)
 
+                                Text(repairs.repairedby ?? "")
+                                    .font(.footnote)
+                                    .foregroundColor(.blue)
+                                
                             }
                             
                             Spacer()
@@ -84,7 +71,7 @@ struct StringsView: View {
                         }
                         .padding()
                         .sheet(isPresented: $showEditingScreen) {
-                            StringsEditView(stringSet: stringInfo, instrument: instrument)
+                            RepairsEditView(repairs: repairs, instrument: instrument)
                         }
                         
                         
@@ -94,41 +81,38 @@ struct StringsView: View {
                 
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle("Strings")
+            .navigationBarTitle("Repairs")
             
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        
     }
     
-    
-    func addString(for instrument: Instruments) {
+    func addNewRepair(for instrument: Instruments) {
+
+        let newRepair = Repairs(context: managedObjectContext)
         
-        let newString = Strings(context: managedObjectContext)
-        
-        newString.brand       = "New String Set"
-        newString.gauge       = ""
-        newString.date        = Date()
-        newString.lifespan    = 0
-        newString.myrating    = 0
-        newString.price       = 0
-        newString.comments    = ""
-        newString.instruments = instrument
+        newRepair.repairedby       = "Luthier"
+        newRepair.repairtype       = "Type"
+        newRepair.dateperformed    = Date()
+        newRepair.repairrate       = 0
+        newRepair.cost             = 0
+        newRepair.comments         = ""
+        newRepair.instruments      = instrument
         
         dataController.save()
-
+        
     }
     
 }
 
-struct StringsView_Previews: PreviewProvider {
+struct WorkPerformedView_Previews: PreviewProvider {
     
     static var dataController = DataController.preview
     
     static var previews: some View {
-        StringsView()
+        RepairsView()
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
-        
+    
 }

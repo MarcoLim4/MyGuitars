@@ -19,7 +19,7 @@ struct StringsHeaderView: View {
         HStack {
             
             Text("\(instrument.instModel)")
-                .font(.title3)
+                .font(.headline)
 
             Spacer()
 

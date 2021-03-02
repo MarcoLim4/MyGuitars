@@ -36,7 +36,14 @@
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIColorName</key>
+		<string>default-portrait</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
+		<key>UIImageName</key>
+		<string>default-portrait</string>
+	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

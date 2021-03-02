@@ -22,6 +22,11 @@
 		DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AF25E7310300138574 /* UIColor+Extension.swift */; };
 		DD52D6B625E80EC800138574 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD52D6B525E80EC800138574 /* Colors.xcassets */; };
 		DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6B925E80F2100138574 /* Bundle-Decodable.swift */; };
+		DD54C2A225ED7F4D00393481 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54C2A125ED7F4D00393481 /* RatingView.swift */; };
+		DD54C2A725ED85D800393481 /* LifeSpanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54C2A625ED85D800393481 /* LifeSpanView.swift */; };
+		DD54C2AC25ED8B3600393481 /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54C2AB25ED8B3600393481 /* Number+Extension.swift */; };
+		DD54C2AF25ED8DC600393481 /* NumbersOnlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54C2AE25ED8DC600393481 /* NumbersOnlyView.swift */; };
+		DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54C2B425EDB14100393481 /* RepairsEditView.swift */; };
 		DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666425DDADD1007C3F05 /* HomeView.swift */; };
 		DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */; };
 		DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098225E06BA20094ED36 /* ImagePicker.swift */; };
@@ -29,11 +34,14 @@
 		DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */; };
 		DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */; };
 		DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD92099225E06DF60094ED36 /* ImagesSample.xcassets */; };
-		DD9D114125E9D7EB00AD2FAA /* WorkPerformedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D114025E9D7EB00AD2FAA /* WorkPerformedView.swift */; };
+		DD9D114125E9D7EB00AD2FAA /* RepairsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */; };
 		DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB95E2425E4536500935673 /* UIImage+Extension.swift */; };
 		DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044725DED565004CD13B /* InstrumentsEditView.swift */; };
 		DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */; };
 		DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */; };
+		DDFD9C4425ED56DA00B4A446 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */; };
+		DDFD9C4725ED6E2E00B4A446 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD9C4625ED6E2E00B4A446 /* CardView.swift */; };
+		DDFD9C4A25ED6E7A00B4A446 /* CardView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFD9C4925ED6E7A00B4A446 /* CardView.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +63,11 @@
 		DD52D6AF25E7310300138574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DD52D6B525E80EC800138574 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DD52D6B925E80F2100138574 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		DD54C2A125ED7F4D00393481 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		DD54C2A625ED85D800393481 /* LifeSpanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSpanView.swift; sourceTree = "<group>"; };
+		DD54C2AB25ED8B3600393481 /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
+		DD54C2AE25ED8DC600393481 /* NumbersOnlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnlyView.swift; sourceTree = "<group>"; };
+		DD54C2B425EDB14100393481 /* RepairsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsEditView.swift; sourceTree = "<group>"; };
 		DD62666425DDADD1007C3F05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsView.swift; sourceTree = "<group>"; };
 		DD92098225E06BA20094ED36 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -62,11 +75,14 @@
 		DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstrumentsImagesRow.swift; path = MyGuitars/Images/InstrumentsImagesRow.swift; sourceTree = SOURCE_ROOT; };
 		DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesShowImageView.swift; sourceTree = "<group>"; };
 		DD92099225E06DF60094ED36 /* ImagesSample.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImagesSample.xcassets; sourceTree = "<group>"; };
-		DD9D114025E9D7EB00AD2FAA /* WorkPerformedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkPerformedView.swift; sourceTree = "<group>"; };
+		DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsView.swift; sourceTree = "<group>"; };
 		DDB95E2425E4536500935673 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
 		DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsRow.swift; sourceTree = "<group>"; };
 		DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instruments-CoreData.swift"; sourceTree = "<group>"; };
+		DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		DDFD9C4625ED6E2E00B4A446 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DDFD9C4925ED6E7A00B4A446 /* CardView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardView.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +105,8 @@
 				DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */,
 				DDB95E2425E4536500935673 /* UIImage+Extension.swift */,
 				DD52D6AF25E7310300138574 /* UIColor+Extension.swift */,
+				DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */,
+				DD54C2AB25ED8B3600393481 /* Number+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -116,12 +134,13 @@
 				DD0F7A8025DDACAD0038D6DD /* MyGuitars.entitlements */,
 				DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */,
 				DD0F7A6A25DDABF50038D6DD /* ContentView.swift */,
-				DD62666425DDADD1007C3F05 /* HomeView.swift */,
+				DD54C2B725EDB19B00393481 /* HomeView */,
 				DD08B91125DEE47B00E4E95A /* Extensions */,
 				DDE6044B25DEDC7F004CD13B /* Instruments */,
 				DD92098125E06A750094ED36 /* Images */,
 				DD52D6A525E5D0AD00138574 /* Strings */,
-				DD9D113F25E9D7D100AD2FAA /* Work */,
+				DD9D113F25E9D7D100AD2FAA /* Repairs */,
+				DD54C2A525ED84D100393481 /* Generic Views */,
 				DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */,
 				DD52D6B525E80EC800138574 /* Colors.xcassets */,
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
@@ -157,6 +176,26 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		DD54C2A525ED84D100393481 /* Generic Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD54C2A125ED7F4D00393481 /* RatingView.swift */,
+				DD54C2A625ED85D800393481 /* LifeSpanView.swift */,
+				DD54C2AE25ED8DC600393481 /* NumbersOnlyView.swift */,
+			);
+			path = "Generic Views";
+			sourceTree = "<group>";
+		};
+		DD54C2B725EDB19B00393481 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				DD62666425DDADD1007C3F05 /* HomeView.swift */,
+				DDFD9C4625ED6E2E00B4A446 /* CardView.swift */,
+				DDFD9C4925ED6E7A00B4A446 /* CardView.xcassets */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
 		DD92098125E06A750094ED36 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,12 +207,13 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		DD9D113F25E9D7D100AD2FAA /* Work */ = {
+		DD9D113F25E9D7D100AD2FAA /* Repairs */ = {
 			isa = PBXGroup;
 			children = (
-				DD9D114025E9D7EB00AD2FAA /* WorkPerformedView.swift */,
+				DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */,
+				DD54C2B425EDB14100393481 /* RepairsEditView.swift */,
 			);
-			path = Work;
+			path = Repairs;
 			sourceTree = "<group>";
 		};
 		DDE6044B25DEDC7F004CD13B /* Instruments */ = {
@@ -258,6 +298,7 @@
 				DD52D6B625E80EC800138574 /* Colors.xcassets in Resources */,
 				DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */,
 				DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */,
+				DDFD9C4A25ED6E7A00B4A446 /* CardView.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,23 +313,30 @@
 				DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */,
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
+				DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
 				DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
+				DD54C2A225ED7F4D00393481 /* RatingView.swift in Sources */,
+				DD54C2AF25ED8DC600393481 /* NumbersOnlyView.swift in Sources */,
 				DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */,
 				DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */,
 				DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */,
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
 				DD52D6AD25E6073500138574 /* StringsHeaderView.swift in Sources */,
+				DDFD9C4425ED56DA00B4A446 /* Date+Extension.swift in Sources */,
+				DD54C2AC25ED8B3600393481 /* Number+Extension.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
-				DD9D114125E9D7EB00AD2FAA /* WorkPerformedView.swift in Sources */,
+				DD9D114125E9D7EB00AD2FAA /* RepairsView.swift in Sources */,
 				DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */,
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
 				DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */,
+				DD54C2A725ED85D800393481 /* LifeSpanView.swift in Sources */,
 				DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */,
+				DDFD9C4725ED6E2E00B4A446 /* CardView.swift in Sources */,
 				DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

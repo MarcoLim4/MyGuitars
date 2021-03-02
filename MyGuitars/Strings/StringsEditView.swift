@@ -42,12 +42,12 @@ struct StringsEditView: View {
     }
     
     var body: some View {
-        
+
         NavigationView {
-            
+         
             Form {
                 
-                Section(header: Text("String")) {
+                Section {
 
                     HStack {
                         Text("Date Changed")
@@ -88,45 +88,68 @@ struct StringsEditView: View {
                         Text("Price")
                             .font(.caption)
                             .foregroundColor(.gray)
-
                         
-                        TextField("Price", value: $price.onChange(updateValues), formatter: formatter)
+                        TextField("Set price", value: $price.onChange(updateValues), formatter: NumberFormatter.currency)
                             .font(.callout)
                             .keyboardType(.decimalPad)
+                            .foregroundColor(.gray)
 
-                        
-//                        TextField("Price", text: $price)
+//                        TextField("Price", value: $price.onChange(updateValues), formatter: formatter)
+//                            .font(.callout)
+//                            .keyboardType(.decimalPad)
+
                     }
 
                     
                     // Life Span
-//                    HStack {
-//
-////                        Text("Life Span in Months")
-////                            .font(.caption)
-////                            .foregroundColor(.gray)
-//
-//                        Picker("Life Span", selection: $lifespan.onChange(updateValues)) {
-//                            ForEach(1 ..< 6) {
-//                                Text("\($0)")
-//                            }
-//                        }
-//                        .font(.caption)
-//                        .foregroundColor(.gray)
-//                        .pickerStyle(SegmentedPickerStyle())
-//                        .labelsHidden()
-//
-////                        TextField("Life span", text: $lifespan.onChange(updateValues))
-////                            .font(.callout)
-//                    }
-                    
                     HStack {
-                        
-                        Text("Add Change Reminder?")
+
+                        Text("Life Span in Months")
                             .font(.caption)
                             .foregroundColor(.gray)
 
-                        Toggle("", isOn: $changereminder.onChange(updateValues))
+                        Spacer()
+                        
+                        LifeSpanView(lifespan: $lifespan.onChange(updateValues))
+                        
+                    }
+                    
+//                    HStack {
+//
+//                        Text("Add Change Reminder?")
+//                            .font(.caption)
+//                            .foregroundColor(.gray)
+//
+//                        Toggle("", isOn: $changereminder.onChange(updateValues))
+//
+//                    }
+                    
+                    HStack {
+
+                        Text("My Rating")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+
+                        Spacer()
+                        
+                        RatingView(rating: $myrating.onChange(updateValues))
+                        
+                    }
+                    
+                    VStack(alignment: .leading) {
+
+                        Text("Comments")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+
+                        TextEditor(text: $comments.onChange(updateValues))
+                            .font(.callout)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(minHeight: 100)
+                            .multilineTextAlignment(.leading)
+                            
+                            
+
                         
                     }
 
@@ -159,18 +182,24 @@ struct StringsEditView: View {
                 }
                 
             }
-//            .navigationTitle("String Details")
-            .navigationBarTitle("String Details", displayMode: .inline)
-
+//            .onDisappear(perform: updateValues)
+            .navigationBarTitle("String Details", displayMode: .large)
         }
         
     }
         
     func updateValues() {
         
+        
+        print("Price of String Set : \(price)")
+        print("Life space of Set   : \(lifespan)")
+        
+        
         stringSet.objectWillChange.send()
         instrument.objectWillChange.send()
         
+        // If I remove this next line, I get no updates when the other screen appears
+        // Need to figure out another way to update this, maybe using Combine. For now, this works.
         instrument.type = instrument.type
         
         stringSet.brand            = brand
@@ -182,6 +211,8 @@ struct StringsEditView: View {
         stringSet.remembertochange = changereminder
         stringSet.comments         = comments
         
+        
+        #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
         dataController.save()
         
     }
