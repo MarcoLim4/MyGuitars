@@ -2,9 +2,9 @@ import CoreData
 import SwiftUI
 
 class DataController: ObservableObject {
-    
+
     let container: NSPersistentCloudKitContainer
-    
+
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
         let viewContext = dataController.container.viewContext
@@ -17,7 +17,7 @@ class DataController: ObservableObject {
 
         return dataController
     }()
-    
+
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Main")
 
@@ -31,18 +31,18 @@ class DataController: ObservableObject {
             }
         }
     }
-    
+
     func createSampleData() throws {
-        
+
         let viewContext = container.viewContext
-        
-        for i in 1...2 {
-            
+
+        for instrumentNumber in 1...2 {
+
             let instruments = Instruments(context: viewContext)
-            
+
             instruments.type              = "Acoustic"
             instruments.brand             = "Seagull"
-            instruments.model             = "Guitar Number \(i)"
+            instruments.model             = "Guitar Number \(instrumentNumber)"
             instruments.category          = "Dreadnought"
             instruments.madein            = "Canada"
             instruments.finishstyle       = "Semi-Gloss"
@@ -57,35 +57,35 @@ class DataController: ObservableObject {
             instruments.datemanufactured  = Date()
 
             instruments.photos = []
-            
-            for j in 1...2 {
-                
+
+            for photoNumber in 1...2 {
+
                 let photos = Photos(context: viewContext)
-                
-                photos.comments = "Descripion \(j)"
+
+                photos.comments = "Descripion \(photoNumber)"
                 let imageToSave = #imageLiteral(resourceName: "guitar")
                 photos.photo = imageToSave.pngData()
-                
+
                 photos.instruments = instruments  // relationshtip
-                
+
             }
-                        
+
         }
 
         try viewContext.save()
-        
+
     }
-    
+
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
     }
-    
+
     func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
     }
-    
+
     func deleteAll() {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Photos.fetchRequest()
         let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
@@ -99,5 +99,5 @@ class DataController: ObservableObject {
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
-    
+
 }

@@ -1,23 +1,16 @@
-//
-//  StringsHeaderView.swift
-//  MyGuitars
-//
-//  Created by Marco Lima on 2021-02-23.
-//
-
 import SwiftUI
 
 struct StringsHeaderView: View {
-    
+
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-
+    
     let instrument: Instruments
-    
+
     var body: some View {
-    
+
         HStack {
-            
+
             Text("\(instrument.instModel)")
                 .font(.headline)
 
@@ -34,15 +27,15 @@ struct StringsHeaderView: View {
                 )
 
             })
-            
+
         }
-    
+
     }
-    
+
     func addString(for instrument: Instruments) {
-        
+
         let newString = Strings(context: managedObjectContext)
-        
+
         newString.brand       = "New String Set"
         newString.gauge       = ""
         newString.date        = Date()
@@ -51,11 +44,11 @@ struct StringsHeaderView: View {
         newString.price       = 0
         newString.comments    = ""
         newString.instruments = instrument
-        
+
         dataController.save()
 
     }
-    
+
 }
 
 struct StringsHeaderView_Previews: PreviewProvider {

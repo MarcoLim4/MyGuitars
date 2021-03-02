@@ -10,25 +10,23 @@ struct RepairsView: View {
                   sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
                                     NSSortDescriptor(keyPath: \Instruments.model, ascending: true)]) var instruments: FetchedResults<Instruments>
 
-    
     static let tag: String? = "Repairs"
 
-    
     var body: some View {
-        
+
         NavigationView {
-            
+
             List {
-                
+
                 ForEach(instruments) { instrument in
 
                     HStack {
 //                        StringsHeaderView(instrument: instrument)
                         Text("\(instrument.instModel)")
                             .font(.headline)
-                        
+
                         Spacer()
-                        
+
                         Button(action: {
                             addNewRepair(for: instrument)
                         }, label: {
@@ -42,13 +40,13 @@ struct RepairsView: View {
                         })
 
                     }
-                    
+
                     ForEach(instrument.allRepairs) { repairs in
 
                         HStack {
-                            
+
                             VStack(alignment: .leading) {
-                                
+
                                 Text(repairs.repairtype ?? "")
                                     .font(.headline)
                                     .foregroundColor(.blue)
@@ -56,9 +54,9 @@ struct RepairsView: View {
                                 Text(repairs.repairedby ?? "")
                                     .font(.footnote)
                                     .foregroundColor(.blue)
-                                
+
                             }
-                            
+
                             Spacer()
 
                             Button(action: {
@@ -67,30 +65,29 @@ struct RepairsView: View {
                                 Image(systemName: "pencil")
                                     .foregroundColor(.blue)
                             })
-                            
+
                         }
                         .padding()
                         .sheet(isPresented: $showEditingScreen) {
                             RepairsEditView(repairs: repairs, instrument: instrument)
                         }
-                        
-                        
+
                     }
-                    
+
                 }
-                
+
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Repairs")
-            
+
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
+
     func addNewRepair(for instrument: Instruments) {
 
         let newRepair = Repairs(context: managedObjectContext)
-        
+
         newRepair.repairedby       = "Luthier"
         newRepair.repairtype       = "Type"
         newRepair.dateperformed    = Date()
@@ -98,21 +95,21 @@ struct RepairsView: View {
         newRepair.cost             = 0
         newRepair.comments         = ""
         newRepair.instruments      = instrument
-        
+
         dataController.save()
-        
+
     }
-    
+
 }
 
 struct WorkPerformedView_Previews: PreviewProvider {
-    
+
     static var dataController = DataController.preview
-    
+
     static var previews: some View {
         RepairsView()
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
-    
+
 }

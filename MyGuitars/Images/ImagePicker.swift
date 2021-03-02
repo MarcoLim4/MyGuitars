@@ -1,7 +1,6 @@
 /*
  
     Solution from Paul Hudson.
- 
     Using to make a bridge to UIImagePickerViewController until SwiftUI doesn't give us a way
  
  */
@@ -48,30 +47,28 @@ struct ImagePicker: UIViewControllerRepresentable {
             
             parent.presentationMode.wrappedValue.dismiss()
         }
-        
-        
+
     }
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-    
-    
+
     func makeUIViewController(context: Context) -> UIImagePickerController {
-    
+
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
-        
+
         if source == .camera {
             picker.sourceType = .camera
         }
-        
+
         return picker
-        
+
     }
-    
+
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
         
     }
-    
+
 }

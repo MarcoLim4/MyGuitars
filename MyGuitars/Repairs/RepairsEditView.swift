@@ -1,19 +1,17 @@
 import SwiftUI
 
 struct RepairsEditView: View {
-    
+
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode)     var presentation
     @EnvironmentObject var dataController: DataController
 
-    
     let repairs: Repairs
     let instrument: Instruments
     let formatter = NumberFormatter()
-    
-    
+
     @State private var isShowingDeleteMessage = false
-    
+
     @State private var repairedby: String
     @State private var repairtype: String
     @State private var dateperformed: Date
@@ -22,30 +20,28 @@ struct RepairsEditView: View {
     @State private var cost: Double
 
     init(repairs: Repairs, instrument: Instruments) {
-        
+
         self.repairs  = repairs
         self.instrument = instrument
-        
-        
+
         _repairedby    = State(wrappedValue: repairs.repairedby ?? "")
         _repairtype    = State(wrappedValue: repairs.repairtype ?? "")
         _dateperformed = State(wrappedValue: repairs.dateperformed ?? Date())
         _repairrate    = State(wrappedValue: repairs.repairrate)
         _comments      = State(wrappedValue: repairs.comments ?? "")
         _cost          = State(wrappedValue: repairs.cost)
-        
+
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
-
+        
     }
 
-    
     var body: some View {
-        
+
         NavigationView {
-         
+
             Form {
-                
+
                 Section {
 
                     HStack {
@@ -54,18 +50,18 @@ struct RepairsEditView: View {
                             .foregroundColor(.gray)
 
                         Spacer()
-                        
+
                         DatePicker("Sale Date", selection: $dateperformed.onChange(updateValues), displayedComponents: .date)
                             .labelsHidden()
                             .datePickerStyle(CompactDatePickerStyle())
                             .frame(maxHeight: 400)
                     }
-                    
+
                     HStack {
                         Text("Repair Type")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        
+
                         TextField("Type", text: $repairtype.onChange(updateValues))
                             .font(.callout)
                     }
@@ -74,32 +70,32 @@ struct RepairsEditView: View {
                         Text("Repaired By")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        
+
                         TextField("Repaired By", text: $repairedby.onChange(updateValues))
                             .font(.callout)
                     }
-                    
+
                     HStack {
                         Text("Cost")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        
+
 //                        TextField("Cost", text: $cost.onChange(updateValues))
 //                            .font(.callout)
                     }
-                    
+
                     HStack {
-                        
+
                         Text("My Rating")
                             .font(.caption)
                             .foregroundColor(.gray)
 
                         Spacer()
-                        
+
                         RatingView(rating: $repairrate.onChange(updateValues))
-                        
+
                     }
-                    
+
                     VStack(alignment: .leading) {
 
                         Text("Comments")
@@ -111,20 +107,19 @@ struct RepairsEditView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(minHeight: 100)
                             .multilineTextAlignment(.leading)
-                        
+
                     }
 
-                    
                 }
-                
+
             }
 //            .onDisappear(perform: updateValues)
             .navigationBarTitle("Repair Details", displayMode: .large)
-            
+
         }
-        
+ 
     }
-    
+
     func updateValues() {
 
         repairs.objectWillChange.send()
@@ -140,13 +135,12 @@ struct RepairsEditView: View {
         repairs.repairrate     = repairrate
         repairs.cost           = cost
         repairs.comments       = comments
-        
+
         #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
         dataController.save()
-        
+
     }
-    
-    
+
 }
 
 struct RepairsEditView_Previews: PreviewProvider {

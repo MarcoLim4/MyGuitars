@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct CardViewData {
     let image: String
     let title: String
@@ -8,9 +7,9 @@ struct CardViewData {
 }
 
 struct CardView: View {
-    
+
     let cardView: CardViewData
-    
+
     var body: some View {
 
         VStack(alignment: .leading) {
@@ -22,33 +21,31 @@ struct CardView: View {
                     .fontWeight(.black)
                     .foregroundColor(.primary)
                     .lineLimit(3)
-                
+
                 Text("A look at your guitar collection!")
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .lineLimit(10)
 
-
             }
             .padding(.leading, 20)
-            
+
             VStack {
-                
+
                 Image(cardView.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-             
+
                 HStack {
-                    
+
                     VStack(alignment: .leading) {
-                        
+
 //                        Text(cardView.title)
 //                            .font(.title)
 //                            .fontWeight(.black)
 //                            .foregroundColor(.primary)
 //                            .lineLimit(3)
 //
-                        
                         Text(cardView.summary)
                             .font(.footnote)
                             .foregroundColor(.secondary)
@@ -56,7 +53,7 @@ struct CardView: View {
 
                     }
                     .layoutPriority(100)
-     
+
                     Spacer()
                 }
                 .padding(.bottom, 30)
@@ -68,21 +65,18 @@ struct CardView: View {
             )
             .padding([.top, .horizontal])
 
-            
         }
-        
 
     }
 }
-
 struct CardView_Previews: PreviewProvider {
     
-    
-    
     static var previews: some View {
-        
-        let cardData = CardViewData(image: "taylor-guitars", title: "Guitar Summary", summary: "You have a lot of guiars and they are worth $000.")
+    let cardData = CardViewData(image: "taylor-guitars",
+                                title: "Guitar Summary",
+                                summary: "You have a lot of guiars and they are worth $000.")
+
         CardView(cardView: cardData)
-        
+
     }
 }

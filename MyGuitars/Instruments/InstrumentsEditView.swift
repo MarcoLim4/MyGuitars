@@ -3,22 +3,22 @@ import Foundation
 import UIKit
 
 struct InstrumentsEditView: View {
-    
+
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var imagePickerSource = PhotoSource.library
     @State private var inputImage: UIImage?
-    
+
     let instrument: Instruments
-    
+
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var dataController: DataController
     @Environment(\.presentationMode) var presentation
-    
+
     @State private var isShowingDeleteMessage = false
-    
-//MARK: - Data
-    
+
+    //MARK: Data
+
     @State private var type: String
     @State private var brand: String
     @State private var model: String
@@ -29,14 +29,14 @@ struct InstrumentsEditView: View {
 
     @State private var dateMade: Date
     @State private var serialNummber: String
-    
+
     @State private var electronics: String
     @State private var topMaterial: String
     @State private var sidesMaterial: String
     @State private var backMaterial: String
     @State private var neckMaterial: String
     @State private var neckShape: String
-    
+
     @State private var purchaseDate: Date
     @State private var purchaseValue: Double
     @State private var salesDate: Date
@@ -44,11 +44,11 @@ struct InstrumentsEditView: View {
     @State private var salesreason: String
     @State private var fretboardMaterial: String
     @State private var comments: String
-    
+
     init(instrument: Instruments) {
-        
+
         self.instrument = instrument
-        
+
         _type              = State(wrappedValue: instrument.type ?? "")
         _brand             = State(wrappedValue: instrument.instBrand)
         _model             = State(wrappedValue: instrument.instModel)
@@ -65,27 +65,25 @@ struct InstrumentsEditView: View {
         _fretboardMaterial = State(wrappedValue: instrument.fretboardmaterial ?? "")
         _neckMaterial      = State(wrappedValue: instrument.neckmaterial ?? "")
         _neckShape         = State(wrappedValue: instrument.neckshape ?? "")
-        
         _purchaseDate      = State(wrappedValue: instrument.purchasedate ?? Date())
         _purchaseValue     = State(wrappedValue: instrument.purchasevalue)
         _salesDate         = State(wrappedValue: instrument.saledate ?? Date())
         _salesValue        = State(wrappedValue: instrument.salevalue)
         _salesreason       = State(wrappedValue: instrument.salereason ?? "")
-        
         _comments          = State(wrappedValue: instrument.comments ?? "")
-        
+
     }
-    
+
     var body: some View {
-        
+
         Form {
-            
+
             Picker("Instrument Type", selection: $type.onChange(updateValues)) {
                 ForEach(instrument.instrumentTypes, id: \.self) { type in
                     Text("\(type)")
                 }
             }
-            
+
             Section(header: Text("Basic Info")) {
 
                 HStack(alignment: .lastTextBaseline) {
@@ -96,7 +94,7 @@ struct InstrumentsEditView: View {
                     TextField("Brand", text: $brand.onChange(updateValues))
                         .font(.callout)
                 }
-                
+
                 HStack {
                     Text("Model")
                         .font(.caption)
@@ -105,7 +103,7 @@ struct InstrumentsEditView: View {
                     TextField("Model", text: $model.onChange(updateValues))
                         .font(.callout)
                 }
-                
+
                 HStack {
                     Text("Body Shape")
                         .font(.caption)
@@ -122,23 +120,20 @@ struct InstrumentsEditView: View {
                             ForEach(instrument.acosuticBodyTypes, id: \.self) { type in
                                 Text("\(type)")
                             }
-
                         }
-                    
                     }
                     .font(.callout)
-
                 }
-                
+
                 HStack {
                     Text("Finish Style")
                         .font(.caption)
                         .foregroundColor(.gray)
-                    
+
                     TextField("Finish Style", text: $finishStyle.onChange(updateValues))
                         .font(.callout)
                 }
-                
+
                 HStack {
                     Text("Made In")
                         .font(.caption)
@@ -147,14 +142,14 @@ struct InstrumentsEditView: View {
                     TextField("Made In", text: $madeIn.onChange(updateValues))
                         .font(.callout)
                 }
-                
+
                 HStack(alignment: .center) {
                     Text("Date Manufactured")
                         .font(.caption)
                         .foregroundColor(.gray)
 
                     Spacer()
-                    
+
                     DatePicker("Select Date", selection: $dateMade, displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
@@ -170,8 +165,7 @@ struct InstrumentsEditView: View {
                     TextField("Serial Number", text: $serialNummber.onChange(updateValues))
                         .font(.callout)
                 }
-                
-                
+
             }
             .textCase(.none)
             .font(.headline)
@@ -204,7 +198,7 @@ struct InstrumentsEditView: View {
                     TextField("Neck Shape", text: $neckShape.onChange(updateValues))
                         .font(.callout)
                 }
-                
+
                 HStack {
                     Text("Top")
                         .font(.caption)
@@ -213,6 +207,7 @@ struct InstrumentsEditView: View {
                     TextField("Top Material", text: $topMaterial.onChange(updateValues))
                         .font(.callout)
                 }
+
                 HStack {
                     Text("Back")
                         .font(.caption)
@@ -221,6 +216,7 @@ struct InstrumentsEditView: View {
                     TextField("Back Material", text: $backMaterial.onChange(updateValues))
                         .font(.callout)
                 }
+
                 HStack {
                     Text("Sides")
                         .font(.caption)
@@ -230,6 +226,7 @@ struct InstrumentsEditView: View {
                         .font(.callout)
 
                 }
+
                 HStack {
                     Text("Fretboard")
                         .font(.caption)
@@ -239,11 +236,10 @@ struct InstrumentsEditView: View {
                         .font(.callout)
                 }
 
-                
             }
             .textCase(.none)
             .font(.headline)
-            
+
             Section(header: Text("Purchase/Sale Values")) {
 
                 HStack(alignment: .center) {
@@ -252,14 +248,14 @@ struct InstrumentsEditView: View {
                         .foregroundColor(.gray)
 
                     Spacer()
-                    
+
                     DatePicker("Purchase Date", selection: $purchaseDate, displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
                         .frame(maxHeight: 400)
-                        
+
                 }
-                
+
                 HStack {
                     Text("Purchase Value")
                         .font(.caption)
@@ -276,14 +272,14 @@ struct InstrumentsEditView: View {
                         .foregroundColor(.gray)
 
                     Spacer()
-                    
+
                     DatePicker("Sale Date", selection: $salesDate.onChange(updateValues), displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
                         .frame(maxHeight: 400)
-                        
+
                 }
-                
+
                 HStack {
                     Text("Sale Value")
                         .font(.caption)
@@ -292,7 +288,6 @@ struct InstrumentsEditView: View {
 //                    TextField("Sale Value", text: $salesValue.onChange(updateValues))
 //                        .font(.callout)
                 }
-
                 
                 HStack {
                     Text("Sale Reason")
@@ -307,11 +302,10 @@ struct InstrumentsEditView: View {
             .textCase(.none)
             .font(.headline)
 
-            
             Section(header: Text("Images")) {
-                
+
                 VStack {
-                    
+
                     Button(action: {
                         self.showingImagePicker.toggle()
                         self.imagePickerSource = .library
@@ -326,14 +320,14 @@ struct InstrumentsEditView: View {
                     }
 
                 }
-                
+
                 VStack {
                     InstrumentsImagesRow(thePhotos: instrument.allPhotos)
                         .frame(minHeight: 100)
                 }
 
                 VStack {
-                    
+
                     Button(action: {
                         self.showingImagePicker.toggle()
                         self.imagePickerSource = .camera
@@ -347,24 +341,22 @@ struct InstrumentsEditView: View {
                         }
                     }
 
-                    
                 }
                 .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                     ImagePicker(source: self.imagePickerSource, image: self.$inputImage)
                 }
-                
+
             }
             .textCase(.none)
             .font(.headline)
 
-            
             Section(header: Text("Comments")) {
-                
+
                 TextEditor(text: $comments.onChange(updateValues))
                     .font(.callout)
                     .frame(minHeight: 100)
                     .multilineTextAlignment(.leading)
-                
+
             }
             .textCase(.none)
             .font(.headline)
@@ -382,32 +374,31 @@ struct InstrumentsEditView: View {
                         title: Text("Are you sure you want to delete this?"),
                         message: Text("By confirming this action, it will permanently delete the instrument and all associated data!"),
                         primaryButton: .destructive(Text("Yes, delete it!")) {
-                            
+
                             dataController.delete(instrument)
                             self.presentation.wrappedValue.dismiss()
-                            
+
                         },
                         secondaryButton: .cancel()
                     )
-                        
+
                 }
 
             }
-            
-            
+
         }
         .navigationBarTitle("Edit Guitars", displayMode: .inline)
         .onDisappear(perform: dataController.save)
 
     }
-    
+
     func updateValues() {
-        
+
         // notify that the items will change
         // if photos.... photos.instruments?.objectWillChange.send()
         // that's becasuse CoreData will propagate down (or UP) the changes
         instrument.objectWillChange.send()
-        
+
         instrument.type              = type
         instrument.brand             = brand
         instrument.model             = model
@@ -430,13 +421,13 @@ struct InstrumentsEditView: View {
         instrument.salereason        = salesreason
         instrument.comments          = comments
     }
-    
+
     func loadImage() {
-        
+
         guard let inputImage = inputImage else {
             return
         }
-                
+
         if imagePickerSource == .camera {
             print("Camera selected")
 
@@ -444,29 +435,28 @@ struct InstrumentsEditView: View {
             imageSaver.writeToPhotoAlbum(image: inputImage)
 
         }
-        
+
         let fixingOrientation = inputImage.fixOrientation()
         image = Image(uiImage: fixingOrientation)
-        
+
         let newImage = Photos(context: managedObjectContext)
         newImage.instruments = instrument
         newImage.comments = "Details about this particular photo."
         newImage.photo = fixingOrientation.pngData()
-        
+
         dataController.save()
-        
+
     }
-    
+
 }
 
 struct InstrumentsEditView_Previews: PreviewProvider {
-    
+
     static var dataController = DataController.preview
-    
+
     static var previews: some View {
         InstrumentsEditView(instrument: Instruments.example)
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
 }
-

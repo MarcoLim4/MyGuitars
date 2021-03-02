@@ -5,14 +5,11 @@ struct StringsView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
 
-//    @FetchRequest(entity: Instruments.entity(),
-//                  sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true)]) var instruments: FetchedResults<Instruments>
-
     @State private var showEditingScreen = false
 
     let instruments: FetchRequest<Instruments>
     static let tag: String? = "Strings"
-    
+
     init() {
 
         instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
@@ -20,13 +17,13 @@ struct StringsView: View {
                                                                   NSSortDescriptor(keyPath: \Instruments.model, ascending: true)])
 
     }
-    
+
     var body: some View {
-        
+
         NavigationView {
-            
+
             List {
-                
+
                 ForEach(instruments.wrappedValue) { instrument in
 
                     // This was on StringsHeaderView but was not refreshing instruments properly
@@ -48,30 +45,29 @@ struct StringsView: View {
                             )
 
                         })
-                        
+
                     }
-//                    .padding()
-                    
+
                     ForEach(instrument.allStrings) { stringInfo in
-                        
+
                         HStack {
-                            
+
                             VStack(alignment: .leading) {
-                                
+
                                 Text(stringInfo.brand ?? "")
                                     .font(.headline)
                                     .foregroundColor(.blue)
-                                
+
                                 Text(stringInfo.gauge ?? "")
                                     .font(.footnote)
                                     .foregroundColor(.blue)
-                                
+
                                 Text(stringInfo.date?.toString() ?? "")
                                     .font(.footnote)
                                     .foregroundColor(.blue)
 
                             }
-                            
+
                             Spacer()
 
                             Button(action: {
@@ -80,32 +76,30 @@ struct StringsView: View {
                                 Image(systemName: "pencil")
                                     .foregroundColor(.blue)
                             })
-                            
+
                         }
                         .padding()
                         .sheet(isPresented: $showEditingScreen) {
                             StringsEditView(stringSet: stringInfo, instrument: instrument)
                         }
-                        
-                        
+
                     }
-                    
+
                 }
-                
+
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Strings")
-            
+
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        
+
     }
-    
-    
+
     func addString(for instrument: Instruments) {
-        
+
         let newString = Strings(context: managedObjectContext)
-        
+
         newString.brand       = "New String Set"
         newString.gauge       = ""
         newString.date        = Date()
@@ -114,21 +108,21 @@ struct StringsView: View {
         newString.price       = 0
         newString.comments    = ""
         newString.instruments = instrument
-        
+
         dataController.save()
 
     }
-    
+
 }
 
 struct StringsView_Previews: PreviewProvider {
-    
+
     static var dataController = DataController.preview
-    
+
     static var previews: some View {
         StringsView()
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
-        
+
 }

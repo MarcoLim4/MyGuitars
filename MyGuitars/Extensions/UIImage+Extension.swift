@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 extension UIImage {
     
     /// Extension to fix orientation of an UIImage without EXIF
@@ -15,14 +14,17 @@ extension UIImage {
         switch imageOrientation {
             
             case .down, .downMirrored:
+                
                 transform = transform.translatedBy(x: size.width, y: size.height)
                 transform = transform.rotated(by: CGFloat(Double.pi))
                 
             case .left, .leftMirrored:
+                
                 transform = transform.translatedBy(x: size.width, y: 0)
                 transform = transform.rotated(by: CGFloat(Double.pi/2))
                 
             case .right, .rightMirrored:
+                
                 transform = transform.translatedBy(x: 0, y: size.height)
                 transform = transform.rotated(by: CGFloat(-Double.pi/2))
                 
@@ -58,19 +60,21 @@ extension UIImage {
             
             switch imageOrientation {
                 case .left, .leftMirrored, .right, .rightMirrored:
+                    
                     ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
                     
                 default:
+                    
                     ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
             }
-            
+
             if let finalImage = ctx.makeImage() {
                 return (UIImage(cgImage: finalImage))
             }
         }
-        
+
         // something failed -- return original
         return self
     }
-    
+
 }

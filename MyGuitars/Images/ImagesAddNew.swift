@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct ImagesAddNew: View {
-    
+
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
-    
+
     var body: some View {
-        
+
         VStack {
-            
+
             image?
                 .resizable()
                 .scaledToFit()
@@ -20,7 +20,6 @@ struct ImagesAddNew: View {
 
         }
         .sheet(isPresented: $showingImagePicker) {
-//            ImagePicker(image: self.$inputImage)
             ImagePicker(source: PhotoSource.library, image: self.$inputImage)
         }
     }
