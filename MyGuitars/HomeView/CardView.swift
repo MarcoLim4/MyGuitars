@@ -73,7 +73,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     
     static var previews: some View {
-    let cardData = CardViewData(image: "taylor-guitars",
+    let cardData = CardViewData(image: "guitars-panel",
                                 title: "Guitar Summary",
                                 subTitle: "Take a look at your guitar colletion!",
                                 summary: "You have a lot of guiars and they are worth $000.")

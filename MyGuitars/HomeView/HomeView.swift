@@ -119,10 +119,10 @@ struct HomeView: View {
     var summaryStrings: String {
 
         let totalCount = strings.wrappedValue.count
-        var stringResult = "So far, you not replaced any strings!"
+        var stringResult = "So far, you have not replaced any strings!"
 
         if totalCount > 0 {
-            stringResult = "You have replaced \(totalCount) strings \(totalCount == 1 ? "set" : "sets") for your guitars.\n"
+            stringResult = "You have replaced \(totalCount) string \(totalCount == 1 ? "set" : "sets") for your guitars.\n"
         }
 
         let sumCost = strings.wrappedValue.reduce(0) { $0 + ($1.value(forKey: "price") as? Double ?? 0) }
