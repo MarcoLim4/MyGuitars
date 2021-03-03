@@ -39,9 +39,14 @@ struct InstrumentsEditView: View {
 
     @State private var purchaseDate: Date
     @State private var purchaseValue: Double
+    @State private var purchasedfrom: String
+    
+    @State private var sold: Bool
+    @State private var soldto: String
     @State private var salesDate: Date
     @State private var salesValue: Double
     @State private var salesreason: String
+    
     @State private var fretboardMaterial: String
     @State private var comments: String
 
@@ -65,11 +70,17 @@ struct InstrumentsEditView: View {
         _fretboardMaterial = State(wrappedValue: instrument.fretboardmaterial ?? "")
         _neckMaterial      = State(wrappedValue: instrument.neckmaterial ?? "")
         _neckShape         = State(wrappedValue: instrument.neckshape ?? "")
+        
+        _purchasedfrom     = State(wrappedValue: instrument.purchasedfrom ?? "")
         _purchaseDate      = State(wrappedValue: instrument.purchasedate ?? Date())
         _purchaseValue     = State(wrappedValue: instrument.purchasevalue)
+        
+        _sold              = State(wrappedValue: instrument.sold)
+        _soldto            = State(wrappedValue: instrument.soldto ?? "")
         _salesDate         = State(wrappedValue: instrument.saledate ?? Date())
         _salesValue        = State(wrappedValue: instrument.salevalue)
         _salesreason       = State(wrappedValue: instrument.salereason ?? "")
+        
         _comments          = State(wrappedValue: instrument.comments ?? "")
 
     }
@@ -240,9 +251,21 @@ struct InstrumentsEditView: View {
             .textCase(.none)
             .font(.headline)
 
-            Section(header: Text("Purchase/Sale Values")) {
+            Section(header: Text("Purchase Details")) {
 
+                HStack {
+                    
+                    Text("Purchased From")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    TextField("Purchased From", text: $purchasedfrom.onChange(updateValues))
+                        .font(.callout)
+
+                }
+                
                 HStack(alignment: .center) {
+                    
                     Text("Purchase Date")
                         .font(.caption)
                         .foregroundColor(.gray)
@@ -261,11 +284,38 @@ struct InstrumentsEditView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
 
-//                    TextField("Purchase Value", text: $purchaseValue)
-//                        .font(.callout)
+                    NumberEntryField(value: self.$purchaseValue.onChange(updateValues))
+                        .font(.callout)
+                        .keyboardType(.decimalPad)
 
                 }
 
+            }
+             
+            Section(header: Text("Sales Details")) {
+                
+                HStack(alignment: .center) {
+                    
+                    Text("Sold")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    Toggle("", isOn: $sold.onChange(updateValues))
+
+                }
+                
+                HStack {
+                    
+                    Text("Sold To")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+
+                    TextField("Sold To", text: $soldto.onChange(updateValues))
+                        .font(.callout)
+
+                }
+                
+                
                 HStack(alignment: .center) {
                     Text("Sale Date")
                         .font(.caption)
@@ -285,8 +335,9 @@ struct InstrumentsEditView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
 
-//                    TextField("Sale Value", text: $salesValue.onChange(updateValues))
-//                        .font(.callout)
+                    NumberEntryField(value: self.$salesValue.onChange(updateValues))
+                        .font(.callout)
+                        .keyboardType(.decimalPad)
                 }
                 
                 HStack {
@@ -363,8 +414,13 @@ struct InstrumentsEditView: View {
             
             Section {
 
-                Button("Delete Instrument") {
-                    isShowingDeleteMessage = true
+                Button(action: {
+                    isShowingDeleteMessage.toggle()
+                }) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "minus.circle")
+                        Text("Delete Instrument")
+                    }
                 }
                 .font(.headline)
                 .foregroundColor(.red)
@@ -414,8 +470,11 @@ struct InstrumentsEditView: View {
         instrument.serialnumber      = serialNummber
         instrument.neckmaterial      = neckMaterial
         instrument.neckshape         = neckShape
+        instrument.purchasedfrom     = purchasedfrom
         instrument.purchasedate      = purchaseDate
         instrument.purchasevalue     = purchaseValue
+        instrument.sold              = sold
+        instrument.soldto            = soldto
         instrument.saledate          = salesDate
         instrument.salevalue         = salesValue
         instrument.salereason        = salesreason

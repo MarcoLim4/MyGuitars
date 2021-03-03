@@ -17,6 +17,7 @@
         <attribute name="numberoffrets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="numberofstrings" optional="YES" attributeType="Integer 16" minValueString="4" defaultValueString="6" usesScalarValueType="YES"/>
         <attribute name="purchasedate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="purchasedfrom" optional="YES" attributeType="String"/>
         <attribute name="purchasevalue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="rightleft" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="saledate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -24,6 +25,8 @@
         <attribute name="salevalue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="serialnumber" optional="YES" attributeType="String"/>
         <attribute name="sidesmaterial" optional="YES" attributeType="String"/>
+        <attribute name="sold" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="soldto" optional="YES" attributeType="String"/>
         <attribute name="topmaterial" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photos" inverseName="instruments" inverseEntity="Photos"/>
@@ -56,7 +59,7 @@
         <relationship name="instruments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instruments" inverseName="strings" inverseEntity="Instruments"/>
     </entity>
     <elements>
-        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="449"/>
+        <element name="Instruments" positionX="-63" positionY="-18" width="128" height="14"/>
         <element name="Photos" positionX="-54" positionY="153" width="128" height="74"/>
         <element name="Repairs" positionX="-45" positionY="153" width="128" height="134"/>
         <element name="Strings" positionX="-54" positionY="144" width="128" height="164"/>

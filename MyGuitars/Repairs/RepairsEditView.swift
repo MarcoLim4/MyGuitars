@@ -11,6 +11,7 @@ struct RepairsEditView: View {
     let formatter = NumberFormatter()
 
     @State private var isShowingDeleteMessage = false
+    @State private var showsDatePicker = false
 
     @State private var repairedby: String
     @State private var repairtype: String
@@ -18,6 +19,13 @@ struct RepairsEditView: View {
     @State private var repairrate: Int16
     @State private var comments: String
     @State private var cost: Double
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+
 
     init(repairs: Repairs, instrument: Instruments) {
 
@@ -45,16 +53,32 @@ struct RepairsEditView: View {
                 Section {
 
                     HStack {
+//                        Text("Date Performed")
+//                            .font(.caption)
+//                            .foregroundColor(.gray)
+//
+//                        Spacer()
+//
+//                        DatePicker(selection: $dateperformed, in: ...Date(), displayedComponents: .date) {
+////                           Text("Select a date")
+//                        }
+//                        .labelsHidden()
+//                        .datePickerStyle(CompactDatePickerStyle())
+//                        .frame(maxHeight: 400)
+
                         Text("Date Performed")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-
                         Spacer()
-
-                        DatePicker("Sale Date", selection: $dateperformed.onChange(updateValues), displayedComponents: .date)
-                            .labelsHidden()
-                            .datePickerStyle(CompactDatePickerStyle())
-                            .frame(maxHeight: 400)
+                        Text("\(dateFormatter.string(from: dateperformed))")
+                        .onTapGesture {
+                            self.showsDatePicker.toggle()
+                        }
+                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                        .background(Color.clear)
+                    }
+                    
+                    if showsDatePicker {
+                        DatePicker("", selection: $dateperformed, displayedComponents: .date)
+                            .datePickerStyle(WheelDatePickerStyle())
                     }
 
                     HStack {
@@ -79,6 +103,11 @@ struct RepairsEditView: View {
                         Text("Cost")
                             .font(.caption)
                             .foregroundColor(.gray)
+
+                        
+                        NumberEntryField(value: self.$cost.onChange(updateValues))
+                            .font(.callout)
+                            .keyboardType(.decimalPad)
 
 //                        TextField("Cost", text: $cost.onChange(updateValues))
 //                            .font(.callout)
@@ -111,12 +140,53 @@ struct RepairsEditView: View {
                     }
 
                 }
+                
+                Section {
+                    
+                    VStack(alignment: .center) {
+                        
+                        Button(action: {
+                            print("Delete Repair Entry")
+                            isShowingDeleteMessage.toggle()
+                        }) {
+                            HStack(spacing: 10) {
+                                Image(systemName: "minus.circle")
+                                Text("Delete Repair Entry")
+                            }
+                        }
+                        .font(.headline)
+                        .foregroundColor(.red)
+                        .alert(isPresented: $isShowingDeleteMessage) {
+
+                            Alert(
+                                title: Text("Delete this Repair?"),
+                                message: Text("By confirming this action, it will permanently delete this repair entry."),
+                                primaryButton: .destructive(Text("Yes! Delete it.")) {
+                                    
+                                    dataController.delete(repairs)
+                                    self.presentation.wrappedValue.dismiss()
+                                    
+                                },
+                                secondaryButton: .cancel()
+                            )
+                                
+                        }
+
+                        
+                    }
+
+                }
+                
+                
+
 
             }
 //            .onDisappear(perform: updateValues)
             .navigationBarTitle("Repair Details", displayMode: .large)
 
         }
+        
+        
  
     }
 
@@ -137,8 +207,8 @@ struct RepairsEditView: View {
         repairs.comments       = comments
 
         #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
-        dataController.save()
-
+//        dataController.save()
+                
     }
 
 }

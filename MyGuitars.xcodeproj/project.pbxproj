@@ -42,6 +42,7 @@
 		DDFD9C4425ED56DA00B4A446 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */; };
 		DDFD9C4725ED6E2E00B4A446 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD9C4625ED6E2E00B4A446 /* CardView.swift */; };
 		DDFD9C4A25ED6E7A00B4A446 /* CardView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFD9C4925ED6E7A00B4A446 /* CardView.xcassets */; };
+		DDFDCA6C25EE8E1000C6805A /* NumberEntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFDCA6B25EE8E1000C6805A /* NumberEntryField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DDFD9C4625ED6E2E00B4A446 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DDFD9C4925ED6E7A00B4A446 /* CardView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardView.xcassets; sourceTree = "<group>"; };
+		DDFDCA6B25EE8E1000C6805A /* NumberEntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberEntryField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				DD54C2A125ED7F4D00393481 /* RatingView.swift */,
 				DD54C2A625ED85D800393481 /* LifeSpanView.swift */,
 				DD54C2AE25ED8DC600393481 /* NumbersOnlyView.swift */,
+				DDFDCA6B25EE8E1000C6805A /* NumberEntryField.swift */,
 			);
 			path = "Generic Views";
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */,
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
+				DDFDCA6C25EE8E1000C6805A /* NumberEntryField.swift in Sources */,
 				DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
 				DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */,

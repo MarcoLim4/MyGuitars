@@ -1,18 +1,18 @@
 import SwiftUI
+import Combine
 
 struct StringsEditView: View {
-    
+
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode)     var presentation
     @EnvironmentObject var dataController: DataController
 
-
     let stringSet: Strings
     let instrument: Instruments
     let formatter = NumberFormatter()
-    
+
     @State private var isShowingDeleteMessage = false
-    
+
     @State private var brand: String
     @State private var gauge: String
     @State private var date: Date
@@ -23,10 +23,10 @@ struct StringsEditView: View {
     @State private var comments: String
 
     init(stringSet: Strings, instrument: Instruments) {
-        
+
         self.stringSet  = stringSet
         self.instrument = instrument
-        
+
         _brand          = State(wrappedValue: stringSet.brand ?? "")
         _gauge          = State(wrappedValue: stringSet.gauge ?? "")
         _date           = State(wrappedValue: stringSet.date ?? Date())
@@ -40,13 +40,13 @@ struct StringsEditView: View {
         formatter.maximumFractionDigits = 2
 
     }
-    
+
     var body: some View {
 
         NavigationView {
-         
+
             Form {
-                
+
                 Section {
 
                     HStack {
@@ -55,23 +55,22 @@ struct StringsEditView: View {
                             .foregroundColor(.gray)
 
                         Spacer()
-                        
+
                         DatePicker("Sale Date", selection: $date.onChange(updateValues), displayedComponents: .date)
                             .labelsHidden()
                             .datePickerStyle(CompactDatePickerStyle())
                             .frame(maxHeight: 400)
                     }
 
-                    
                     HStack {
                         Text("Brand")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        
+
                         TextField("Brand", text: $brand.onChange(updateValues))
                             .font(.callout)
                     }
-                    
+
                     HStack {
                         Text("Gauge")
                             .font(.caption)
@@ -82,26 +81,19 @@ struct StringsEditView: View {
                             .keyboardType(.decimalPad)
                     }
 
-                    
                     HStack {
-                        
+
                         Text("Price")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        
-                        TextField("Set price", value: $price.onChange(updateValues), formatter: NumberFormatter.currency)
+
+                        Spacer()
+
+                        NumberEntryField(value: self.$price.onChange(updateValues))
                             .font(.callout)
                             .keyboardType(.decimalPad)
-                            .foregroundColor(.gray)
-
-//                        TextField("Price", value: $price.onChange(updateValues), formatter: formatter)
-//                            .font(.callout)
-//                            .keyboardType(.decimalPad)
-
                     }
 
-                    
-                    // Life Span
                     HStack {
 
                         Text("Life Span in Months")
@@ -109,21 +101,11 @@ struct StringsEditView: View {
                             .foregroundColor(.gray)
 
                         Spacer()
-                        
+
                         LifeSpanView(lifespan: $lifespan.onChange(updateValues))
-                        
+
                     }
-                    
-//                    HStack {
-//
-//                        Text("Add Change Reminder?")
-//                            .font(.caption)
-//                            .foregroundColor(.gray)
-//
-//                        Toggle("", isOn: $changereminder.onChange(updateValues))
-//
-//                    }
-                    
+
                     HStack {
 
                         Text("My Rating")
@@ -131,11 +113,11 @@ struct StringsEditView: View {
                             .foregroundColor(.gray)
 
                         Spacer()
-                        
+
                         RatingView(rating: $myrating.onChange(updateValues))
-                        
+
                     }
-                    
+
                     VStack(alignment: .leading) {
 
                         Text("Comments")
@@ -147,19 +129,20 @@ struct StringsEditView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(minHeight: 100)
                             .multilineTextAlignment(.leading)
-                            
-                            
-
-                        
                     }
 
                 }
                 .textCase(.none)
-                
+
                 Section {
 
-                    Button("Delete String Details") {
-                        isShowingDeleteMessage = true
+                    Button(action: {
+                        isShowingDeleteMessage.toggle()
+                    }) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "minus.circle")
+                            Text("Delete String Details")
+                        }
                     }
                     .font(.headline)
                     .foregroundColor(.red)
@@ -169,39 +152,37 @@ struct StringsEditView: View {
                             title: Text("Delete this strings set?"),
                             message: Text("By confirming this action, it will permanently delete this strings set."),
                             primaryButton: .destructive(Text("Yes! Delete it.")) {
-                                
+
                                 dataController.delete(stringSet)
                                 self.presentation.wrappedValue.dismiss()
-                                
+
                             },
                             secondaryButton: .cancel()
                         )
-                            
+
                     }
 
                 }
-                
+
             }
 //            .onDisappear(perform: updateValues)
             .navigationBarTitle("String Details", displayMode: .large)
         }
-        
+
     }
-        
+
     func updateValues() {
-        
-        
+
         print("Price of String Set : \(price)")
         print("Life space of Set   : \(lifespan)")
-        
-        
+
         stringSet.objectWillChange.send()
         instrument.objectWillChange.send()
-        
+
         // If I remove this next line, I get no updates when the other screen appears
         // Need to figure out another way to update this, maybe using Combine. For now, this works.
         instrument.type = instrument.type
-        
+
         stringSet.brand            = brand
         stringSet.gauge            = gauge
         stringSet.date             = date        
@@ -210,23 +191,21 @@ struct StringsEditView: View {
         stringSet.price            = price
         stringSet.remembertochange = changereminder
         stringSet.comments         = comments
-        
-        
-        #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
-        dataController.save()
-        
+
+//        #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
+//        dataController.save()
     }
-    
+
 }
 
 struct StringsEditView_Previews: PreviewProvider {
-    
+
     static var dataController = DataController.preview
-    
+
     static var previews: some View {
         StringsEditView(stringSet: Instruments.stringSample, instrument: Instruments.example)
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
-    
+
 }

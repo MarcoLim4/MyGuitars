@@ -3,6 +3,7 @@ import SwiftUI
 struct CardViewData {
     let image: String
     let title: String
+    let subTitle: String
     let summary: String
 }
 
@@ -22,7 +23,7 @@ struct CardView: View {
                     .foregroundColor(.primary)
                     .lineLimit(3)
 
-                Text("A look at your guitar collection!")
+                Text(cardView.subTitle)
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .lineLimit(10)
@@ -74,6 +75,7 @@ struct CardView_Previews: PreviewProvider {
     static var previews: some View {
     let cardData = CardViewData(image: "taylor-guitars",
                                 title: "Guitar Summary",
+                                subTitle: "Take a look at your guitar colletion!",
                                 summary: "You have a lot of guiars and they are worth $000.")
 
         CardView(cardView: cardData)

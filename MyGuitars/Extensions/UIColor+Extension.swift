@@ -8,5 +8,6 @@ extension Color {
 
     static let lightGray = Color(UIColor.lightGray)
     static let lightText = Color(UIColor.lightText)
+    static let darkGray  = Color(UIColor.darkGray)
 
 }

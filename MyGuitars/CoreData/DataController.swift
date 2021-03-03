@@ -87,6 +87,7 @@ class DataController: ObservableObject {
     }
 
     func deleteAll() {
+
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Photos.fetchRequest()
         let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
         _ = try? container.viewContext.execute(batchDeleteRequest1)
@@ -94,6 +95,15 @@ class DataController: ObservableObject {
         let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = Instruments.fetchRequest()
         let batchDeleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
         _ = try? container.viewContext.execute(batchDeleteRequest2)
+        
+        let fetchRequest3: NSFetchRequest<NSFetchRequestResult> = Strings.fetchRequest()
+        let batchDeleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
+        _ = try? container.viewContext.execute(batchDeleteRequest3)
+
+        let fetchRequest4: NSFetchRequest<NSFetchRequestResult> = Repairs.fetchRequest()
+        let batchDeleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
+        _ = try? container.viewContext.execute(batchDeleteRequest4)
+
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
