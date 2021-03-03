@@ -191,6 +191,8 @@ struct StringsEditView: View {
         stringSet.price            = price
         stringSet.remembertochange = changereminder
         stringSet.comments         = comments
+        
+        stringSet.instruments = instrument
 
 //        #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
 //        dataController.save()
