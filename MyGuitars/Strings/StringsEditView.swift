@@ -78,7 +78,7 @@ struct StringsEditView: View {
 
                         TextField("Gauge", text: $gauge.onChange(updateValues))
                             .font(.callout)
-                            .keyboardType(.decimalPad)
+                            
                     }
 
                     HStack {

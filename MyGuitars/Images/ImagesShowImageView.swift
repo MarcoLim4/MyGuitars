@@ -31,6 +31,8 @@ struct ImagesShowImageView: View {
 
             let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image05.png")
 
+            Spacer()
+            
             Image(uiImage: instPhoto ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
