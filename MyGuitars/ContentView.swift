@@ -23,7 +23,7 @@ struct ContentView: View {
                     Text("Guitars")
                 }
 
-            StringsView()
+            StringsView(dataController: dataController)
                 .tag(StringsView.tag)
                 .tabItem {
                     Image(systemName: "line.horizontal.3.circle")

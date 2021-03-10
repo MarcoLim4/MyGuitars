@@ -1,20 +1,16 @@
 import SwiftUI
 
 struct StringsView: View {
-
-    @EnvironmentObject var dataController: DataController
-    @Environment(\.managedObjectContext) var managedObjectContext
-
+    
+    static let tag: String? = "Strings"
+    
+    @StateObject var viewModel: ViewModel
     @State private var showEditingScreen = false
 
-    let instruments: FetchRequest<Instruments>
-    static let tag: String? = "Strings"
+    init(dataController: DataController) {
 
-    init() {
-
-        instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
-                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
-                                                                  NSSortDescriptor(keyPath: \Instruments.model, ascending: true)])
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
 
     }
 
@@ -24,9 +20,8 @@ struct StringsView: View {
 
             List {
 
-                ForEach(instruments.wrappedValue) { instrument in
+                ForEach(viewModel.instruments) { instrument in
 
-                    // This was on StringsHeaderView but was not refreshing instruments properly
                     HStack {
 
                         Text("\(instrument.instModel)")
@@ -35,7 +30,7 @@ struct StringsView: View {
                         Spacer()
 
                         Button(action: {
-                            addString(for: instrument)
+                            self.viewModel.addString(for: instrument)
                         }, label: {
                             Label(
                                 title: { Text("") },
@@ -96,33 +91,13 @@ struct StringsView: View {
 
     }
 
-    func addString(for instrument: Instruments) {
-
-        let newString = Strings(context: managedObjectContext)
-
-        newString.brand       = "New String Set"
-        newString.gauge       = ""
-        newString.date        = Date()
-        newString.lifespan    = 0
-        newString.myrating    = 0
-        newString.price       = 0
-        newString.comments    = ""
-        newString.instruments = instrument
-
-        dataController.save()
-
-    }
 
 }
 
 struct StringsView_Previews: PreviewProvider {
 
-    static var dataController = DataController.preview
-
     static var previews: some View {
-        StringsView()
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(dataController)
+        StringsView(dataController: DataController.preview)
     }
 
 }

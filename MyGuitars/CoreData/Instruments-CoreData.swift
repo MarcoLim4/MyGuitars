@@ -122,7 +122,7 @@ extension Instruments {
         
         #warning("need to revisit this sorting")
         let stringsArray = strings?.allObjects as? [Strings] ?? []
-        return stringsArray.sorted(by: { $0.date ?? Date() < $1.date ?? Date() })
+        return stringsArray.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
 
     }
         
