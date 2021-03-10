@@ -16,6 +16,7 @@
 		DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */; };
 		DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7C25DDAC560038D6DD /* DataController.swift */; };
 		DD0F7A8425DDACB00038D6DD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0F7A8325DDACB00038D6DD /* CloudKit.framework */; };
+		DD2A111F25F947710008A081 /* InstrumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */; };
 		DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A625E5D0D300138574 /* StringsView.swift */; };
 		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
 		DD52D6AD25E6073500138574 /* StringsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AC25E6073500138574 /* StringsHeaderView.swift */; };
@@ -58,6 +59,7 @@
 		DD0F7A7C25DDAC560038D6DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		DD0F7A8025DDACAD0038D6DD /* MyGuitars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGuitars.entitlements; sourceTree = "<group>"; };
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsViewModel.swift; sourceTree = "<group>"; };
 		DD52D6A625E5D0D300138574 /* StringsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsView.swift; sourceTree = "<group>"; };
 		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
 		DD52D6AC25E6073500138574 /* StringsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsHeaderView.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				DDE6044725DED565004CD13B /* InstrumentsEditView.swift */,
 				DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */,
 				DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */,
+				DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */,
 			);
 			path = Instruments;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
+				DD2A111F25F947710008A081 /* InstrumentsViewModel.swift in Sources */,
 				DD9D114125E9D7EB00AD2FAA /* RepairsView.swift in Sources */,
 				DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */,
 				DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */,
