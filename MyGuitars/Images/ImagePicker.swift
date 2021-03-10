@@ -47,6 +47,11 @@ struct ImagePicker: UIViewControllerRepresentable {
             
             parent.presentationMode.wrappedValue.dismiss()
         }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.image = nil
+            parent.presentationMode.wrappedValue.dismiss()
+        }
 
     }
 
