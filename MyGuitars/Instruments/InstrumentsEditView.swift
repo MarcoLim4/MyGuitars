@@ -161,7 +161,7 @@ struct InstrumentsEditView: View {
 
                     Spacer()
 
-                    DatePicker("Select Date", selection: $dateMade, displayedComponents: .date)
+                    DatePicker("Select Date", selection: $dateMade, in: ...Date(), displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
                         .frame(maxHeight: 400)
@@ -272,7 +272,7 @@ struct InstrumentsEditView: View {
 
                     Spacer()
 
-                    DatePicker("Purchase Date", selection: $purchaseDate, displayedComponents: .date)
+                    DatePicker("Purchase Date", selection: $purchaseDate, in: ...Date(), displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
                         .frame(maxHeight: 400)
@@ -323,7 +323,7 @@ struct InstrumentsEditView: View {
 
                     Spacer()
 
-                    DatePicker("Sale Date", selection: $salesDate.onChange(updateValues), displayedComponents: .date)
+                    DatePicker("Sale Date", selection: $salesDate.onChange(updateValues), in: ...Date(), displayedComponents: .date)
                         .labelsHidden()
                         .datePickerStyle(CompactDatePickerStyle())
                         .frame(maxHeight: 400)

@@ -68,18 +68,27 @@ struct RepairsEditView: View {
 
                         Text("Date Performed")
                         Spacer()
-                        Text("\(dateFormatter.string(from: dateperformed))")
-                        .onTapGesture {
-                            self.showsDatePicker.toggle()
-                        }
-                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
-                        .background(Color.clear)
+
+                        DatePicker("", selection: $dateperformed, in: ...Date(), displayedComponents: .date)
+                            .labelsHidden()
+                            .datePickerStyle(CompactDatePickerStyle())
+                            .frame(maxHeight: 400)
+
+                        
+//                        Text("\(dateFormatter.string(from: dateperformed))")
+//                        .onTapGesture {
+//                            self.showsDatePicker.toggle()
+//                        }
+//                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+//                        .background(Color.clear)
                     }
                     
-                    if showsDatePicker {
-                        DatePicker("", selection: $dateperformed, displayedComponents: .date)
-                            .datePickerStyle(WheelDatePickerStyle())
-                    }
+//                    if showsDatePicker {                        
+//                        DatePicker("", selection: $dateperformed, in: ...Date(), displayedComponents: .date)
+//                            .labelsHidden()
+//                            .datePickerStyle(CompactDatePickerStyle())
+//                            .frame(maxHeight: 400)
+//                    }
 
                     HStack {
                         Text("Repair Type")
