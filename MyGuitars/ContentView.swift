@@ -30,7 +30,7 @@ struct ContentView: View {
                     Text("Strings")
                 }
 
-            RepairsView()
+            RepairsView(dataController: dataController)
                 .tag(RepairsView.tag)
                 .tabItem {
                     Image(systemName: "squareshape.squareshape.dashed")

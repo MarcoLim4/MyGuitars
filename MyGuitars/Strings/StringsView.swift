@@ -30,7 +30,9 @@ struct StringsView: View {
                         Spacer()
 
                         Button(action: {
-                            self.viewModel.addString(for: instrument)
+                            withAnimation {
+                                self.viewModel.addString(for: instrument)
+                            }
                         }, label: {
                             Label(
                                 title: { Text("") },

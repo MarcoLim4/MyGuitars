@@ -17,6 +17,7 @@
 		DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7C25DDAC560038D6DD /* DataController.swift */; };
 		DD0F7A8425DDACB00038D6DD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0F7A8325DDACB00038D6DD /* CloudKit.framework */; };
 		DD2A111F25F947710008A081 /* InstrumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */; };
+		DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */; };
 		DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A625E5D0D300138574 /* StringsView.swift */; };
 		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
 		DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AF25E7310300138574 /* UIColor+Extension.swift */; };
@@ -60,6 +61,7 @@
 		DD0F7A8025DDACAD0038D6DD /* MyGuitars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGuitars.entitlements; sourceTree = "<group>"; };
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsViewModel.swift; sourceTree = "<group>"; };
+		DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsViewModel.swift; sourceTree = "<group>"; };
 		DD52D6A625E5D0D300138574 /* StringsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsView.swift; sourceTree = "<group>"; };
 		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
 		DD52D6AF25E7310300138574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */,
 				DD54C2B425EDB14100393481 /* RepairsEditView.swift */,
+				DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */,
 			);
 			path = Repairs;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
 				DDFD9C4425ED56DA00B4A446 /* Date+Extension.swift in Sources */,
 				DD54C2AC25ED8B3600393481 /* Number+Extension.swift in Sources */,
+				DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
