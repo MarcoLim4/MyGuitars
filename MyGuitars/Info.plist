@@ -40,7 +40,7 @@
 		<key>UIColorName</key>
 		<string>default-portrait</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
-		<false/>
+		<true/>
 		<key>UIImageName</key>
 		<string>default-portrait</string>
 	</dict>
