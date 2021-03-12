@@ -50,6 +50,14 @@ struct StringsView: View {
                         HStack {
 
                             VStack(alignment: .leading) {
+                                Image("guitar-strings")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 35, height: 35, alignment: .leading)
+                                    
+                            }
+                            
+                            VStack(alignment: .leading) {
 
                                 Text(stringInfo.brand ?? "")
                                     .font(.headline)
@@ -75,7 +83,8 @@ struct StringsView: View {
                             })
 
                         }
-                        .padding()
+                        .padding(.top)
+                        .padding(.bottom)
                         .sheet(isPresented: $showEditingScreen) {
                             StringsEditView(stringSet: stringInfo, instrument: instrument)
                         }

@@ -10,10 +10,32 @@ struct InstrumentsRow: View {
 
             HStack {
 
-                if instruments.type == "Acoustic" {
-                    Image(systemName: "guitars")
-                } else {
-                    Image(systemName: "guitars.fill")
+                switch instruments.type{
+                case "Electric":
+                    Image("guitar-icon-electric")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                case "Ukelele":
+                    Image("guitar-icon-ukelele")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                case "Bass":
+                    Image("guitar-icon-bass")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                case "Dulcimer":
+                    Image("guitar-icon-dulcimer")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                default:
+                    Image("guitar-icon-acoustic")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
                 }
                 
                 VStack(alignment: .leading) {

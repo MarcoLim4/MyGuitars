@@ -50,6 +50,14 @@ struct RepairsView: View {
                         HStack {
 
                             VStack(alignment: .leading) {
+                                Image("guitar-repairs")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 35, height: 35, alignment: .leading)
+                                    
+                            }
+                            
+                            VStack(alignment: .leading) {
 
                                 Text(repairs.repairtype ?? "")
                                     .font(.headline)
@@ -71,7 +79,8 @@ struct RepairsView: View {
                             })
 
                         }
-                        .padding()
+                        .padding(.top)
+                        .padding(.bottom)
                         .sheet(isPresented: $showEditingScreen) {
                             RepairsEditView(repairs: repairs, instrument: instrument)
                         }

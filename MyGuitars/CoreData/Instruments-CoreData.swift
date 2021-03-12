@@ -127,7 +127,7 @@ extension Instruments {
     }
         
     var instrumentTypes: [String] {
-        let types = ["Acoustic", "Electric", "Bass", "Ukelele", "Merlin"]
+        let types = ["Acoustic", "Electric", "Bass", "Ukelele", "Dulcimer"]
         return types.sorted()
     }
 
@@ -136,6 +136,21 @@ extension Instruments {
         return types.sorted()
     }
 
+    var ukeleleTypes: [String] {
+        let types = ["Soprano", "Concert", "Tenor", "Baritone"]
+        return types.sorted()
+    }
+
+    var bassBodyTypes: [String] {
+        let types = ["P-Bass", "J-Bass", "Modern"]
+        return types.sorted()
+    }
+
+    var dulcimerBodyTypes: [String] {
+        let types = ["Merlin M4", "Tear Drop", "Vintage", "Appalachian", "Stick Dulcimer", "Hammered Dulcimer", "Dutchland"]
+        return types.sorted()
+    }
+    
     var electricBodyTypes: [String] {
         
         let types = ["Les Paul", "Telecaster", "Stratocaster", "RG", "SG", "ES-45"]
