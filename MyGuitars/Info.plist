@@ -37,8 +37,6 @@
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>
-		<key>UIColorName</key>
-		<string>default-portrait</string>
 		<key>UIImageName</key>
 		<string>default-portrait</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
