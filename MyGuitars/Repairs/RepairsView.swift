@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RepairsView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel: ViewModel
     @State private var showEditingScreen = false
     
@@ -52,6 +53,8 @@ struct RepairsView: View {
                             VStack(alignment: .leading) {
                                 Image("guitar-repairs")
                                     .resizable()
+                                    .renderingMode(colorScheme == .dark ? .template : .original)
+                                    .colorMultiply(.white)
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 35, height: 35, alignment: .leading)
                                     

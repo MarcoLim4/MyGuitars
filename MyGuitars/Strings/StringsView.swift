@@ -4,6 +4,7 @@ struct StringsView: View {
     
     static let tag: String? = "Strings"
     
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel: ViewModel
     @State private var showEditingScreen = false
 
@@ -52,6 +53,8 @@ struct StringsView: View {
                             VStack(alignment: .leading) {
                                 Image("guitar-strings")
                                     .resizable()
+                                    .renderingMode(colorScheme == .dark ? .template : .original)
+                                    .colorMultiply(.white)
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 35, height: 35, alignment: .leading)
                                     
