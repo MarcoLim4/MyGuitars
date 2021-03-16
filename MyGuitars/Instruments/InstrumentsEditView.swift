@@ -437,6 +437,11 @@ struct InstrumentsEditView: View {
                         Text("Delete Instrument")
                     }
                 }
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 45,
+                       maxHeight: 45,
+                       alignment: .center)
                 .font(.headline)
                 .foregroundColor(.red)
                 .alert(isPresented: $isShowingDeleteMessage) {

@@ -163,8 +163,14 @@ struct RepairsEditView: View {
                                 Text("Delete Repair Entry")
                             }
                         }
+                        .frame(minWidth: 0,
+                               maxWidth: .infinity,
+                               minHeight: 45,
+                               maxHeight: 45,
+                               alignment: .center)
                         .font(.headline)
                         .foregroundColor(.red)
+                        .font(.headline)
                         .alert(isPresented: $isShowingDeleteMessage) {
 
                             Alert(
@@ -181,22 +187,14 @@ struct RepairsEditView: View {
                                 
                         }
 
-                        
                     }
 
                 }
-                
-                
-
 
             }
-//            .onDisappear(perform: updateValues)
             .navigationBarTitle("Repair Details", displayMode: .large)
 
         }
-        
-        
- 
     }
 
     func updateValues() {

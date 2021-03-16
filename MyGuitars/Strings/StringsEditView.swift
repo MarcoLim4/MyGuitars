@@ -144,8 +144,14 @@ struct StringsEditView: View {
                             Text("Delete String Details")
                         }
                     }
+                    .frame(minWidth: 0,
+                           maxWidth: .infinity,
+                           minHeight: 45,
+                           maxHeight: 45,
+                           alignment: .center)
                     .font(.headline)
                     .foregroundColor(.red)
+                    .font(.headline)
                     .alert(isPresented: $isShowingDeleteMessage) {
 
                         Alert(
