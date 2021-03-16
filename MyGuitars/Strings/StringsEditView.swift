@@ -171,8 +171,15 @@ struct StringsEditView: View {
                 }
 
             }
-//            .onDisappear(perform: updateValues)
-            .navigationBarTitle("String Details", displayMode: .large)
+            .navigationBarTitle("String Details", displayMode: .automatic)
+            .toolbar {
+                
+                Button("Close") {
+                    withAnimation {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }                
+            }
         }
 
     }

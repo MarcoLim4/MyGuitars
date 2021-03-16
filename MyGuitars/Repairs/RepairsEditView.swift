@@ -193,6 +193,16 @@ struct RepairsEditView: View {
 
             }
             .navigationBarTitle("Repair Details", displayMode: .large)
+            .toolbar {
+                
+                Button("Close") {
+                    withAnimation {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }
+                
+            }
+
 
         }
     }
