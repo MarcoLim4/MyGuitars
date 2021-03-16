@@ -90,9 +90,6 @@ struct ImagesShowImageView: View {
 
     }
 
-    func updateValues() {
-
-    }
 }
 
 struct ImagesShowImageView_Previews: PreviewProvider {
