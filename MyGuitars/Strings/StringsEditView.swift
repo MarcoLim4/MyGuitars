@@ -140,7 +140,7 @@ struct StringsEditView: View {
                         isShowingDeleteMessage.toggle()
                     }) {
                         HStack(spacing: 10) {
-                            Image(systemName: "minus.circle")
+                            Image(systemName: "trash")
                             Text("Delete String Details")
                         }
                     }

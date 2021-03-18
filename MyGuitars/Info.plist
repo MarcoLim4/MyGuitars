@@ -37,8 +37,10 @@
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>
+		<key>UIColorName</key>
+		<string>splash-background</string>
 		<key>UIImageName</key>
-		<string>default-portrait</string>
+		<string>splash-icon</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>

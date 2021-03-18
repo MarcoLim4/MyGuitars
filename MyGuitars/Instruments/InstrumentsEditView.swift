@@ -379,7 +379,7 @@ struct InstrumentsEditView: View {
                         HStack(spacing:10) {
                             Image(systemName: "photo")
                                 .foregroundColor(.green)
-                            Text("Add Image from Lirbary")
+                            Text("Add Image from Library")
                                 .font(.subheadline)
                                 .foregroundColor(.green)
                         }
@@ -433,7 +433,7 @@ struct InstrumentsEditView: View {
                     isShowingDeleteMessage.toggle()
                 }) {
                     HStack(spacing: 10) {
-                        Image(systemName: "minus.circle")
+                        Image(systemName: "trash")
                         Text("Delete Instrument")
                     }
                 }
