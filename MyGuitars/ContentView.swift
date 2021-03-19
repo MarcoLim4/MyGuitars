@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     
     @SceneStorage("selectedView") var selectedView: String?
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
 
@@ -15,28 +17,30 @@ struct ContentView: View {
                     Text("Home")
                 }
 
-            InstrumentsView()
+            InstrumentsView(dataController: dataController)
                 .tag(InstrumentsView.tag)
                 .tabItem {
-                    Image(systemName: "guitars")
+                    Image("tabbar-instruments")
                     Text("Guitars")
                 }
 
-            StringsView()
+            StringsView(dataController: dataController)
                 .tag(StringsView.tag)
                 .tabItem {
-                    Image(systemName: "line.horizontal.3.circle")
+                    Image("tabbar-strings")
                     Text("Strings")
                 }
 
-            RepairsView()
+            RepairsView(dataController: dataController)
                 .tag(RepairsView.tag)
                 .tabItem {
-                    Image(systemName: "squareshape.squareshape.dashed")
+                    Image("tabbar-repairs")
                     Text("Repairs")
+                        .foregroundColor(.blue)
                 }
             
         }
+        .accentColor(.blue)
 
     }
     

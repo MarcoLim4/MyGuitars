@@ -140,12 +140,18 @@ struct StringsEditView: View {
                         isShowingDeleteMessage.toggle()
                     }) {
                         HStack(spacing: 10) {
-                            Image(systemName: "minus.circle")
+                            Image(systemName: "trash")
                             Text("Delete String Details")
                         }
                     }
+                    .frame(minWidth: 0,
+                           maxWidth: .infinity,
+                           minHeight: 45,
+                           maxHeight: 45,
+                           alignment: .center)
                     .font(.headline)
                     .foregroundColor(.red)
+                    .font(.headline)
                     .alert(isPresented: $isShowingDeleteMessage) {
 
                         Alert(
@@ -165,8 +171,15 @@ struct StringsEditView: View {
                 }
 
             }
-//            .onDisappear(perform: updateValues)
-            .navigationBarTitle("String Details", displayMode: .large)
+            .navigationBarTitle("String Details", displayMode: .automatic)
+            .toolbar {
+                
+                Button("Close") {
+                    withAnimation {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }                
+            }
         }
 
     }

@@ -22,12 +22,28 @@ struct ImagesShowImageView: View {
 
         VStack {
 
-            Rectangle()
-                .frame(width: 180, height: 5, alignment: .center)
-                .foregroundColor(.gray)
-                .cornerRadius(3.0)
-                .padding(.top, 15)
-                .shadow(radius: 10)
+            VStack(alignment: .trailing) {
+                
+                Button("Close") {
+                    withAnimation {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 45,
+                       maxHeight: 45,
+                       alignment: .trailing)
+                .padding(.trailing, 15)
+
+//                Rectangle()
+//                    .frame(width: 180, height: 5, alignment: .center)
+//                    .foregroundColor(.gray)
+//                    .cornerRadius(3.0)
+//                    .padding(.top, 15)
+//                    .shadow(radius: 10)
+
+            }
 
             let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image05.png")
 
@@ -74,9 +90,6 @@ struct ImagesShowImageView: View {
 
     }
 
-    func updateValues() {
-
-    }
 }
 
 struct ImagesShowImageView_Previews: PreviewProvider {

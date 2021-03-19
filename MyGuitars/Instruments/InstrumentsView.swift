@@ -1,32 +1,28 @@
 import SwiftUI
 
 struct InstrumentsView: View {
-    
-    @EnvironmentObject var dataController: DataController
-    @Environment(\.managedObjectContext) var managedObjectContext
+
+    @StateObject var viewModel: ViewModel
     
     static let tag: String? = "Instruments"
-    let instruments: FetchRequest<Instruments>
-    
-    init() {
-        
-        instruments = FetchRequest<Instruments>(entity: Instruments.entity(),
-                                                sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
-                                                                  NSSortDescriptor(keyPath: \Instruments.model, ascending: true)])
 
+    init(dataController: DataController) {
+        
+        // Dependency injection here
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
+        
     }
     
     var body: some View {
         
         NavigationView {
             
-            List {
-                
-                ForEach(instruments.wrappedValue) { instrument in
+            List {                
+                ForEach(viewModel.instruments) { instrument in
                     InstrumentsRow(instruments: instrument)
 
                 }
-
             }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Guitars")
@@ -34,15 +30,7 @@ struct InstrumentsView: View {
                 
                 Button {
                     withAnimation {
-                        
-                        let newInstrument = Instruments(context: managedObjectContext)
-                        newInstrument.type              = "Acoustic"
-                        newInstrument.brand             = "New Guitar"
-                        newInstrument.model             = "New Guitar"
-                        newInstrument.rightleft         = 1 // 1-Right 2-Left
-                        newInstrument.numberofstrings   = 6
-                        
-                        dataController.save()
+                        viewModel.addNewProject()
                     }
                 } label: {
                     Label("Add New Guitar", systemImage: "plus")
@@ -50,20 +38,17 @@ struct InstrumentsView: View {
             }
             
         }
-        .onDisappear(perform: dataController.save)
+        .onDisappear(perform: viewModel.dataController.save)
         .navigationViewStyle(StackNavigationViewStyle())
         
     }
+    
     
 }
 
 struct InstrumentsView_Previews: PreviewProvider {
     
-    static var dataController = DataController.preview
-    
     static var previews: some View {
-        InstrumentsView()
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(dataController)
+        InstrumentsView(dataController: DataController.preview)
     }
 }

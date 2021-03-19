@@ -3,6 +3,7 @@ import SwiftUI
 struct InstrumentsRow: View {
     
     @ObservedObject var instruments: Instruments
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
                 
@@ -10,10 +11,51 @@ struct InstrumentsRow: View {
 
             HStack {
 
-                if instruments.type == "Acoustic" {
-                    Image(systemName: "guitars")
-                } else {
-                    Image(systemName: "guitars.fill")
+                switch instruments.type{
+                case "Electric":
+                    
+                    Image("guitar-icon-electric")
+                        .resizable()
+                        .renderingMode(colorScheme == .dark ? .template : .original)
+                        .colorMultiply(.white)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+
+                case "Ukelele":
+
+                    Image("guitar-icon-ukelele")
+                        .resizable()
+                        .renderingMode(colorScheme == .dark ? .template : .original)
+                        .colorMultiply(.white)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                    
+                case "Bass":
+                    
+                    Image("guitar-icon-bass")
+                        .resizable()
+                        .renderingMode(colorScheme == .dark ? .template : .original)
+                        .colorMultiply(.white)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                    
+                case "Dulcimer":
+                    
+                    Image("guitar-icon-dulcimer")
+                        .resizable()
+                        .renderingMode(colorScheme == .dark ? .template : .original)
+                        .colorMultiply(.white)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                    
+                default:
+                    
+                    Image("guitar-icon-acoustic")
+                        .resizable()
+                        .renderingMode(colorScheme == .dark ? .template : .original)
+                        .colorMultiply(.white)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
                 }
                 
                 VStack(alignment: .leading) {
@@ -31,6 +73,20 @@ struct InstrumentsRow: View {
         }
 
     }
+    
+//    func imageHead(imageName: String) -> Image {
+//
+//        if colorScheme == .dark {
+//            return Image(imageName)
+//                .resizable()
+//                .colorMultiply(.white)
+//        }
+//
+//        return Image(imageName)
+//            .resizable()
+//
+//    }
+    
 }
 
 struct InstrumentsViewCell_Previews: PreviewProvider {

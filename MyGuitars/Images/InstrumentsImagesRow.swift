@@ -39,7 +39,9 @@ struct InstrumentsImagesRow: View {
 
                     }
                     .sheet(isPresented: $showingImageView, content: {
-                        ImagesShowImageView(photo: thePhotos[selectedIndex])
+                        withAnimation {
+                            ImagesShowImageView(photo: thePhotos[selectedIndex])
+                        }                        
                     })
 
                 }

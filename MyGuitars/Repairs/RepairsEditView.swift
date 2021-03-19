@@ -159,12 +159,18 @@ struct RepairsEditView: View {
                             isShowingDeleteMessage.toggle()
                         }) {
                             HStack(spacing: 10) {
-                                Image(systemName: "minus.circle")
+                                Image(systemName: "trash")
                                 Text("Delete Repair Entry")
                             }
                         }
+                        .frame(minWidth: 0,
+                               maxWidth: .infinity,
+                               minHeight: 45,
+                               maxHeight: 45,
+                               alignment: .center)
                         .font(.headline)
                         .foregroundColor(.red)
+                        .font(.headline)
                         .alert(isPresented: $isShowingDeleteMessage) {
 
                             Alert(
@@ -181,22 +187,24 @@ struct RepairsEditView: View {
                                 
                         }
 
-                        
                     }
 
                 }
-                
-                
-
 
             }
-//            .onDisappear(perform: updateValues)
             .navigationBarTitle("Repair Details", displayMode: .large)
+            .toolbar {
+                
+                Button("Close") {
+                    withAnimation {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }
+                
+            }
+
 
         }
-        
-        
- 
     }
 
     func updateValues() {

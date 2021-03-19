@@ -122,16 +122,31 @@ struct InstrumentsEditView: View {
 
                     Picker("", selection: $category.onChange(updateValues)) {
                         
-                        // Maybe later we can swith on different body types for Bass and other instruments as well
-                        if type == "Electric" {
+                        
+                        switch type {
+                        case "Electric":
                             ForEach(instrument.electricBodyTypes, id: \.self) { type in
                                 Text("\(type)")
                             }
-                        } else {
+                        case "Ukelele":
+                            ForEach(instrument.ukeleleTypes, id: \.self) { type in
+                                Text("\(type)")
+                            }
+                        case "Bass":
+                            ForEach(instrument.bassBodyTypes, id: \.self) { type in
+                                Text("\(type)")
+                            }
+                        case "Dulcimer":
+                            ForEach(instrument.dulcimerBodyTypes, id: \.self) { type in
+                                Text("\(type)")
+                            }
+                        default:
                             ForEach(instrument.acosuticBodyTypes, id: \.self) { type in
                                 Text("\(type)")
                             }
+
                         }
+                        
                     }
                     .font(.callout)
                 }
@@ -364,7 +379,7 @@ struct InstrumentsEditView: View {
                         HStack(spacing:10) {
                             Image(systemName: "photo")
                                 .foregroundColor(.green)
-                            Text("Add Image from Lirbary")
+                            Text("Add Image from Library")
                                 .font(.subheadline)
                                 .foregroundColor(.green)
                         }
@@ -418,10 +433,15 @@ struct InstrumentsEditView: View {
                     isShowingDeleteMessage.toggle()
                 }) {
                     HStack(spacing: 10) {
-                        Image(systemName: "minus.circle")
+                        Image(systemName: "trash")
                         Text("Delete Instrument")
                     }
                 }
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 45,
+                       maxHeight: 45,
+                       alignment: .center)
                 .font(.headline)
                 .foregroundColor(.red)
                 .alert(isPresented: $isShowingDeleteMessage) {

@@ -2,15 +2,18 @@ import SwiftUI
 
 struct RepairsView: View {
     
-    @EnvironmentObject var dataController: DataController
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.colorScheme) var colorScheme
+    @StateObject var viewModel: ViewModel
     @State private var showEditingScreen = false
     
-    @FetchRequest(entity: Instruments.entity(),
-                  sortDescriptors: [NSSortDescriptor(keyPath: \Instruments.brand, ascending: true),
-                                    NSSortDescriptor(keyPath: \Instruments.model, ascending: true)]) var instruments: FetchedResults<Instruments>
-
     static let tag: String? = "Repairs"
+    
+    init(dataController: DataController) {
+
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
+
+    }
 
     var body: some View {
 
@@ -18,17 +21,19 @@ struct RepairsView: View {
 
             List {
 
-                ForEach(instruments) { instrument in
+                ForEach(viewModel.instruments) { instrument in
 
                     HStack {
-//                        StringsHeaderView(instrument: instrument)
+
                         Text("\(instrument.instModel)")
                             .font(.headline)
 
                         Spacer()
 
                         Button(action: {
-                            addNewRepair(for: instrument)
+                            withAnimation {
+                                viewModel.addNewRepair(for: instrument)
+                            }
                         }, label: {
                             Label(
                                 title: { Text("") },
@@ -45,6 +50,16 @@ struct RepairsView: View {
 
                         HStack {
 
+                            VStack(alignment: .leading) {
+                                Image("guitar-repairs")
+                                    .resizable()
+                                    .renderingMode(colorScheme == .dark ? .template : .original)
+                                    .colorMultiply(.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 35, height: 35, alignment: .leading)
+                                    
+                            }
+                            
                             VStack(alignment: .leading) {
 
                                 Text(repairs.repairtype ?? "")
@@ -67,7 +82,8 @@ struct RepairsView: View {
                             })
 
                         }
-                        .padding()
+                        .padding(.top)
+                        .padding(.bottom)
                         .sheet(isPresented: $showEditingScreen) {
                             RepairsEditView(repairs: repairs, instrument: instrument)
                         }
@@ -84,32 +100,12 @@ struct RepairsView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 
-    func addNewRepair(for instrument: Instruments) {
-
-        let newRepair = Repairs(context: managedObjectContext)
-
-        newRepair.repairedby       = "Luthier"
-        newRepair.repairtype       = "Type"
-        newRepair.dateperformed    = Date()
-        newRepair.repairrate       = 0
-        newRepair.cost             = 0
-        newRepair.comments         = ""
-        newRepair.instruments      = instrument
-
-        dataController.save()
-
-    }
-
 }
 
 struct WorkPerformedView_Previews: PreviewProvider {
 
-    static var dataController = DataController.preview
-
     static var previews: some View {
-        RepairsView()
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(dataController)
+        RepairsView(dataController: DataController.preview)
     }
 
 }
