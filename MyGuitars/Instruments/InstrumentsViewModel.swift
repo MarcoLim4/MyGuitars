@@ -48,9 +48,9 @@ extension InstrumentsView {
             
             let newInstrument = Instruments(context: dataController.container.viewContext)
             
-            newInstrument.type              = "Acoustic"
-            newInstrument.brand             = "New Guitar"
-            newInstrument.model             = "New Guitar"
+            newInstrument.type              = "Acoustic".localized
+            newInstrument.brand             = "New Guitar".localized
+            newInstrument.model             = "New Guitar".localized
             newInstrument.rightleft         = 1 // 1-Right 2-Left
             newInstrument.numberofstrings   = 6
             
