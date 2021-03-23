@@ -56,7 +56,7 @@ struct StringsEditView: View {
 
                         Spacer()
 
-                        DatePicker("Sale Date", selection: $date.onChange(updateValues), in: ...Date(), displayedComponents: .date)
+                        DatePicker("Select Date", selection: $date.onChange(updateValues), in: ...Date(), displayedComponents: .date)
                             .labelsHidden()
                             .datePickerStyle(CompactDatePickerStyle())
                             .frame(maxHeight: 400)

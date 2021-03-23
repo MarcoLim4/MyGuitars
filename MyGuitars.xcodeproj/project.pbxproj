@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD06152426096ECA008536A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD06152626096ECA008536A7 /* Localizable.strings */; };
+		DD06152A260A2E3D008536A7 /* Localized+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061529260A2E3D008536A7 /* Localized+Extension.swift */; };
 		DD08B91425DEE59500E4E95A /* Binding-OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */; };
 		DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */; };
 		DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD06152526096ECA008536A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DD061529260A2E3D008536A7 /* Localized+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localized+Extension.swift"; sourceTree = "<group>"; };
+		DD06152C260A31A2008536A7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift"; sourceTree = "<group>"; };
 		DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit-Helpers.swift"; sourceTree = "<group>"; };
 		DD0F7A6525DDABF50038D6DD /* MyGuitars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuitars.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +118,7 @@
 				DD52D6AF25E7310300138574 /* UIColor+Extension.swift */,
 				DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */,
 				DD54C2AB25ED8B3600393481 /* Number+Extension.swift */,
+				DD061529260A2E3D008536A7 /* Localized+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,6 +158,7 @@
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
 				DD0F7A6E25DDABF60038D6DD /* Preview Content */,
 				DDE6044F25DEDE9B004CD13B /* CoreData */,
+				DD06152626096ECA008536A7 /* Localizable.strings */,
 			);
 			path = MyGuitars;
 			sourceTree = "<group>";
@@ -287,6 +294,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = DD0F7A5C25DDABF50038D6DD;
 			productRefGroup = DD0F7A6625DDABF50038D6DD /* Products */;
@@ -304,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0F7A7025DDABF60038D6DD /* Preview Assets.xcassets in Resources */,
+				DD06152426096ECA008536A7 /* Localizable.strings in Resources */,
 				DD52D6B625E80EC800138574 /* Colors.xcassets in Resources */,
 				DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */,
 				DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */,
@@ -327,6 +336,7 @@
 				DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
 				DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */,
+				DD06152A260A2E3D008536A7 /* Localized+Extension.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DD54C2A225ED7F4D00393481 /* RatingView.swift in Sources */,
@@ -355,11 +365,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		DD06152626096ECA008536A7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD06152526096ECA008536A7 /* en */,
+				DD06152C260A31A2008536A7 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		DD0F7A7225DDABF60038D6DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -421,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

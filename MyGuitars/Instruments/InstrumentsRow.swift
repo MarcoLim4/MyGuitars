@@ -60,10 +60,10 @@ struct InstrumentsRow: View {
                 
                 VStack(alignment: .leading) {
                     
-                    Text(instruments.model ?? "")
+                    Text(instruments.model ?? "Model")
                         .font(.headline)
 
-                    Text(instruments.brand ?? "")
+                    Text(instruments.brand ?? "Brand")
                         .font(.footnote)
                         
                 }
@@ -73,20 +73,7 @@ struct InstrumentsRow: View {
         }
 
     }
-    
-//    func imageHead(imageName: String) -> Image {
-//
-//        if colorScheme == .dark {
-//            return Image(imageName)
-//                .resizable()
-//                .colorMultiply(.white)
-//        }
-//
-//        return Image(imageName)
-//            .resizable()
-//
-//    }
-    
+
 }
 
 struct InstrumentsViewCell_Previews: PreviewProvider {

@@ -12,7 +12,7 @@ extension StringsView {
 
             let newString = Strings(context: dataController.container.viewContext)
 
-            newString.brand       = "New String Set"
+            newString.brand       = "New String Set".localized
             newString.gauge       = ""
             newString.date        = Date()
             newString.lifespan    = 0

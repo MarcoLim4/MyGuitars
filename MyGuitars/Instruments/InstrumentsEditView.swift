@@ -89,13 +89,13 @@ struct InstrumentsEditView: View {
 
         Form {
 
-            Picker("Instrument Type", selection: $type.onChange(updateValues)) {
+            Picker("Instrument Type".localized, selection: $type.onChange(updateValues)) {
                 ForEach(instrument.instrumentTypes, id: \.self) { type in
                     Text("\(type)")
                 }
             }
 
-            Section(header: Text("Basic Info")) {
+            Section(header: Text("Basic Info".localized)) {
 
                 HStack(alignment: .lastTextBaseline) {
                     Text("Brand")
@@ -203,7 +203,7 @@ struct InstrumentsEditView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    TextField("Eletronics", text: $electronics.onChange(updateValues))
+                    TextField("Electronics", text: $electronics.onChange(updateValues))
                         .font(.callout)
                 }
 
@@ -306,6 +306,8 @@ struct InstrumentsEditView: View {
                 }
 
             }
+            .textCase(.none)
+            .font(.headline)
              
             Section(header: Text("Sales Details")) {
                 

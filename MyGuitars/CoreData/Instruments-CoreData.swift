@@ -120,40 +120,43 @@ extension Instruments {
 
     var allStrings: [Strings] {
         
-        #warning("need to revisit this sorting")
         let stringsArray = strings?.allObjects as? [Strings] ?? []
         return stringsArray.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
 
     }
         
     var instrumentTypes: [String] {
-        let types = ["Acoustic", "Electric", "Bass", "Ukelele", "Dulcimer"]
+        let types = ["Acoustic".localized, "Electric".localized, "Bass".localized, "Ukelele".localized, "Dulcimer".localized]
         return types.sorted()
     }
 
     var acosuticBodyTypes: [String] {
-        let types = ["Dreadnought", "Parlour", "Jumbo", "Auditorium", "Grand Auditorium", "Classical", "Traveler", "Mini", "Tenor", "Orchestra Model"]
+        let types = ["Dreadnought".localized, "Parlour".localized, "Jumbo".localized,
+                     "Auditorium".localized, "Grand Auditorium".localized, "Classical".localized,
+                     "Traveler".localized, "Mini".localized, "Tenor".localized, "Orchestra Model".localized]
         return types.sorted()
     }
 
     var ukeleleTypes: [String] {
-        let types = ["Soprano", "Concert", "Tenor", "Baritone"]
+        let types = ["Soprano".localized, "Concert".localized, "Tenor".localized, "Baritone".localized]
         return types.sorted()
     }
 
     var bassBodyTypes: [String] {
-        let types = ["P-Bass", "J-Bass", "Modern"]
+        let types = ["P-Bass".localized, "J-Bass".localized, "Modern".localized]
         return types.sorted()
     }
 
     var dulcimerBodyTypes: [String] {
-        let types = ["Merlin M4", "Tear Drop", "Vintage", "Appalachian", "Stick Dulcimer", "Hammered Dulcimer", "Dutchland"]
+        let types = ["Merlin M4".localized, "Tear Drop".localized, "Vintage".localized,
+                     "Appalachian".localized, "Stick Dulcimer".localized,
+                     "Hammered Dulcimer".localized, "Dutchland".localized]
         return types.sorted()
     }
     
     var electricBodyTypes: [String] {
         
-        let types = ["Les Paul", "Telecaster", "Stratocaster", "RG", "SG", "ES-45"]
+        let types = ["Les Paul".localized, "Telecaster".localized, "Stratocaster".localized, "RG".localized, "SG".localized, "ES-45".localized]
         return types.sorted()
 
     }

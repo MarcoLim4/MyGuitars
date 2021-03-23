@@ -58,20 +58,20 @@ struct HomeView: View {
             VStack {
 
                 let guitarSummary = CardViewData(image: imagesPanel.randomElement() ?? "guitars-panel",
-                                                 title: "Guitar Summary",
-                                                 subTitle: "A look at your guitar collection",
+                                                 title: "Guitar Summary".localized,
+                                                 subTitle: "A look at your guitar collection".localized,
                                                  summary: summaryGuitars)
                 CardView(cardView: guitarSummary)
 
                 let stringsSummary = CardViewData(image: imagesStrings.randomElement() ?? "string-change",
-                                                  title: "All about strings",
-                                                  subTitle: "See all the strings replaced so far!",
+                                                  title: "All about strings".localized,
+                                                  subTitle: "See all the strings replaced so far!".localized,
                                                   summary: summaryStrings)
                 CardView(cardView: stringsSummary)
 
                 let repairsSummary = CardViewData(image: imagesRepairs.randomElement() ?? "guitars-repair02",
-                                                  title: "Your Repairs",
-                                                  subTitle: "All the repairs!",
+                                                  title: "Your Repairs".localized,
+                                                  subTitle: "All the repairs!".localized,
                                                   summary: summaryRepairs)
 
                 CardView(cardView: repairsSummary)
@@ -85,14 +85,19 @@ struct HomeView: View {
     var summaryGuitars: String {
 
         let totalCount = instruments.wrappedValue.count
-        var stringResult = "You don't have any guitars added yet! Select the Guitars Tab and start adding new guitars!"
+        var stringResult = "You don't have any guitars added yet! Select the Guitars Tab and start adding new guitars!".localized
         if totalCount > 0 {
 
             let sum = instruments.wrappedValue.reduce(0) { $0 + ($1.value(forKey: "purchasevalue") as? Double ?? 0) }
-            stringResult = "You have \(totalCount) guitars in your collection.\n"
+            stringResult = String.localizedStringWithFormat( "You have %d guitars in your collection.\n".localized,
+                                                             totalCount)
 
             let totalWorth = sum.stringValue()
-            stringResult += "Your \(totalCount == 1 ? "guitar" : "guitars") \(totalCount == 1 ? "is" : "are") worth \(totalWorth)\n"
+            let instrumentCountStrings = totalCount == 1 ? "guitar".localized : "guitars".localized
+            
+            
+            stringResult += String.localizedStringWithFormat("The estimatated amount of your %@ is %@.\n".localized,
+                                                             instrumentCountStrings, totalWorth)
         }
 
         let totalSold = instrumentsSold.wrappedValue.count
@@ -106,9 +111,9 @@ struct HomeView: View {
             stringResult += "You total sales value is \(sumSold.stringValue()).\n"
 
             if sumSold > sumPurc {
-                stringResult += "So far.... Profit!!"
+                stringResult += "So far.... Profit!!".localized
             } else if sumSold < sumPurc {
-                stringResult += "So far.... no profit!!"
+                stringResult += "So far.... no profit!!".localized
             }
 
         }
@@ -119,15 +124,18 @@ struct HomeView: View {
     var summaryStrings: String {
 
         let totalCount = strings.wrappedValue.count
-        var stringResult = "So far, you have not replaced any strings!"
+        var stringResult = "So far, you have not replaced any strings!".localized
 
         if totalCount > 0 {
-            stringResult = "You have replaced \(totalCount) string \(totalCount == 1 ? "set" : "sets") for your guitars.\n"
+            let stringsSumm = "You have replaced %d string %@ for your guitars.\n".localized
+            let stringTot = totalCount == 1 ? "set".localized : "sets".localized
+            stringResult = String.localizedStringWithFormat(stringsSumm, totalCount, stringTot)
         }
 
         let sumCost = strings.wrappedValue.reduce(0) { $0 + ($1.value(forKey: "price") as? Double ?? 0) }
         if sumCost > 0 {
-            stringResult += "You spent a total of \(sumCost.stringValue()) replacing strings.\n"
+            let localizedStringCost = "You spent a total of %@ replacing strings.\n".localized
+            stringResult += String.localizedStringWithFormat(localizedStringCost, sumCost.stringValue())
         }
 
         return stringResult
@@ -136,15 +144,18 @@ struct HomeView: View {
     var summaryRepairs: String {
 
         let totalCount = repairs.wrappedValue.count
-        var stringResult = "No repairs recorded yet!"
+        var stringResult = "No repairs recorded yet!".localized
 
         if totalCount > 0 {
-            stringResult = "So far, you have done \(totalCount) \(totalCount == 1 ? "repair" : "repairs") on your guitars.\n"
+            let stringsCount = "So far, you have done %d %@ on your guitars.\n".localized
+            let repair = totalCount == 1 ? "repair".localized : "repairs".localized
+            stringResult = String.localizedStringWithFormat(stringsCount, totalCount, repair)
         }
 
         let sumCost = repairs.wrappedValue.reduce(0) { $0 + ($1.value(forKey: "cost") as? Double ?? 0) }
         if sumCost > 0 {
-            stringResult += "The total cost is \(sumCost.stringValue())"
+            let localizedCost = "The total cost is %@".localized
+            stringResult += String.localizedStringWithFormat(localizedCost, sumCost.stringValue())
         }
 
         return stringResult
