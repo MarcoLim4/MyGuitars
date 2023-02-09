@@ -41,19 +41,6 @@ struct HomeView: View {
     var body: some View {
 
         ScrollView {
-            
-//            VStack {
-//                
-//                Button(action: {
-//                    
-//                    dataController.deleteAll()
-//                    dataController.save()
-//                    
-//                }, label: {
-//                    Text("Button")
-//                })
-//                
-//            }
 
             VStack {
 

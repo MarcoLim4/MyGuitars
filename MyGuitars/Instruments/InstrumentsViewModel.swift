@@ -44,6 +44,10 @@ extension InstrumentsView {
             }
         }
 
+        func fetch() {
+            try? instrumentsController.performFetch()
+        }
+        
         func addNewProject() {
             
             let newInstrument = Instruments(context: dataController.container.viewContext)
@@ -57,8 +61,6 @@ extension InstrumentsView {
             dataController.save()
 
         }
-        
-        
-        
+
     }
 }

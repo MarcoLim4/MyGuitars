@@ -40,6 +40,9 @@ struct InstrumentsView: View {
         }
         .onDisappear(perform: viewModel.dataController.save)
         .navigationViewStyle(StackNavigationViewStyle())
+        .refreshable {
+            viewModel.fetch()
+        }
         
     }
     
