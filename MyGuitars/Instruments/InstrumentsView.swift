@@ -4,7 +4,7 @@ struct InstrumentsView: View {
 
     @StateObject var viewModel: ViewModel
     
-    static let tag: String? = "Instruments"
+    static let tag: String? = "Instruments".localized
 
     init(dataController: DataController) {
         
@@ -25,7 +25,7 @@ struct InstrumentsView: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Guitars")
+            .navigationTitle("Guitars".localized)
             .toolbar {
                 
                 Button {
@@ -33,13 +33,16 @@ struct InstrumentsView: View {
                         viewModel.addNewProject()
                     }
                 } label: {
-                    Label("Add New Guitar", systemImage: "plus")
+                    Label("Add New Guitar".localized, systemImage: "plus")
                 }
             }
             
         }
         .onDisappear(perform: viewModel.dataController.save)
         .navigationViewStyle(StackNavigationViewStyle())
+        .refreshable {
+            viewModel.fetch()
+        }
         
     }
     

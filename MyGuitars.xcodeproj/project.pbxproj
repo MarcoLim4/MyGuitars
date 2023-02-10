@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD06152426096ECA008536A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD06152626096ECA008536A7 /* Localizable.strings */; };
+		DD06152A260A2E3D008536A7 /* Localized+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061529260A2E3D008536A7 /* Localized+Extension.swift */; };
 		DD08B91425DEE59500E4E95A /* Binding-OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */; };
 		DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */; };
 		DD0F7A6925DDABF50038D6DD /* MyGuitarsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD06152526096ECA008536A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DD061529260A2E3D008536A7 /* Localized+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localized+Extension.swift"; sourceTree = "<group>"; };
+		DD06152C260A31A2008536A7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DD08B91325DEE59500E4E95A /* Binding-OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift"; sourceTree = "<group>"; };
 		DD08B91725DEF90900E4E95A /* UIKit-Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit-Helpers.swift"; sourceTree = "<group>"; };
 		DD0F7A6525DDABF50038D6DD /* MyGuitars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuitars.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,7 +63,6 @@
 		DD0F7A7125DDABF60038D6DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD0F7A7925DDAC400038D6DD /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		DD0F7A7C25DDAC560038D6DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		DD0F7A8025DDACAD0038D6DD /* MyGuitars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGuitars.entitlements; sourceTree = "<group>"; };
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsViewModel.swift; sourceTree = "<group>"; };
 		DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsViewModel.swift; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsView.swift; sourceTree = "<group>"; };
 		DDB2618725F968FA0022FBEC /* StringsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsViewModel.swift; sourceTree = "<group>"; };
 		DDB95E2425E4536500935673 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		DDDAF8BA2991F00C0039D6CF /* MyGuitars.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MyGuitars.entitlements; sourceTree = "<group>"; };
 		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
 		DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsRow.swift; sourceTree = "<group>"; };
 		DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instruments-CoreData.swift"; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 				DD52D6AF25E7310300138574 /* UIColor+Extension.swift */,
 				DDFD9C4325ED56DA00B4A446 /* Date+Extension.swift */,
 				DD54C2AB25ED8B3600393481 /* Number+Extension.swift */,
+				DD061529260A2E3D008536A7 /* Localized+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -137,7 +143,7 @@
 		DD0F7A6725DDABF50038D6DD /* MyGuitars */ = {
 			isa = PBXGroup;
 			children = (
-				DD0F7A8025DDACAD0038D6DD /* MyGuitars.entitlements */,
+				DDDAF8BA2991F00C0039D6CF /* MyGuitars.entitlements */,
 				DD0F7A6825DDABF50038D6DD /* MyGuitarsApp.swift */,
 				DD0F7A6A25DDABF50038D6DD /* ContentView.swift */,
 				DD54C2B725EDB19B00393481 /* HomeView */,
@@ -152,6 +158,7 @@
 				DD0F7A7125DDABF60038D6DD /* Info.plist */,
 				DD0F7A6E25DDABF60038D6DD /* Preview Content */,
 				DDE6044F25DEDE9B004CD13B /* CoreData */,
+				DD06152626096ECA008536A7 /* Localizable.strings */,
 			);
 			path = MyGuitars;
 			sourceTree = "<group>";
@@ -287,6 +294,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = DD0F7A5C25DDABF50038D6DD;
 			productRefGroup = DD0F7A6625DDABF50038D6DD /* Products */;
@@ -304,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0F7A7025DDABF60038D6DD /* Preview Assets.xcassets in Resources */,
+				DD06152426096ECA008536A7 /* Localizable.strings in Resources */,
 				DD52D6B625E80EC800138574 /* Colors.xcassets in Resources */,
 				DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */,
 				DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */,
@@ -327,6 +336,7 @@
 				DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
 				DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */,
+				DD06152A260A2E3D008536A7 /* Localized+Extension.swift in Sources */,
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DD54C2A225ED7F4D00393481 /* RatingView.swift in Sources */,
@@ -355,11 +365,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		DD06152626096ECA008536A7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD06152526096ECA008536A7 /* en */,
+				DD06152C260A31A2008536A7 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		DD0F7A7225DDABF60038D6DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -421,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -450,6 +474,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -479,17 +504,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyGuitars/MyGuitars.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGuitars/Preview Content\"";
 				DEVELOPMENT_TEAM = QFLL3M3T6A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyGuitars/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = COM.LIM4.MyGuitars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -502,19 +527,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MyGuitars/MyGuitars.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MyGuitars/MyGuitarsRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGuitars/Preview Content\"";
 				DEVELOPMENT_TEAM = QFLL3M3T6A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyGuitars/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = COM.LIM4.MyGuitars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

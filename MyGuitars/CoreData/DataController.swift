@@ -4,8 +4,10 @@ import SwiftUI
 class DataController: ObservableObject {
 
     let container: NSPersistentCloudKitContainer
+    let appTransactionAuthor = "Defaut"
 
     static var preview: DataController = {
+
         let dataController = DataController(inMemory: true)
         let viewContext = dataController.container.viewContext
 
@@ -25,7 +27,19 @@ class DataController: ObservableObject {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
 
-        container.loadPersistentStores { storeDescription, error in
+        // Enable history tracking and remote notifications
+        if let description = container.persistentStoreDescriptions.first {
+            description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        }
+
+        container.loadPersistentStores { [weak self] storeDescription, error in
+
+            self?.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            self?.container.viewContext.automaticallyMergesChangesFromParent = true
+            self?.container.viewContext.transactionAuthor = self?.appTransactionAuthor
+            try? self?.container.viewContext.setQueryGenerationFrom(.current)
+
             if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
@@ -88,21 +102,21 @@ class DataController: ObservableObject {
 
     func deleteAll() {
 
-        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Photos.fetchRequest()
-        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
-        _ = try? container.viewContext.execute(batchDeleteRequest1)
-
-        let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = Instruments.fetchRequest()
-        let batchDeleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
-        _ = try? container.viewContext.execute(batchDeleteRequest2)
-        
-        let fetchRequest3: NSFetchRequest<NSFetchRequestResult> = Strings.fetchRequest()
-        let batchDeleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
-        _ = try? container.viewContext.execute(batchDeleteRequest3)
-
-        let fetchRequest4: NSFetchRequest<NSFetchRequestResult> = Repairs.fetchRequest()
-        let batchDeleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
-        _ = try? container.viewContext.execute(batchDeleteRequest4)
+//        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Photos.fetchRequest()
+//        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
+//        _ = try? container.viewContext.execute(batchDeleteRequest1)
+//
+//        let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = Instruments.fetchRequest()
+//        let batchDeleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+//        _ = try? container.viewContext.execute(batchDeleteRequest2)
+//
+//        let fetchRequest3: NSFetchRequest<NSFetchRequestResult> = Strings.fetchRequest()
+//        let batchDeleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
+//        _ = try? container.viewContext.execute(batchDeleteRequest3)
+//
+//        let fetchRequest4: NSFetchRequest<NSFetchRequestResult> = Repairs.fetchRequest()
+//        let batchDeleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
+//        _ = try? container.viewContext.execute(batchDeleteRequest4)
 
     }
 
@@ -111,3 +125,38 @@ class DataController: ObservableObject {
     }
 
 }
+
+//    lazy var persistentContainer: NSPersistentCloudKitContainer = {
+//
+//        // Create a container that can load CloudKit-based stores
+//        let container = NSPersistentCloudKitContainer(name: "MyCoreDataApp")
+//
+//        // Enable history tracking and remote notifications
+//        guard let description = container.persistentStoreDescriptions.first else {
+//            fatalError("###\(#function): Failed to retrieve a persistent store description.")
+//        }
+//        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+//        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+//
+//        container.loadPersistentStores(completionHandler: { (_, error) in
+//            guard let error = error as NSError? else { return }
+//            fatalError("###\(#function): Failed to load persistent stores:\(error)")
+//        })
+//
+//        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+////        container.viewContext.transactionAuthor = appTransactionAuthorName
+//        container.viewContext.transactionAuthor = ""
+//
+//        // Pin the viewContext to the current generation token and set it to keep itself up to date with local changes.
+//        container.viewContext.automaticallyMergesChangesFromParent = true
+//
+//        do {
+//            try container.viewContext.setQueryGenerationFrom(.current)
+//        } catch {
+//            fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
+//        }
+//
+//        // Observe Core Data remote change notifications.
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.storeRemoteChange), name: .NSPersistentStoreRemoteChange, object: container.persistentStoreCoordinator)
+//        return container
+//    }()
