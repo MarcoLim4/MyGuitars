@@ -1,13 +1,14 @@
 import SwiftUI
+import SwiftData
 
 struct InstrumentsRow: View {
     
-    @ObservedObject var instruments: Instruments
+    var instruments: Instruments
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-                
-        NavigationLink(destination: InstrumentsEditView(instrument: instruments)) {
+
+        NavigationLink(destination: InstrumentsEditView(selectedInstrument: instruments)) {
 
             HStack {
 
@@ -52,9 +53,8 @@ struct InstrumentsRow: View {
                     
                     Image("guitar-icon-acoustic")
                         .resizable()
-                        .renderingMode(colorScheme == .dark ? .template : .original)
-                        .colorMultiply(.white)
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                         .frame(width: 35, height: 35)
                 }
                 
@@ -76,8 +76,17 @@ struct InstrumentsRow: View {
 
 }
 
-struct InstrumentsViewCell_Previews: PreviewProvider {
-    static var previews: some View {
-        InstrumentsRow(instruments: Instruments.example)
+#Preview("Dark Mode") { @MainActor in
+    NavigationStack {
+        InstrumentsRowContainer()
+    }.modelContainer(previewContainer)
+}
+
+struct InstrumentsRowContainer: View {
+
+    @Query(sort: \Instruments.serialnumber) private var instrument: [Instruments]
+
+    var body: some View {
+        InstrumentsRow(instruments: instrument[0])
     }
 }

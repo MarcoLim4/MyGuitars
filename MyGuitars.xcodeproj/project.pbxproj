@@ -15,10 +15,15 @@
 		DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A6A25DDABF50038D6DD /* ContentView.swift */; };
 		DD0F7A6D25DDABF60038D6DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */; };
 		DD0F7A7025DDABF60038D6DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0F7A6F25DDABF60038D6DD /* Preview Assets.xcassets */; };
-		DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */; };
 		DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F7A7C25DDAC560038D6DD /* DataController.swift */; };
 		DD0F7A8425DDACB00038D6DD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0F7A8325DDACB00038D6DD /* CloudKit.framework */; };
 		DD2A111F25F947710008A081 /* InstrumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */; };
+		DD3522C32D4C68EC00F351DC /* Instruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522BF2D4C68EC00F351DC /* Instruments.swift */; };
+		DD3522C42D4C68EC00F351DC /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C02D4C68EC00F351DC /* Photos.swift */; };
+		DD3522C52D4C68EC00F351DC /* Repairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C12D4C68EC00F351DC /* Repairs.swift */; };
+		DD3522C62D4C68EC00F351DC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C22D4C68EC00F351DC /* Strings.swift */; };
+		DD3522C82D4C724800F351DC /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C72D4C724800F351DC /* PreviewContainer.swift */; };
+		DD3522CA2D4C9CD700F351DC /* InstrumentsEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */; };
 		DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */; };
 		DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A625E5D0D300138574 /* StringsView.swift */; };
 		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
@@ -61,10 +66,15 @@
 		DD0F7A6C25DDABF60038D6DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0F7A6F25DDABF60038D6DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DD0F7A7125DDABF60038D6DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD0F7A7925DDAC400038D6DD /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		DD0F7A7C25DDAC560038D6DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		DD0F7A8325DDACB00038D6DD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsViewModel.swift; sourceTree = "<group>"; };
+		DD3522BF2D4C68EC00F351DC /* Instruments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruments.swift; sourceTree = "<group>"; };
+		DD3522C02D4C68EC00F351DC /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		DD3522C12D4C68EC00F351DC /* Repairs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repairs.swift; sourceTree = "<group>"; };
+		DD3522C22D4C68EC00F351DC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		DD3522C72D4C724800F351DC /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
+		DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditModel.swift; sourceTree = "<group>"; };
 		DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsViewModel.swift; sourceTree = "<group>"; };
 		DD52D6A625E5D0D300138574 /* StringsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsView.swift; sourceTree = "<group>"; };
 		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
@@ -167,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0F7A6F25DDABF60038D6DD /* Preview Assets.xcassets */,
+				DD3522C72D4C724800F351DC /* PreviewContainer.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -239,6 +250,7 @@
 				DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */,
 				DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */,
 				DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */,
+				DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */,
 			);
 			path = Instruments;
 			sourceTree = "<group>";
@@ -246,9 +258,12 @@
 		DDE6044F25DEDE9B004CD13B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */,
 				DD0F7A7C25DDAC560038D6DD /* DataController.swift */,
 				DDE6045025DEDEB0004CD13B /* Instruments-CoreData.swift */,
+				DD3522BF2D4C68EC00F351DC /* Instruments.swift */,
+				DD3522C02D4C68EC00F351DC /* Photos.swift */,
+				DD3522C12D4C68EC00F351DC /* Repairs.swift */,
+				DD3522C22D4C68EC00F351DC /* Strings.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -329,10 +344,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD08B91425DEE59500E4E95A /* Binding-OnChange.swift in Sources */,
-				DD0F7A7A25DDAC400038D6DD /* Main.xcdatamodeld in Sources */,
 				DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */,
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
 				DDFDCA6C25EE8E1000C6805A /* NumberEntryField.swift in Sources */,
+				DD3522CA2D4C9CD700F351DC /* InstrumentsEditModel.swift in Sources */,
 				DDB2618825F968FA0022FBEC /* StringsViewModel.swift in Sources */,
 				DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
@@ -342,6 +357,11 @@
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DD54C2A225ED7F4D00393481 /* RatingView.swift in Sources */,
 				DD54C2AF25ED8DC600393481 /* NumbersOnlyView.swift in Sources */,
+				DD3522C32D4C68EC00F351DC /* Instruments.swift in Sources */,
+				DD3522C42D4C68EC00F351DC /* Photos.swift in Sources */,
+				DD3522C52D4C68EC00F351DC /* Repairs.swift in Sources */,
+				DD3522C62D4C68EC00F351DC /* Strings.swift in Sources */,
+				DD3522C82D4C724800F351DC /* PreviewContainer.swift in Sources */,
 				DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */,
 				DD0F7A6B25DDABF50038D6DD /* ContentView.swift in Sources */,
 				DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */,
@@ -572,19 +592,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DD0F7A7825DDAC400038D6DD /* Main.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DD0F7A7925DDAC400038D6DD /* Main.xcdatamodel */,
-			);
-			currentVersion = DD0F7A7925DDAC400038D6DD /* Main.xcdatamodel */;
-			path = Main.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DD0F7A5D25DDABF50038D6DD /* Project object */;
 }

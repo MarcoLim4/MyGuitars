@@ -70,7 +70,8 @@ struct ImagesShowImageView: View {
                     message: Text("Deleting the photo, removes the photo only from your guitar database!"),
                     primaryButton: .destructive(Text("Yes, delete it!")) {
 
-                        dataController.delete(photo)
+                        #warning("Add photo deletion code here!")
+//                        dataController.delete(photo)
                         self.presentation.wrappedValue.dismiss()
 
                     },
@@ -85,9 +86,9 @@ struct ImagesShowImageView: View {
 
 }
 
-struct ImagesShowImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImagesShowImageView(photo: Instruments.photoSample)
-
-    }
-}
+//struct ImagesShowImageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ImagesShowImageView(photo: Instruments.photoSample)
+//
+//    }
+//}
