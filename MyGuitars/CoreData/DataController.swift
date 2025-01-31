@@ -12,7 +12,7 @@ class DataController: ObservableObject {
         let viewContext = dataController.container.viewContext
 
         do {
-            try dataController.createSampleData()
+//            try dataController.createSampleData()
         } catch {
             fatalError("Fatal error creating preview: \(error.localizedDescription)")
         }
@@ -46,49 +46,49 @@ class DataController: ObservableObject {
         }
     }
 
-    func createSampleData() throws {
-
-        let viewContext = container.viewContext
-
-        for instrumentNumber in 1...2 {
-
-            let instruments = Instruments(context: viewContext)
-
-            instruments.type              = "Acoustic"
-            instruments.brand             = "Seagull"
-            instruments.model             = "Guitar Number \(instrumentNumber)"
-            instruments.category          = "Dreadnought"
-            instruments.madein            = "Canada"
-            instruments.finishstyle       = "Semi-Gloss"
-            instruments.rightleft         = 1 // 1-Right 2-Left
-            instruments.numberofstrings   = 6
-            instruments.sidesmaterial     = "Laminate"
-            instruments.backmaterial      = "Laminate"
-            instruments.fretboardmaterial = "Indian RoseWood"
-            instruments.topmaterial       = "Solid Wood - Spruce"
-            instruments.bodyshape         = "Dreadnought"
-            instruments.electronics       = "Q1"
-            instruments.datemanufactured  = Date()
-
-            instruments.photos = []
-
-            for photoNumber in 1...2 {
-
-                let photos = Photos(context: viewContext)
-
-                photos.comments = "Descripion \(photoNumber)"
-                let imageToSave = #imageLiteral(resourceName: "guitar")
-                photos.photo = imageToSave.pngData()
-
-                photos.instruments = instruments  // relationshtip
-
-            }
-
-        }
-
-        try viewContext.save()
-
-    }
+//    func createSampleData() throws {
+//
+//        let viewContext = container.viewContext
+//
+//        for instrumentNumber in 1...2 {
+//
+//            let instruments = Instruments(context: viewContext)
+//
+//            instruments.type              = "Acoustic"
+//            instruments.brand             = "Seagull"
+//            instruments.model             = "Guitar Number \(instrumentNumber)"
+//            instruments.category          = "Dreadnought"
+//            instruments.madein            = "Canada"
+//            instruments.finishstyle       = "Semi-Gloss"
+//            instruments.rightleft         = 1 // 1-Right 2-Left
+//            instruments.numberofstrings   = 6
+//            instruments.sidesmaterial     = "Laminate"
+//            instruments.backmaterial      = "Laminate"
+//            instruments.fretboardmaterial = "Indian RoseWood"
+//            instruments.topmaterial       = "Solid Wood - Spruce"
+//            instruments.bodyshape         = "Dreadnought"
+//            instruments.electronics       = "Q1"
+//            instruments.datemanufactured  = Date()
+//
+//            instruments.photos = []
+//
+//            for photoNumber in 1...2 {
+//
+//                let photos = Photos(context: viewContext)
+//
+//                photos.comments = "Descripion \(photoNumber)"
+//                let imageToSave = #imageLiteral(resourceName: "guitar")
+//                photos.photo = imageToSave.pngData()
+//
+//                photos.instruments = instruments  // relationshtip
+//
+//            }
+//
+//        }
+//
+//        try viewContext.save()
+//
+//    }
 
     func save() {
         if container.viewContext.hasChanges {

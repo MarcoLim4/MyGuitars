@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     
     @SceneStorage("selectedView") var selectedView: String?
-    @EnvironmentObject var dataController: DataController
+//    @EnvironmentObject var dataController: DataController
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -17,21 +17,23 @@ struct ContentView: View {
                     Text("Home")
                 }
 
-            InstrumentsView(dataController: dataController)
+            InstrumentsView()
                 .tag(InstrumentsView.tag)
                 .tabItem {
                     Image("tabbar-instruments")
                     Text("Guitars")
                 }
 
-            StringsView(dataController: dataController)
+//            StringsView(dataController: dataController)
+            StringsView()
                 .tag(StringsView.tag)
                 .tabItem {
                     Image("tabbar-strings")
                     Text("Strings")
                 }
 
-            RepairsView(dataController: dataController)
+//            RepairsView(dataController: dataController)
+            RepairsView()
                 .tag(RepairsView.tag)
                 .tabItem {
                     Image("tabbar-repairs")

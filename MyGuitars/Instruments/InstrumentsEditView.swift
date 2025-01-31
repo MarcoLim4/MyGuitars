@@ -1,87 +1,23 @@
 import SwiftUI
-import Foundation
-import UIKit
+import SwiftData
 
 struct InstrumentsEditView: View {
 
-    @State private var image: Image?
+    @Environment(\.modelContext) private var context
+    @Environment(\.presentationMode) var presentation
+    @StateObject private var viewModel: InstrumentsEditModel
+    @State private var selectedInstrument: Instruments
+
     @State private var showingImagePicker = false
     @State private var imagePickerSource = PhotoSource.library
+    @State private var image: Image?
     @State private var inputImage: UIImage?
-
-    let instrument: Instruments
-
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @EnvironmentObject var dataController: DataController
-    @Environment(\.presentationMode) var presentation
-
+    @State private var allPhotos: [Photos] = []
     @State private var isShowingDeleteMessage = false
 
-    //MARK: Data
-
-    @State private var type: String
-    @State private var brand: String
-    @State private var model: String
-    @State private var category: String
-    @State private var madeIn: String
-    @State private var finishStyle: String
-    @State private var bodyShape: String
-
-    @State private var dateMade: Date
-    @State private var serialNummber: String
-
-    @State private var electronics: String
-    @State private var topMaterial: String
-    @State private var sidesMaterial: String
-    @State private var backMaterial: String
-    @State private var neckMaterial: String
-    @State private var neckShape: String
-
-    @State private var purchaseDate: Date
-    @State private var purchaseValue: Double
-    @State private var purchasedfrom: String
-    
-    @State private var sold: Bool
-    @State private var soldto: String
-    @State private var salesDate: Date
-    @State private var salesValue: Double
-    @State private var salesreason: String
-    
-    @State private var fretboardMaterial: String
-    @State private var comments: String
-
-    init(instrument: Instruments) {
-
-        self.instrument = instrument
-
-        _type              = State(wrappedValue: instrument.type ?? "")
-        _brand             = State(wrappedValue: instrument.instBrand)
-        _model             = State(wrappedValue: instrument.instModel)
-        _category          = State(wrappedValue: instrument.category ?? "")
-        _madeIn            = State(wrappedValue: instrument.madein ?? "")
-        _finishStyle       = State(wrappedValue: instrument.finishstyle ?? "")
-        _bodyShape         = State(wrappedValue: instrument.bodyshape ?? "")
-        _dateMade          = State(wrappedValue: instrument.datemanufactured ?? Date())
-        _serialNummber     = State(wrappedValue: instrument.serialnumber ?? "")
-        _electronics       = State(wrappedValue: instrument.electronics ?? "")
-        _topMaterial       = State(wrappedValue: instrument.topmaterial ?? "")
-        _sidesMaterial     = State(wrappedValue: instrument.sidesmaterial ?? "")
-        _backMaterial      = State(wrappedValue: instrument.backmaterial ?? "")
-        _fretboardMaterial = State(wrappedValue: instrument.fretboardmaterial ?? "")
-        _neckMaterial      = State(wrappedValue: instrument.neckmaterial ?? "")
-        _neckShape         = State(wrappedValue: instrument.neckshape ?? "")
-        
-        _purchasedfrom     = State(wrappedValue: instrument.purchasedfrom ?? "")
-        _purchaseDate      = State(wrappedValue: instrument.purchasedate ?? Date())
-        _purchaseValue     = State(wrappedValue: instrument.purchasevalue)
-        
-        _sold              = State(wrappedValue: instrument.sold)
-        _soldto            = State(wrappedValue: instrument.soldto ?? "")
-        _salesDate         = State(wrappedValue: instrument.saledate ?? Date())
-        _salesValue        = State(wrappedValue: instrument.salevalue)
-        _salesreason       = State(wrappedValue: instrument.salereason ?? "")
-        
-        _comments          = State(wrappedValue: instrument.comments ?? "")
+    init(selectedInstrument: Instruments) {
+        self.selectedInstrument = selectedInstrument
+        _viewModel = StateObject(wrappedValue: InstrumentsEditModel(instrument: selectedInstrument))
 
     }
 
@@ -89,296 +25,97 @@ struct InstrumentsEditView: View {
 
         Form {
 
-            Picker("Instrument Type".localized, selection: $type.onChange(updateValues)) {
-                ForEach(instrument.instrumentTypes, id: \.self) { type in
+            Picker("Instrument Type".localized, selection: $viewModel.type) {
+                ForEach(selectedInstrument.instrumentTypes, id: \.self) { type in
                     Text("\(type)")
                 }
             }
 
-            Section(header: Text("Basic Info".localized)) {
-
-                HStack(alignment: .lastTextBaseline) {
-                    Text("Brand")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                    
-                    TextField("Brand", text: $brand.onChange(updateValues))
-                        .font(.callout)
-                }
+            Section("Basic Info".localized) {
+                LabeledTextField(label: "Brand".localized, placeholder: "Brand".localized, text: $viewModel.brand)
+                LabeledTextField(label: "Model".localized, placeholder: "Model".localized, text: $viewModel.model)
 
                 HStack {
-                    Text("Model")
+
+                    Text("Body Shape".localized)
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    TextField("Model", text: $model.onChange(updateValues))
-                        .font(.callout)
+                    InstrumentPickerView(selection: $viewModel.category,
+                                         type: viewModel.type,
+                                         instrument: viewModel.instrument)
+
                 }
 
-                HStack {
-                    Text("Body Shape")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                LabeledTextField(label: "Finish Style", placeholder: "Finish Style", text: $viewModel.finishStyle)
+                LabeledTextField(label: "Made In".localized, placeholder: "Made In".localized, text: $viewModel.madeIn)
+                DatePicker("Date Manufactured", selection: $viewModel.dateMade, displayedComponents: .date)
+                    .font(.caption)
+                    .foregroundColor(.gray)
 
-                    Picker("", selection: $category.onChange(updateValues)) {
-                        
-                        
-                        switch type {
-                        case "Electric":
-                            ForEach(instrument.electricBodyTypes, id: \.self) { type in
-                                Text("\(type)")
-                            }
-                        case "Ukelele":
-                            ForEach(instrument.ukeleleTypes, id: \.self) { type in
-                                Text("\(type)")
-                            }
-                        case "Bass":
-                            ForEach(instrument.bassBodyTypes, id: \.self) { type in
-                                Text("\(type)")
-                            }
-                        case "Dulcimer":
-                            ForEach(instrument.dulcimerBodyTypes, id: \.self) { type in
-                                Text("\(type)")
-                            }
-                        default:
-                            ForEach(instrument.acosuticBodyTypes, id: \.self) { type in
-                                Text("\(type)")
-                            }
-
-                        }
-                        
-                    }
-                    .font(.callout)
-                }
-
-                HStack {
-                    Text("Finish Style")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Finish Style", text: $finishStyle.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack {
-                    Text("Made In")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Made In", text: $madeIn.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack(alignment: .center) {
-                    Text("Date Manufactured")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    Spacer()
-
-                    DatePicker("Select Date", selection: $dateMade, in: ...Date(), displayedComponents: .date)
-                        .labelsHidden()
-                        .datePickerStyle(CompactDatePickerStyle())
-                        .frame(maxHeight: 400)
-                        
-                }
-
-                HStack {
-                    Text("Serial Number")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Serial Number", text: $serialNummber.onChange(updateValues))
-                        .font(.callout)
-                }
+                LabeledTextField(label: "Serial Number".localized, placeholder: "Serial Number".localized, text: $viewModel.serialNumber)
 
             }
-            .textCase(.none)
-            .font(.headline)
 
-            Section(header: Text("Material/Electronics")) {
+            Section("Material/Electronics".localized) {
+                LabeledTextField(label: "Electronics".localized, placeholder: "Electronics".localized, text: $viewModel.electronics)
+                LabeledTextField(label: "Neck Material".localized, placeholder: "Neck Material".localized, text: $viewModel.neckMaterial)
+                LabeledTextField(label: "Neck Shape".localized, placeholder: "Neck Shape".localized, text: $viewModel.neckShape)
 
-                HStack {
-                    Text("Electronics")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Electronics", text: $electronics.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack {
-                    Text("Neck")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Neck Material", text: $neckMaterial.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack {
-                    Text("Neck Shape")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Neck Shape", text: $neckShape.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack {
-                    Text("Top")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Top Material", text: $topMaterial.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack {
-                    Text("Back")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Back Material", text: $backMaterial.onChange(updateValues))
-                        .font(.callout)
-                }
-
-                HStack {
-                    Text("Sides")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Sides Material", text: $sidesMaterial.onChange(updateValues))
-                        .font(.callout)
-
-                }
-
-                HStack {
-                    Text("Fretboard")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Fretboard Material", text: $fretboardMaterial.onChange(updateValues))
-                        .font(.callout)
-                }
+                LabeledTextField(label: "Top".localized, placeholder: "Top".localized, text: $viewModel.topMaterial)
+                LabeledTextField(label: "Back".localized, placeholder: "Back".localized, text: $viewModel.backMaterial)
+                LabeledTextField(label: "Sides".localized, placeholder: "Sides".localized, text: $viewModel.sidesMaterial)
+                LabeledTextField(label: "Fretboard".localized, placeholder: "Fretboard".localized, text: $viewModel.fretboardMaterial)
 
             }
-            .textCase(.none)
-            .font(.headline)
 
-            Section(header: Text("Purchase Details")) {
+            Section(header: Text("Purchase Details".localized)) {
 
-                HStack {
-                    
-                    Text("Purchased From")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Purchased From", text: $purchasedfrom.onChange(updateValues))
-                        .font(.callout)
-
-                }
-                
-                HStack(alignment: .center) {
-                    
-                    Text("Purchase Date")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    Spacer()
-
-                    DatePicker("Purchase Date", selection: $purchaseDate, in: ...Date(), displayedComponents: .date)
-                        .labelsHidden()
-                        .datePickerStyle(CompactDatePickerStyle())
-                        .frame(maxHeight: 400)
-
-                }
-
+                LabeledTextField(label: "Purchased From".localized, placeholder: "Purchased From".localized, text: $viewModel.purchasedFrom)
+                DatePicker("Purchase Date", selection: $viewModel.purchaseDate, displayedComponents: .date)
+                    .font(.caption)
+                    .foregroundColor(.gray)
                 HStack {
                     Text("Purchase Value")
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    NumberEntryField(value: self.$purchaseValue.onChange(updateValues))
-                        .font(.callout)
-                        .keyboardType(.decimalPad)
-
+                    DollarAmountEditor(amount: $viewModel.purchaseValue)
                 }
-
             }
-            .textCase(.none)
-            .font(.headline)
-             
-            Section(header: Text("Sales Details")) {
-                
-                HStack(alignment: .center) {
-                    
-                    Text("Sold")
+
+            Section(header: Text("Sales Details".localized)) {
+
+                Toggle("Sold".localized, isOn: $viewModel.sold)
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+
+                if viewModel.sold {
+                    LabeledTextField(label: "Sold To".localized, placeholder: "Sold To".localized, text: $viewModel.soldTo)
+                    DatePicker("Sale Date".localized, selection: $viewModel.salesDate, displayedComponents: .date)
                         .font(.caption)
                         .foregroundColor(.gray)
 
-                    Toggle("", isOn: $sold.onChange(updateValues))
+                    HStack {
+                        Text("Sale Value")
+                            .font(.caption)
+                            .foregroundColor(.gray)
 
+                        DollarAmountEditor(amount: $viewModel.salesValue)
+                    }
+
+                    LabeledTextField(label: "Sale Reason".localized, placeholder: "Sale Reason".localized, text: $viewModel.salesReason)
                 }
-                
-                HStack {
-                    
-                    Text("Sold To")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Sold To", text: $soldto.onChange(updateValues))
-                        .font(.callout)
-
-                }
-                
-                
-                HStack(alignment: .center) {
-                    Text("Sale Date")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    Spacer()
-
-                    DatePicker("Sale Date", selection: $salesDate.onChange(updateValues), in: ...Date(), displayedComponents: .date)
-                        .labelsHidden()
-                        .datePickerStyle(CompactDatePickerStyle())
-                        .frame(maxHeight: 400)
-
-                }
-
-                HStack {
-                    Text("Sale Value")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    NumberEntryField(value: self.$salesValue.onChange(updateValues))
-                        .font(.callout)
-                        .keyboardType(.decimalPad)
-                }
-                
-                HStack {
-                    Text("Sale Reason")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-
-                    TextField("Sale Reason", text: $salesreason.onChange(updateValues))
-                        .font(.callout)
-                }
-
             }
-            .textCase(.none)
-            .font(.headline)
 
-            Section(header: Text("Images")) {
+            Section(header: Text("Images".localized)) {
 
                 VStack {
-
                     Button(action: {
-                        self.showingImagePicker.toggle()
-                        self.imagePickerSource = .library
+                        showingImagePicker.toggle()
+                        imagePickerSource = .library
                     }) {
-                        HStack(spacing:10) {
+                        HStack(spacing: 10) {
                             Image(systemName: "photo")
                                 .foregroundColor(.green)
                             Text("Add Image from Library")
@@ -386,19 +123,19 @@ struct InstrumentsEditView: View {
                                 .foregroundColor(.green)
                         }
                     }
-
+                    .padding(.top)
                 }
 
                 VStack {
-                    InstrumentsImagesRow(thePhotos: instrument.allPhotos)
+                    InstrumentsImagesRow(instrument: viewModel.instrument)
                         .frame(minHeight: 100)
                 }
 
                 VStack {
 
                     Button(action: {
-                        self.showingImagePicker.toggle()
-                        self.imagePickerSource = .camera
+                        showingImagePicker.toggle()
+                        imagePickerSource = .camera
                     }) {
                         HStack(spacing:10) {
                             Image(systemName: "camera.circle")
@@ -410,17 +147,15 @@ struct InstrumentsEditView: View {
                     }
 
                 }
-                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                    ImagePicker(source: self.imagePickerSource, image: self.$inputImage)
+                .sheet(isPresented: $showingImagePicker, onDismiss: { refreshData(afterImageSelection: true) }) {
+                    ImagePicker(source: imagePickerSource, image: $inputImage)
                 }
 
             }
-            .textCase(.none)
-            .font(.headline)
 
-            Section(header: Text("Comments")) {
+            Section(header: Text("Comments".localized)) {
 
-                TextEditor(text: $comments.onChange(updateValues))
+                TextEditor(text: $viewModel.comments)
                     .font(.callout)
                     .frame(minHeight: 100)
                     .multilineTextAlignment(.leading)
@@ -428,7 +163,8 @@ struct InstrumentsEditView: View {
             }
             .textCase(.none)
             .font(.headline)
-            
+
+            // Delete Button
             Section {
 
                 Button(action: {
@@ -453,7 +189,7 @@ struct InstrumentsEditView: View {
                         message: Text("By confirming this action, it will permanently delete the instrument and all associated data!"),
                         primaryButton: .destructive(Text("Yes, delete it!")) {
 
-                            dataController.delete(instrument)
+                            context.delete(viewModel.instrument)
                             self.presentation.wrappedValue.dismiss()
 
                         },
@@ -465,42 +201,25 @@ struct InstrumentsEditView: View {
             }
 
         }
-        .navigationBarTitle("Edit Guitars", displayMode: .inline)
-        .onDisappear(perform: dataController.save)
+        .navigationBarTitle("Edit Guitars".localized, displayMode: .inline)
+        .onDisappear {
+            refreshData()
+        }
 
     }
 
-    func updateValues() {
-
-        // notify that the items will change
-        // if photos.... photos.instruments?.objectWillChange.send()
-        // that's becasuse CoreData will propagate down (or UP) the changes
-        instrument.objectWillChange.send()
-
-        instrument.type              = type
-        instrument.brand             = brand
-        instrument.model             = model
-        instrument.madein            = madeIn
-        instrument.finishstyle       = finishStyle
-        instrument.category          = category
-        instrument.electronics       = electronics
-        instrument.topmaterial       = topMaterial
-        instrument.sidesmaterial     = sidesMaterial
-        instrument.backmaterial      = backMaterial
-        instrument.fretboardmaterial = fretboardMaterial
-        instrument.datemanufactured  = dateMade
-        instrument.serialnumber      = serialNummber
-        instrument.neckmaterial      = neckMaterial
-        instrument.neckshape         = neckShape
-        instrument.purchasedfrom     = purchasedfrom
-        instrument.purchasedate      = purchaseDate
-        instrument.purchasevalue     = purchaseValue
-        instrument.sold              = sold
-        instrument.soldto            = soldto
-        instrument.saledate          = salesDate
-        instrument.salevalue         = salesValue
-        instrument.salereason        = salesreason
-        instrument.comments          = comments
+    func refreshData(afterImageSelection: Bool = false) {
+        if afterImageSelection {
+            loadImage()
+        }
+        viewModel.saveChanges()
+        allPhotos = viewModel.instrument.photos ?? []
+        do {
+            try context.save()
+            print("Changes saved successfully!")
+        } catch {
+            print("Failed to save: \(error.localizedDescription)")
+        }
     }
 
     func loadImage() {
@@ -520,24 +239,96 @@ struct InstrumentsEditView: View {
         let fixingOrientation = inputImage.fixOrientation()
         image = Image(uiImage: fixingOrientation)
 
-        let newImage = Photos(context: managedObjectContext)
-        newImage.instruments = instrument
-        newImage.comments = "Details about this particular photo."
+        let newImage = Photos()
+        newImage.instruments = viewModel.instrument
         newImage.photo = fixingOrientation.pngData()
+        newImage.comments = "Details about this particular photo."
 
-        dataController.save()
+        viewModel.saveChanges()
 
     }
 
 }
 
-struct InstrumentsEditView_Previews: PreviewProvider {
+#Preview("Dark Mode") { @MainActor in
+    NavigationStack {
+        InstrumentEditViewContainer()
+    }.modelContainer(previewContainer)
+}
 
-    static var dataController = DataController.preview
+struct InstrumentEditViewContainer: View {
 
-    static var previews: some View {
-        InstrumentsEditView(instrument: Instruments.example)
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(dataController)
+    @Query(sort: \Instruments.serialnumber) private var instrument: [Instruments]
+
+    var body: some View {
+        InstrumentsEditView(selectedInstrument: instrument[0])
+    }
+}
+
+
+struct LabeledTextField: View {
+    let label: String
+    let placeholder: String
+    @Binding var text: String
+
+    @FocusState private var isFocused: Bool  // Focus state for TextField
+
+    var body: some View {
+        HStack(alignment: .lastTextBaseline) {
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.gray)
+
+            ZStack(alignment: .trailing) {
+                TextField(placeholder, text: $text)
+                    .font(.callout)
+                    .padding(.trailing, 30)
+                    .focused($isFocused)  // Attach focus state
+
+                if !text.isEmpty {
+                    Button(action: {
+                        text = ""
+                        isFocused = true  // Refocus the TextField
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                            .font(.footnote)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+struct InstrumentPickerView: View {
+    @Binding var selection: String
+    let type: String
+    let instrument: Instruments
+
+    var body: some View {
+        Picker("", selection: $selection) {
+            ForEach(bodyTypes(for: type), id: \.self) { type in
+                Text(type)
+                    .font(.callout)
+            }
+        }
+    }
+
+    private func bodyTypes(for type: String) -> [String] {
+        switch type {
+        case "Acoustic".localized:
+            return instrument.acosuticBodyTypes
+        case "Electric".localized:
+            return instrument.electricBodyTypes
+        case "Bass".localized:
+            return instrument.bassBodyTypes
+        case "Dulcimer".localized:
+            return instrument.dulcimerBodyTypes
+        case "Ukeleles".localized:
+            return instrument.ukeleleTypes
+        default:
+            return instrument.otherBodyTypes
+        }
     }
 }

@@ -55,9 +55,9 @@ struct InstrumentsImagesRow: View {
     
 }
 
-struct InstrumentsImagesRow_Previews: PreviewProvider {
-        
-    static var previews: some View {
-        InstrumentsImagesRow(thePhotos: Instruments.photosSample)
-    }
-}
+//struct InstrumentsImagesRow_Previews: PreviewProvider {
+//        
+//    static var previews: some View {
+//        InstrumentsImagesRow(thePhotos: Instruments.photosSample)
+//    }
+//}
