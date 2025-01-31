@@ -17,7 +17,7 @@ Eventually, when all the issues I want to fix are done, I will update this file.
 
 > Not sure yet if I will run a complete migration at once or entity bu entity. I'm pretty sure I will be redoing some of the screens. I will start with Strings and see how much effort. Then I will decide if I will split this in different tasks.
 
-- [ ] Instruments Entity
+- [ ] Instruments
 - [ ] Photos
 - [ ] Repairs
 - [ ] Strings
