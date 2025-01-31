@@ -41,12 +41,6 @@ struct CardView: View {
 
                     VStack(alignment: .leading) {
 
-//                        Text(cardView.title)
-//                            .font(.title)
-//                            .fontWeight(.black)
-//                            .foregroundColor(.primary)
-//                            .lineLimit(3)
-//
                         Text(cardView.summary)
                             .font(.footnote)
                             .foregroundColor(.secondary)

@@ -8,7 +8,6 @@ struct InstrumentsView: View {
 
     init(dataController: DataController) {
         
-        // Dependency injection here
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
         

@@ -9,7 +9,6 @@ import SwiftUI
 
 extension Date {
     
-//    func toString(format: String = "yyyy-MM-dd") -> String {
     func toString(format: String = "MMM dd, yyyy") -> String {
         
         let formatter = DateFormatter()

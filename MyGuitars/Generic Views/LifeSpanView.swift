@@ -10,16 +10,12 @@ import SwiftUI
 struct LifeSpanView: View {
     
     @Binding var lifespan: Int16
-    
+
+    let images = [Image(systemName: "2.square")]
     var label = ""
     var maximumRating: Int16 = 6
-    
-    
-    let images = [Image(systemName: "2.square")]
-    
     var offIamge: Image?
     var onImage = Image(systemName: "star.fill")
-    
     var offColor = Color.gray
     var onColor  = Color.yellow
     
@@ -31,9 +27,8 @@ struct LifeSpanView: View {
                 Text(label)
             }
 
-            ForEach(1..<Int(maximumRating) + 1) { number in
-                
-                self.image(for: Int16(number))
+            ForEach(1..<Int(maximumRating), id: \.self) { number in
+                image(for: Int16(number))
                     .foregroundColor(number > self.lifespan ? self.offColor : self.onColor)
                     .onTapGesture {
                         self.lifespan = Int16(number)

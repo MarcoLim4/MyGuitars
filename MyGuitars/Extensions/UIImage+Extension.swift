@@ -36,12 +36,12 @@ extension UIImage {
         
         switch imageOrientation {
             case .upMirrored, .downMirrored:
-                transform.translatedBy(x: size.width, y: 0)
-                transform.scaledBy(x: -1, y: 1)
-                
+                _ = transform.translatedBy(x: size.width, y: 0)
+                _ = transform.scaledBy(x: -1, y: 1)
+
             case .leftMirrored, .rightMirrored:
-                transform.translatedBy(x: size.height, y: 0)
-                transform.scaledBy(x: -1, y: 1)
+                _ = transform.translatedBy(x: size.height, y: 0)
+                _ = transform.scaledBy(x: -1, y: 1)
                 
             case .up, .down, .left, .right:
                 break

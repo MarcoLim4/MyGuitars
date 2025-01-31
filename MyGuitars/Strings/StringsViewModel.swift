@@ -5,9 +5,7 @@ import CoreData
 extension StringsView {
     
     class ViewModel: InstrumentsView.ViewModel {
-        
-        
-        
+
         func addString(for instrument: Instruments) {
 
             let newString = Strings(context: dataController.container.viewContext)
@@ -24,7 +22,6 @@ extension StringsView {
             dataController.save()
 
         }
-
         
     }
 }

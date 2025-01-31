@@ -21,8 +21,6 @@ extension RepairsView {
             dataController.save()
 
         }
-
-        
     }
 }
 

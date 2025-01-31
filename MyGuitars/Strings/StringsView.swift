@@ -9,10 +9,8 @@ struct StringsView: View {
     @State private var showEditingScreen = false
 
     init(dataController: DataController) {
-
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
-
     }
 
     var body: some View {

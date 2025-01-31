@@ -53,18 +53,6 @@ struct RepairsEditView: View {
                 Section {
 
                     HStack {
-//                        Text("Date Performed")
-//                            .font(.caption)
-//                            .foregroundColor(.gray)
-//
-//                        Spacer()
-//
-//                        DatePicker(selection: $dateperformed, in: ...Date(), displayedComponents: .date) {
-////                           Text("Select a date")
-//                        }
-//                        .labelsHidden()
-//                        .datePickerStyle(CompactDatePickerStyle())
-//                        .frame(maxHeight: 400)
 
                         Text("Date Performed")
                         Spacer()
@@ -75,20 +63,7 @@ struct RepairsEditView: View {
                             .frame(maxHeight: 400)
 
                         
-//                        Text("\(dateFormatter.string(from: dateperformed))")
-//                        .onTapGesture {
-//                            self.showsDatePicker.toggle()
-//                        }
-//                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
-//                        .background(Color.clear)
                     }
-                    
-//                    if showsDatePicker {                        
-//                        DatePicker("", selection: $dateperformed, in: ...Date(), displayedComponents: .date)
-//                            .labelsHidden()
-//                            .datePickerStyle(CompactDatePickerStyle())
-//                            .frame(maxHeight: 400)
-//                    }
 
                     HStack {
                         Text("Repair Type")
@@ -117,9 +92,6 @@ struct RepairsEditView: View {
                         NumberEntryField(value: self.$cost.onChange(updateValues))
                             .font(.callout)
                             .keyboardType(.decimalPad)
-
-//                        TextField("Cost", text: $cost.onChange(updateValues))
-//                            .font(.callout)
                     }
 
                     HStack {
@@ -224,9 +196,6 @@ struct RepairsEditView: View {
         repairs.comments       = comments
         
         repairs.instruments = instrument
-
-        #warning("This cannot be here but if I added it to te OnDisappear, it crashes")
-//        dataController.save()
                 
     }
 
