@@ -18,7 +18,6 @@ struct InstrumentsEditView: View {
     init(selectedInstrument: Instruments) {
         self.selectedInstrument = selectedInstrument
         _viewModel = StateObject(wrappedValue: InstrumentsEditModel(instrument: selectedInstrument))
-
     }
 
     var body: some View {
@@ -173,6 +172,7 @@ struct InstrumentsEditView: View {
                     HStack(spacing: 10) {
                         Image(systemName: "trash")
                         Text("Delete Instrument")
+                            .font(.system(size: 16, weight: .regular, design: .default))
                     }
                 }
                 .frame(minWidth: 0,

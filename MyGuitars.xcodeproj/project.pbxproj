@@ -44,7 +44,7 @@
 		DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */; };
 		DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD92099225E06DF60094ED36 /* ImagesSample.xcassets */; };
 		DD9D114125E9D7EB00AD2FAA /* RepairsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */; };
-		DDB2618825F968FA0022FBEC /* StringsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2618725F968FA0022FBEC /* StringsViewModel.swift */; };
+		DDB2618825F968FA0022FBEC /* StringsEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2618725F968FA0022FBEC /* StringsEditModel.swift */; };
 		DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB95E2425E4536500935673 /* UIImage+Extension.swift */; };
 		DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044725DED565004CD13B /* InstrumentsEditView.swift */; };
 		DDE6044D25DEDCBE004CD13B /* InstrumentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */; };
@@ -96,7 +96,7 @@
 		DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesShowImageView.swift; sourceTree = "<group>"; };
 		DD92099225E06DF60094ED36 /* ImagesSample.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImagesSample.xcassets; sourceTree = "<group>"; };
 		DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsView.swift; sourceTree = "<group>"; };
-		DDB2618725F968FA0022FBEC /* StringsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsViewModel.swift; sourceTree = "<group>"; };
+		DDB2618725F968FA0022FBEC /* StringsEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditModel.swift; sourceTree = "<group>"; };
 		DDB95E2425E4536500935673 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		DDDAF8BA2991F00C0039D6CF /* MyGuitars.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MyGuitars.entitlements; sourceTree = "<group>"; };
 		DDE6044725DED565004CD13B /* InstrumentsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditView.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 			children = (
 				DD52D6A625E5D0D300138574 /* StringsView.swift */,
 				DD52D6A925E5FA8300138574 /* StringsEditView.swift */,
-				DDB2618725F968FA0022FBEC /* StringsViewModel.swift */,
+				DDB2618725F968FA0022FBEC /* StringsEditModel.swift */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				DD08B91825DEF90900E4E95A /* UIKit-Helpers.swift in Sources */,
 				DDFDCA6C25EE8E1000C6805A /* NumberEntryField.swift in Sources */,
 				DD3522CA2D4C9CD700F351DC /* InstrumentsEditModel.swift in Sources */,
-				DDB2618825F968FA0022FBEC /* StringsViewModel.swift in Sources */,
+				DDB2618825F968FA0022FBEC /* StringsEditModel.swift in Sources */,
 				DD54C2B525EDB14100393481 /* RepairsEditView.swift in Sources */,
 				DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */,
 				DD52D6BA25E80F2100138574 /* Bundle-Decodable.swift in Sources */,
