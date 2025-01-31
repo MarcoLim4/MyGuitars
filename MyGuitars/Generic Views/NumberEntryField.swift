@@ -23,12 +23,3 @@ struct NumberEntryField : View {
     }
     
 }
-
-//struct NumberEntryField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NumberEntryField(value: )
-//    }
-//}
-
-
-

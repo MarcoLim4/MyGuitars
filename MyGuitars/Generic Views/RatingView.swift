@@ -10,10 +10,8 @@ struct RatingView: View {
 
     var label = ""
     var maximumRating: Int16 = 5
-
     var offIamge: Image?
     var onImage = Image(systemName: "star.fill")
-
     var offColor = Color.gray
     var onColor  = Color.yellow
 
@@ -25,11 +23,12 @@ struct RatingView: View {
                 Text(label)
             }
 
-            ForEach(1..<Int(maximumRating) + 1) { number in
+            ForEach(0..<Int(maximumRating), id: \.self) { number in
                 self.image(for: Int16(number))
                     .foregroundColor(number > self.rating ? self.offColor : self.onColor)
                     .onTapGesture {
-                        self.rating = Int16(number)
+                        rating = Int16(number)
+                        print("\(rating)")
                     }
             }
         }

@@ -36,13 +36,6 @@ struct ImagesShowImageView: View {
                        alignment: .trailing)
                 .padding(.trailing, 15)
 
-//                Rectangle()
-//                    .frame(width: 180, height: 5, alignment: .center)
-//                    .foregroundColor(.gray)
-//                    .cornerRadius(3.0)
-//                    .padding(.top, 15)
-//                    .shadow(radius: 10)
-
             }
 
             let instPhoto = UIImage(data: photo.photo ?? Data()) ?? UIImage(named: "image05.png")
