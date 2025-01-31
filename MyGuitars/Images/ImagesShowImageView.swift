@@ -1,21 +1,16 @@
 import SwiftUI
+import SwiftData
 
 struct ImagesShowImageView: View {
 
     let photo: Photos
 
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @EnvironmentObject var dataController: DataController
+    @Environment(\.modelContext) private var context
     @Environment(\.presentationMode) var presentation
-
-    @State private var imageComments: String
     @State private var isShowingDeleteMessage = false
 
     init(photo: Photos) {
-
         self.photo = photo
-        _imageComments = State(wrappedValue: photo.comments ?? "")
-
     }
 
     var body: some View {
@@ -26,7 +21,7 @@ struct ImagesShowImageView: View {
                 
                 Button("Close") {
                     withAnimation {
-                        self.presentation.wrappedValue.dismiss()
+                        presentation.wrappedValue.dismiss()
                     }
                 }
                 .frame(minWidth: 0,
@@ -69,11 +64,8 @@ struct ImagesShowImageView: View {
                     title: Text("Delete Photo?"),
                     message: Text("Deleting the photo, removes the photo only from your guitar database!"),
                     primaryButton: .destructive(Text("Yes, delete it!")) {
-
-                        #warning("Add photo deletion code here!")
-//                        dataController.delete(photo)
-                        self.presentation.wrappedValue.dismiss()
-
+                        context.delete(photo)
+                        presentation.wrappedValue.dismiss()
                     },
                     secondaryButton: .cancel()
                 )
@@ -86,9 +78,18 @@ struct ImagesShowImageView: View {
 
 }
 
-//struct ImagesShowImageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ImagesShowImageView(photo: Instruments.photoSample)
-//
-//    }
-//}
+struct ImagesShowImageView_Previews: PreviewProvider {
+    static let sampleInstrument: Instruments = {
+        let instrument = Instruments()
+        let somePhotos = Instruments().singlePhotoSample
+        let samplePhoto = Photos()
+        samplePhoto.photo = UIImage(named: "image05.png")?.pngData()
+        instrument.photos = [somePhotos]
+        return instrument
+    }()
+
+    static var previews: some View {
+        ImagesShowImageView(photo: sampleInstrument.photos![0])
+            .padding()
+    }
+}

@@ -1,10 +1,9 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct MyGuitarsApp: App {
         
-//    @StateObject var dataController: DataController
-    
     init() {
 //        let dataController = DataController()
 //        _dataController = StateObject(wrappedValue: dataController)
@@ -27,4 +26,4 @@ struct MyGuitarsApp: App {
     }
     
 }
-#warning("Need to review this code")
+#warning("Need to review this code! Maybe create a context to save data whenever the app closes or goes into background mode. Might need a SceneDelegate")

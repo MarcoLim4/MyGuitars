@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftData
-
+import UIKit
 
 @Model
 final class Instruments {
@@ -85,9 +85,60 @@ final class Instruments {
         return types.sorted()
     }
 
-//    func createNewInstrument(with context: ModelContext)  {
-//        let instrument = Instrument()
-//
-//    }
+    var acosuticBodyTypes: [String] {
+        let types = ["Dreadnought".localized, "Parlour".localized, "Jumbo".localized,
+                     "Auditorium".localized, "Grand Auditorium".localized, "Classical".localized,
+                     "Traveler".localized, "Mini".localized, "Tenor".localized, "Orchestra Model".localized]
+        return types.sorted()
+    }
+
+    var ukeleleTypes: [String] {
+        let types = ["Soprano".localized, "Concert".localized, "Tenor".localized, "Baritone".localized]
+        return types.sorted()
+    }
+
+    var bassBodyTypes: [String] {
+        let types = ["P-Bass".localized, "J-Bass".localized, "Modern".localized]
+        return types.sorted()
+    }
+
+    var dulcimerBodyTypes: [String] {
+        let types = ["Merlin M4".localized, "Tear Drop".localized, "Vintage".localized,
+                     "Appalachian".localized, "Stick Dulcimer".localized,
+                     "Hammered Dulcimer".localized, "Dutchland".localized]
+        return types.sorted()
+    }
+
+    var electricBodyTypes: [String] {
+
+        let types = ["Les Paul".localized, "Telecaster".localized, "Stratocaster".localized, "RG".localized, "SG".localized, "ES-45".localized]
+        return types.sorted()
+
+    }
+
+    var otherBodyTypes: [String] {
+        let types = ["Other body type".localized]
+        return types.sorted()
+    }
+
+    var singlePhotoSample: Photos {
+        let newImage = Photos()
+        newImage.photo    = UIImage(named: "image05.png")?.pngData()
+        newImage.comments = "Comments about image 05."
+
+        return newImage
+    }
+
+    var photosSample: [Photos] {
+
+        var someItems = [Photos]()
+        for index in 1...7 {
+            let newImage = Photos()
+            newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
+            newImage.comments = "image \(index)"
+            someItems.append(newImage)
+        }
+        return someItems as [Photos]
+    }
 
 }

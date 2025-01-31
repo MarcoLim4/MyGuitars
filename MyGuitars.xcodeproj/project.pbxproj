@@ -24,6 +24,8 @@
 		DD3522C62D4C68EC00F351DC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C22D4C68EC00F351DC /* Strings.swift */; };
 		DD3522C82D4C724800F351DC /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C72D4C724800F351DC /* PreviewContainer.swift */; };
 		DD3522CA2D4C9CD700F351DC /* InstrumentsEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */; };
+		DD3522CC2D4D454200F351DC /* DollarAmountEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522CB2D4D454200F351DC /* DollarAmountEditor.swift */; };
+		DD3522CE2D4D4F9000F351DC /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522CD2D4D4F9000F351DC /* InstrumentsImagesRow.swift */; };
 		DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */; };
 		DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A625E5D0D300138574 /* StringsView.swift */; };
 		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
@@ -39,7 +41,6 @@
 		DD62666825DDAE9B007C3F05 /* InstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */; };
 		DD92098325E06BA20094ED36 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098225E06BA20094ED36 /* ImagePicker.swift */; };
 		DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098925E06C860094ED36 /* ImagesAddNew.swift */; };
-		DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */; };
 		DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */; };
 		DD92099325E06DF60094ED36 /* ImagesSample.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD92099225E06DF60094ED36 /* ImagesSample.xcassets */; };
 		DD9D114125E9D7EB00AD2FAA /* RepairsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */; };
@@ -75,6 +76,8 @@
 		DD3522C22D4C68EC00F351DC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		DD3522C72D4C724800F351DC /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditModel.swift; sourceTree = "<group>"; };
+		DD3522CB2D4D454200F351DC /* DollarAmountEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAmountEditor.swift; sourceTree = "<group>"; };
+		DD3522CD2D4D4F9000F351DC /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsImagesRow.swift; sourceTree = "<group>"; };
 		DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsViewModel.swift; sourceTree = "<group>"; };
 		DD52D6A625E5D0D300138574 /* StringsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsView.swift; sourceTree = "<group>"; };
 		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
@@ -90,7 +93,6 @@
 		DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsView.swift; sourceTree = "<group>"; };
 		DD92098225E06BA20094ED36 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DD92098925E06C860094ED36 /* ImagesAddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesAddNew.swift; sourceTree = "<group>"; };
-		DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstrumentsImagesRow.swift; path = MyGuitars/Images/InstrumentsImagesRow.swift; sourceTree = SOURCE_ROOT; };
 		DD92098F25E06DC80094ED36 /* ImagesShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesShowImageView.swift; sourceTree = "<group>"; };
 		DD92099225E06DF60094ED36 /* ImagesSample.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImagesSample.xcassets; sourceTree = "<group>"; };
 		DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				DD54C2A625ED85D800393481 /* LifeSpanView.swift */,
 				DD54C2AE25ED8DC600393481 /* NumbersOnlyView.swift */,
 				DDFDCA6B25EE8E1000C6805A /* NumberEntryField.swift */,
+				DD3522CB2D4D454200F351DC /* DollarAmountEditor.swift */,
 			);
 			path = "Generic Views";
 			sourceTree = "<group>";
@@ -247,10 +250,10 @@
 			children = (
 				DD62666725DDAE9B007C3F05 /* InstrumentsView.swift */,
 				DDE6044725DED565004CD13B /* InstrumentsEditView.swift */,
-				DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */,
-				DD92098C25E06DA70094ED36 /* InstrumentsImagesRow.swift */,
-				DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */,
 				DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */,
+				DDE6044C25DEDCBE004CD13B /* InstrumentsRow.swift */,
+				DD3522CD2D4D4F9000F351DC /* InstrumentsImagesRow.swift */,
+				DD2A111E25F947710008A081 /* InstrumentsViewModel.swift */,
 			);
 			path = Instruments;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				DD0F7A7D25DDAC560038D6DD /* DataController.swift in Sources */,
 				DD92099025E06DC80094ED36 /* ImagesShowImageView.swift in Sources */,
 				DD54C2A225ED7F4D00393481 /* RatingView.swift in Sources */,
+				DD3522CE2D4D4F9000F351DC /* InstrumentsImagesRow.swift in Sources */,
 				DD54C2AF25ED8DC600393481 /* NumbersOnlyView.swift in Sources */,
 				DD3522C32D4C68EC00F351DC /* Instruments.swift in Sources */,
 				DD3522C42D4C68EC00F351DC /* Photos.swift in Sources */,
@@ -370,7 +374,6 @@
 				DD54C2AC25ED8B3600393481 /* Number+Extension.swift in Sources */,
 				DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
-				DD92098D25E06DA70094ED36 /* InstrumentsImagesRow.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
 				DD2A111F25F947710008A081 /* InstrumentsViewModel.swift in Sources */,
 				DD9D114125E9D7EB00AD2FAA /* RepairsView.swift in Sources */,
@@ -379,6 +382,7 @@
 				DD92098A25E06C860094ED36 /* ImagesAddNew.swift in Sources */,
 				DD54C2A725ED85D800393481 /* LifeSpanView.swift in Sources */,
 				DDE6045125DEDEB0004CD13B /* Instruments-CoreData.swift in Sources */,
+				DD3522CC2D4D454200F351DC /* DollarAmountEditor.swift in Sources */,
 				DDFD9C4725ED6E2E00B4A446 /* CardView.swift in Sources */,
 				DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */,
 			);

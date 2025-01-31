@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     
     @SceneStorage("selectedView") var selectedView: String?
-    @EnvironmentObject var dataController: DataController
+//    @EnvironmentObject var dataController: DataController
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {

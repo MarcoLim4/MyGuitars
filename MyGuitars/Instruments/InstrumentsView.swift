@@ -26,8 +26,7 @@ struct InstrumentsView: View {
                     Button {
                         createNewInstrument()
                     } label: {
-                        Label("Add New Guitar".localized, systemImage: "plus.diamond")
-                            .symbolRenderingMode(.palette)
+                        Label("Add New Guitar".localized, systemImage: "plus.app.fill")
                     }
                 }
             }
@@ -35,7 +34,6 @@ struct InstrumentsView: View {
             .navigationBarTitleDisplayMode(.large)
 
         }
-
         .refreshable {
             // Not sure if we need a pull down to resfresh
         }
@@ -57,6 +55,16 @@ struct InstrumentsView: View {
     }
 
 }
+
+#Preview("Dark Mode") { @MainActor in
+    NavigationStack {
+        InstrumentsView()
+    }.modelContainer(previewContainer)
+}
+
+
+
+// Leaving this code for now. I might introduce a slide to delete. Might!
 
 //import SwiftUI
 //import SwiftData
@@ -123,10 +131,3 @@ struct InstrumentsView: View {
 //        context.insert(newInstrument)
 //    }
 //}
-
-#Preview("Dark Mode") { @MainActor in
-    NavigationStack {
-        InstrumentsView()
-    }.modelContainer(previewContainer)
-}
-
