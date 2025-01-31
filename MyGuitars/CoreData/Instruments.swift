@@ -80,6 +80,11 @@ final class Instruments {
         self.strings = strings
     }
 
+    var allStrings: [Strings] {
+        let stringsArray = strings ?? []
+        return stringsArray.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+    }
+
     var instrumentTypes: [String] {
         let types = ["Acoustic".localized, "Electric".localized, "Bass".localized, "Ukelele".localized, "Dulcimer".localized]
         return types.sorted()
@@ -139,6 +144,18 @@ final class Instruments {
             someItems.append(newImage)
         }
         return someItems as [Photos]
+    }
+
+    var stringSample: Strings {
+        let newString = Strings()
+        newString.brand    = "Elixir"
+        newString.gauge    = "Custom Light 10-47"
+        newString.date     = Date()
+        newString.comments = "Brand new set of strings"
+        newString.lifespan = 2
+        newString.myrating = 3
+        newString.price    = 12.95
+        return newString
     }
 
 }

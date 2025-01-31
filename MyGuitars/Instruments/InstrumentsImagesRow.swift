@@ -50,55 +50,6 @@ struct InstrumentsImagesRow: View {
     }
 }
 
-//struct InstrumentsImagesRow: View {
-//
-//    let layout = [GridItem(.flexible(minimum: 80))]
-//
-//    @State private var showingImageView = false
-//    @State private var selectedIndex: Int = 0
-//    var instrument: Instruments
-//
-//    var allPhotos: [Photos] {
-//        instrument.photos ?? []
-//    }
-//
-//    var body: some View {
-//        ScrollView(.horizontal) {
-//            LazyHGrid(rows: layout, spacing: 20) {
-//                ForEach(Array(allPhotos.enumerated()), id: \.offset) { index, photoItem in
-//
-//                    let instPhoto = photoItem.photo.flatMap { UIImage(data: $0) } ?? UIImage(named: "image05.png") ?? UIImage()
-//
-//                    Button {
-//                        selectedIndex = index
-//                        showingImageView = true
-//                    } label: {
-//                        ZStack {
-//                            Image(uiImage: instPhoto)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: 80.0, height: 80.0)
-//                                .clipShape(Circle())
-//                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
-//                                .shadow(radius: 8)
-//
-//                            Image(systemName: "viewfinder")
-//                                .foregroundColor(.green)
-//                        }
-//                    }
-//                    .buttonStyle(PlainButtonStyle()) // Prevents SwiftUI button animations
-//                }
-//            }
-//            .padding(.horizontal)
-//        }
-//        .sheet(isPresented: $showingImageView) {
-//            if allPhotos.indices.contains(selectedIndex) {
-//                ImagesShowImageView(photo: allPhotos[selectedIndex])
-//            }
-//        }
-//    }
-//}
-
 struct InstrumentsImagesRow_Previews: PreviewProvider {
     static let sampleInstrument: Instruments = {
         let instrument = Instruments()

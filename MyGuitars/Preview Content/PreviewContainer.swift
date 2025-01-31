@@ -15,8 +15,8 @@ var previewContainer: ModelContainer = {
 
     for myInstruments in SampleData.myInstruments {
         container.mainContext.insert(myInstruments)
-//        myList.reminders = SampleData.Reminders
-//        myList.allStrings
+        myInstruments.strings = [SampleData.stringSample]
+        myInstruments.repairs = [SampleData.repairSample]
     }
 
     return container
@@ -28,17 +28,17 @@ struct SampleData {
     static var myInstruments: [Instruments] {
         let instrument = Instruments(backmaterial: "Rosewood",
                                      bodyshape: "Slim",
-                                     brand: "Ibanez",
+                                     brand: "Martin",
                                      category: "Acoustic",
                                      comments: "",
                                      datemanufactured: Date(),
                                      electronics: "",
                                      finishstyle: "",
                                      fretboardmaterial: "Rosewood",
-                                     madein: "Japan",
-                                     model: "RG540",
+                                     madein: "Mexico",
+                                     model: "M-36e",
                                      neckmaterial: "Rosewood",
-                                     neckshape: "Conical",
+                                     neckshape: "C-Shape",
                                      numberoffrets: 24,
                                      numberofstrings: 6,
                                      purchasedate: Date(),
@@ -54,7 +54,28 @@ struct SampleData {
         return [instrument]
     }
 
-//    static var Reminders: [Reminder] {
-//        return [Reminder(title: "Reminder 1", notes: "This is reminder 1 notes!", reminderDate: Date(), remminderTime: Date()), Reminder(title: "Reminder 2", notes: "This is a reminder 2 note")]
-//    }
+    static var stringSample: Strings {
+
+        let newString = Strings()
+
+        newString.brand    = "Elixir"
+        newString.gauge    = "Custom Light 10-47"
+        newString.date     = Date()
+        newString.comments = "Brand new set of strings"
+        newString.lifespan = 1
+
+        return newString
+
+    }
+
+    static var repairSample: Repairs {
+        let newRepair = Repairs()
+        newRepair.dateperformed = Date()
+        newRepair.repairedby    = "Luthier Jimmy"
+        newRepair.cost          = 45.99
+        newRepair.comments      = "Perfect work"
+        newRepair.repairrate    = 4
+        newRepair.repairtype    = "Refret"
+        return newRepair
+    }
 }
