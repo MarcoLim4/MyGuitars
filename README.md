@@ -10,17 +10,17 @@ Eventually, when all the issues I want to fix are done, I will update this file.
 
 ### Repairs Bug
 
-- [ ] Not saving the repairs properly
+- [x] Not saving the repairs properly
 
 
 ### CoreData Migration to SwiftData
 
 > Not sure yet if I will run a complete migration at once or entity bu entity. I'm pretty sure I will be redoing some of the screens. I will start with Strings and see how much effort. Then I will decide if I will split this in different tasks.
 
-- [ ] Instruments
-- [ ] Photos
-- [ ] Repairs
-- [ ] Strings
+- [x] Instruments
+- [x] Photos
+- [x] Repairs
+- [x] Strings
 
 ### Design
 
