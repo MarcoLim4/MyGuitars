@@ -26,7 +26,7 @@
 		DD3522CA2D4C9CD700F351DC /* InstrumentsEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */; };
 		DD3522CC2D4D454200F351DC /* DollarAmountEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522CB2D4D454200F351DC /* DollarAmountEditor.swift */; };
 		DD3522CE2D4D4F9000F351DC /* InstrumentsImagesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3522CD2D4D4F9000F351DC /* InstrumentsImagesRow.swift */; };
-		DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */; };
+		DD4C04B225F9AEE200182156 /* RepairsEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C04B125F9AEE200182156 /* RepairsEditModel.swift */; };
 		DD52D6A725E5D0D300138574 /* StringsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A625E5D0D300138574 /* StringsView.swift */; };
 		DD52D6AA25E5FA8300138574 /* StringsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6A925E5FA8300138574 /* StringsEditView.swift */; };
 		DD52D6B025E7310400138574 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52D6AF25E7310300138574 /* UIColor+Extension.swift */; };
@@ -78,7 +78,7 @@
 		DD3522C92D4C9CD700F351DC /* InstrumentsEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsEditModel.swift; sourceTree = "<group>"; };
 		DD3522CB2D4D454200F351DC /* DollarAmountEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarAmountEditor.swift; sourceTree = "<group>"; };
 		DD3522CD2D4D4F9000F351DC /* InstrumentsImagesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsImagesRow.swift; sourceTree = "<group>"; };
-		DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsViewModel.swift; sourceTree = "<group>"; };
+		DD4C04B125F9AEE200182156 /* RepairsEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsEditModel.swift; sourceTree = "<group>"; };
 		DD52D6A625E5D0D300138574 /* StringsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsView.swift; sourceTree = "<group>"; };
 		DD52D6A925E5FA8300138574 /* StringsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEditView.swift; sourceTree = "<group>"; };
 		DD52D6AF25E7310300138574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 			children = (
 				DD9D114025E9D7EB00AD2FAA /* RepairsView.swift */,
 				DD54C2B425EDB14100393481 /* RepairsEditView.swift */,
-				DD4C04B125F9AEE200182156 /* RepairsViewModel.swift */,
+				DD4C04B125F9AEE200182156 /* RepairsEditModel.swift */,
 			);
 			path = Repairs;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 				DD62666525DDADD1007C3F05 /* HomeView.swift in Sources */,
 				DDFD9C4425ED56DA00B4A446 /* Date+Extension.swift in Sources */,
 				DD54C2AC25ED8B3600393481 /* Number+Extension.swift in Sources */,
-				DD4C04B225F9AEE200182156 /* RepairsViewModel.swift in Sources */,
+				DD4C04B225F9AEE200182156 /* RepairsEditModel.swift in Sources */,
 				DDE6044825DED565004CD13B /* InstrumentsEditView.swift in Sources */,
 				DDB95E2525E4536500935673 /* UIImage+Extension.swift in Sources */,
 				DD2A111F25F947710008A081 /* InstrumentsViewModel.swift in Sources */,

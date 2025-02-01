@@ -85,6 +85,11 @@ final class Instruments {
         return stringsArray.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
     }
 
+    var allRepairs: [Repairs] {
+        let workArray = repairs ?? []
+        return workArray.sorted(by: { $0.dateperformed ?? Date() > $1.dateperformed ?? Date() })
+    }
+
     var instrumentTypes: [String] {
         let types = ["Acoustic".localized, "Electric".localized, "Bass".localized, "Ukelele".localized, "Dulcimer".localized]
         return types.sorted()
@@ -115,47 +120,13 @@ final class Instruments {
     }
 
     var electricBodyTypes: [String] {
-
         let types = ["Les Paul".localized, "Telecaster".localized, "Stratocaster".localized, "RG".localized, "SG".localized, "ES-45".localized]
         return types.sorted()
-
     }
 
     var otherBodyTypes: [String] {
         let types = ["Other body type".localized]
         return types.sorted()
-    }
-
-    var singlePhotoSample: Photos {
-        let newImage = Photos()
-        newImage.photo    = UIImage(named: "image05.png")?.pngData()
-        newImage.comments = "Comments about image 05."
-
-        return newImage
-    }
-
-    var photosSample: [Photos] {
-
-        var someItems = [Photos]()
-        for index in 1...7 {
-            let newImage = Photos()
-            newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
-            newImage.comments = "image \(index)"
-            someItems.append(newImage)
-        }
-        return someItems as [Photos]
-    }
-
-    var stringSample: Strings {
-        let newString = Strings()
-        newString.brand    = "Elixir"
-        newString.gauge    = "Custom Light 10-47"
-        newString.date     = Date()
-        newString.comments = "Brand new set of strings"
-        newString.lifespan = 2
-        newString.myrating = 3
-        newString.price    = 12.95
-        return newString
     }
 
 }

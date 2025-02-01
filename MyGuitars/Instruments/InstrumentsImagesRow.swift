@@ -53,7 +53,7 @@ struct InstrumentsImagesRow: View {
 struct InstrumentsImagesRow_Previews: PreviewProvider {
     static let sampleInstrument: Instruments = {
         let instrument = Instruments()
-        let somePhotos = Instruments().photosSample
+        let somePhotos = SampleData().photosSample
         let samplePhoto = Photos()
         samplePhoto.photo = UIImage(named: "image05.png")?.pngData()
         instrument.photos = somePhotos

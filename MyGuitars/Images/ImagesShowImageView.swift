@@ -81,7 +81,7 @@ struct ImagesShowImageView: View {
 struct ImagesShowImageView_Previews: PreviewProvider {
     static let sampleInstrument: Instruments = {
         let instrument = Instruments()
-        let somePhotos = Instruments().singlePhotoSample
+        let somePhotos = SampleData().singlePhotoSample
         let samplePhoto = Photos()
         samplePhoto.photo = UIImage(named: "image05.png")?.pngData()
         instrument.photos = [somePhotos]
