@@ -3,27 +3,35 @@ import SwiftData
 
 @main
 struct MyGuitarsApp: App {
-        
-    init() {
-//        let dataController = DataController()
-//        _dataController = StateObject(wrappedValue: dataController)
-    }
-    
-    // the two modifiers added to contentView is to make our dataController available to all views in the system
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var modelContext: ModelContext?
+
     var body: some Scene {
-        
         WindowGroup {
             NavigationStack {
                 ContentView()
-            }.modelContainer(for: [Instruments.self, Photos.self, Repairs.self, Strings.self])
+                    .onAppear {
+                        if let container = try? ModelContainer(for: Instruments.self, Photos.self, Repairs.self, Strings.self) {
+                            modelContext = container.mainContext
+                        }
+                    }
+            }
+            .modelContainer(for: [Instruments.self, Photos.self, Repairs.self, Strings.self])
         }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background {
+                saveModelContext()
+            }
+        }
+    }
 
+    private func saveModelContext() {
+        guard let modelContext else { return }
+        do {
+            try modelContext.save()
+            print("✅ SwiftData saved successfully when app went to background.")
+        } catch {
+            print("❌ Failed to save SwiftData: \(error.localizedDescription)")
+        }
     }
-    
-    // Every time the app goes into background mode, we save the data
-    func save(_ note: Notification) {
-//        dataController.save()
-    }
-    
 }
-#warning("Need to review this code! Maybe create a context to save data whenever the app closes or goes into background mode. Might need a SceneDelegate")
