@@ -150,6 +150,7 @@ struct StringsEditView: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         StringsEditViewContainer()
@@ -161,4 +162,4 @@ struct StringsEditViewContainer: View {
         StringsEditView(selectedStringSet: SampleData().stringSample)
     }
 }
-
+#endif

@@ -50,6 +50,7 @@ struct InstrumentsImagesRow: View {
     }
 }
 
+#if DEBUG
 struct InstrumentsImagesRow_Previews: PreviewProvider {
     static let sampleInstrument: Instruments = {
         let instrument = Instruments()
@@ -65,3 +66,4 @@ struct InstrumentsImagesRow_Previews: PreviewProvider {
             .padding()
     }
 }
+#endif

@@ -78,6 +78,7 @@ struct ImagesShowImageView: View {
 
 }
 
+#if DEBUG
 struct ImagesShowImageView_Previews: PreviewProvider {
     static let sampleInstrument: Instruments = {
         let instrument = Instruments()
@@ -93,3 +94,4 @@ struct ImagesShowImageView_Previews: PreviewProvider {
             .padding()
     }
 }
+#endif

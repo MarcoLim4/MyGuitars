@@ -56,78 +56,10 @@ struct InstrumentsView: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         InstrumentsView()
     }.modelContainer(previewContainer)
 }
-
-
-
-// Leaving this code for now. I might introduce a slide to delete. Might!
-
-//import SwiftUI
-//import SwiftData
-//
-//struct InstrumentsView: View {
-//
-//    static let tag: String? = "Instruments".localized
-//
-//    @Environment(\.modelContext) private var context
-//    @Query private var myInstruments: [Instruments]
-//
-//    @State private var showDeleteConfirmation = false
-//    @State private var instrumentToDelete: Instruments?
-//
-//    var body: some View {
-//        NavigationStack {
-//            List {
-//                ForEach(myInstruments) { instrument in
-//                    InstrumentsRow(instruments: instrument)
-//                }
-//                .onDelete { indexSet in
-//                    if let index = indexSet.first {
-//                        instrumentToDelete = myInstruments[index]
-//                        showDeleteConfirmation = true
-//                    }
-//                }
-//            }
-//            .navigationTitle("Guitars".localized)
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    Button {
-//                        createNewInstrument()
-//                    } label: {
-//                        Label("Add New Guitar".localized, systemImage: "plus.square")
-//                    }
-//                }
-//            }
-//            .confirmationDialog(
-//                "Are you sure you want to delete this instrument?",
-//                isPresented: $showDeleteConfirmation,
-//                titleVisibility: .visible
-//            ) {
-//                Button("Delete", role: .destructive) {
-//                    if let instrument = instrumentToDelete {
-//                        withAnimation {
-//                            deleteInstrument(instrument)
-//                        }
-//                    }
-//                }
-//                Button("Cancel", role: .cancel) { }
-//            }
-//        }
-//    }
-//
-//    private func deleteInstrument(_ instrument: Instruments) {
-//        context.delete(instrument)
-//        instrumentToDelete = nil
-//    }
-//
-//    private func createNewInstrument() {
-//        let newInstrument = Instruments()
-//        newInstrument.type = "Acoustic".localized
-//        newInstrument.brand = "Brand Name"
-//        context.insert(newInstrument)
-//    }
-//}
+#endif

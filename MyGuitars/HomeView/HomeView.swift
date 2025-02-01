@@ -133,8 +133,10 @@ struct HomeView: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         HomeView()
     }.modelContainer(previewContainer)
 }
+#endif
