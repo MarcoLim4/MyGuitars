@@ -134,8 +134,10 @@ struct RepairsView: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         RepairsView()
     }.modelContainer(previewContainer)
 }
+#endif

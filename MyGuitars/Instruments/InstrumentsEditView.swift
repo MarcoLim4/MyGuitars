@@ -249,7 +249,7 @@ struct InstrumentsEditView: View {
     }
 
 }
-
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         InstrumentEditViewContainer()
@@ -264,7 +264,7 @@ struct InstrumentEditViewContainer: View {
         InstrumentsEditView(selectedInstrument: instrument[0])
     }
 }
-
+#endif
 
 struct LabeledTextField: View {
     let label: String

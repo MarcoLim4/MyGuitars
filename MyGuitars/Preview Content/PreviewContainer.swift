@@ -9,9 +9,9 @@ import Foundation
 import SwiftData
 import UIKit
 
+#if DEBUG
 @MainActor
 var previewContainer: ModelContainer = {
-
     let container = try! ModelContainer(for: Instruments.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
 
     for myInstruments in SampleData.myInstruments {
@@ -23,8 +23,8 @@ var previewContainer: ModelContainer = {
     }
 
     return container
-
 }()
+#endif
 
 struct SampleData {
 

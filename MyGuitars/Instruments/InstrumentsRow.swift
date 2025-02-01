@@ -76,6 +76,7 @@ struct InstrumentsRow: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         InstrumentsRowContainer()
@@ -90,3 +91,4 @@ struct InstrumentsRowContainer: View {
         InstrumentsRow(instruments: instrument[0])
     }
 }
+#endif

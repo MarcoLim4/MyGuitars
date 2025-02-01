@@ -136,12 +136,13 @@ struct StringsView: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         StringsView()
     }.modelContainer(previewContainer)
 }
-
+#endif
 
 struct InstrumentIconView: View {
     let instrumentType: String?

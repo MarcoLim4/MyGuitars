@@ -147,6 +147,7 @@ struct RepairsEditView: View {
 
 }
 
+#if DEBUG
 #Preview("Dark Mode") { @MainActor in
     NavigationStack {
         RepairsEditViewContainer()
@@ -159,4 +160,4 @@ struct RepairsEditViewContainer: View {
         RepairsEditView(selectedRepair: SampleData().repairSample)
     }
 }
-
+#endif
