@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import UIKit
 
 @MainActor
 var previewContainer: ModelContainer = {
@@ -15,8 +16,10 @@ var previewContainer: ModelContainer = {
 
     for myInstruments in SampleData.myInstruments {
         container.mainContext.insert(myInstruments)
-        myInstruments.strings = [SampleData.stringSample]
-        myInstruments.repairs = [SampleData.repairSample]
+        let sd = SampleData()
+        myInstruments.strings = [sd.stringSample]
+        myInstruments.repairs = [sd.repairSample]
+        myInstruments.photos = sd.photosSample
     }
 
     return container
@@ -54,7 +57,7 @@ struct SampleData {
         return [instrument]
     }
 
-    static var stringSample: Strings {
+    var stringSample: Strings {
 
         let newString = Strings()
 
@@ -68,7 +71,7 @@ struct SampleData {
 
     }
 
-    static var repairSample: Repairs {
+    var repairSample: Repairs {
         let newRepair = Repairs()
         newRepair.dateperformed = Date()
         newRepair.repairedby    = "Luthier Jimmy"
@@ -77,5 +80,25 @@ struct SampleData {
         newRepair.repairrate    = 4
         newRepair.repairtype    = "Refret"
         return newRepair
+    }
+
+    var singlePhotoSample: Photos {
+        let newImage = Photos()
+        newImage.photo    = UIImage(named: "image05.png")?.pngData()
+        newImage.comments = "Comments about image 05."
+
+        return newImage
+    }
+
+    var photosSample: [Photos] {
+
+        var someItems = [Photos]()
+        for index in 1...7 {
+            let newImage = Photos()
+            newImage.photo    = UIImage(named: "image0\(index).png")?.pngData()
+            newImage.comments = "image \(index)"
+            someItems.append(newImage)
+        }
+        return someItems as [Photos]
     }
 }

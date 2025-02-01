@@ -6,7 +6,6 @@ struct StringsEditView: View {
 
     @Environment(\.modelContext) private var context
     @Environment(\.presentationMode) var presentation
-
     @Environment(\.dismiss) var dismiss
 
     @StateObject private var viewModel: StringsEditModel
@@ -32,13 +31,13 @@ struct StringsEditView: View {
                 Section {
 
                     HStack {
-                        Text("Date Changed")
+                        Text("Date Changed".localized)
                             .font(.caption)
                             .foregroundColor(.gray)
 
                         Spacer()
 
-                        DatePicker("Select Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
+                        DatePicker("Select Date".localized, selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
                             .labelsHidden()
                             .datePickerStyle(CompactDatePickerStyle())
                             .frame(maxHeight: 400)
@@ -48,7 +47,7 @@ struct StringsEditView: View {
                     LabeledTextField(label: "Gauge".localized, placeholder: "Gauge".localized, text: $viewModel.gauge)
 
                     HStack {
-                        Text("Purchase Value")
+                        Text("Purchase Value".localized)
                             .font(.caption)
                             .foregroundColor(.gray)
 
@@ -58,7 +57,7 @@ struct StringsEditView: View {
 
                     HStack {
 
-                        Text("Life Span in Months")
+                        Text("Life Span in Months".localized)
                             .font(.caption)
                             .foregroundColor(.gray)
 
@@ -70,7 +69,7 @@ struct StringsEditView: View {
 
                     HStack {
 
-                        Text("My Rating")
+                        Text("My Rating".localized)
                             .font(.caption)
                             .foregroundColor(.gray)
 
@@ -82,7 +81,7 @@ struct StringsEditView: View {
 
                     VStack(alignment: .leading) {
 
-                        Text("Comments")
+                        Text("Comments".localized)
                             .font(.caption)
                             .foregroundColor(.gray)
 
@@ -103,7 +102,7 @@ struct StringsEditView: View {
                     }) {
                         HStack(spacing: 10) {
                             Image(systemName: "trash")
-                            Text("Delete String Details")
+                            Text("Delete String Details".localized)
                                 .font(.system(size: 16, weight: .regular, design: .default))
                         }
                     }
@@ -118,9 +117,9 @@ struct StringsEditView: View {
                     .alert(isPresented: $isShowingDeleteMessage) {
 
                         Alert(
-                            title: Text("Delete this strings set?"),
-                            message: Text("By confirming this action, it will permanently delete this strings set."),
-                            primaryButton: .destructive(Text("Yes! Delete it.")) {
+                            title: Text("Delete this strings set?".localized),
+                            message: Text("By confirming this action, it will permanently delete this strings set.".localized),
+                            primaryButton: .destructive(Text("Yes! Delete it.".localized)) {
                                 context.delete(selectedStringSet)
                                 presentation.wrappedValue.dismiss()
                             },
@@ -132,7 +131,7 @@ struct StringsEditView: View {
                 }
 
             }
-            .navigationBarTitle("String Details", displayMode: .inline)
+            .navigationBarTitle("String Details".localized, displayMode: .inline)
             .toolbar {
 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -141,7 +140,7 @@ struct StringsEditView: View {
                         try? context.save()
                         dismiss()
                     } label: {
-                        Text("Close")
+                        Text("Close".localized)
                     }
                 }
             }
@@ -158,9 +157,8 @@ struct StringsEditView: View {
 }
 
 struct StringsEditViewContainer: View {
-
     var body: some View {
-        StringsEditView(selectedStringSet: Instruments().stringSample)
+        StringsEditView(selectedStringSet: SampleData().stringSample)
     }
 }
 
