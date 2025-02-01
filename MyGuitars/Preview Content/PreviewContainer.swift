@@ -46,7 +46,7 @@ struct SampleData {
                                      numberofstrings: 6,
                                      purchasedate: Date(),
                                      purchasedfrom: "",
-                                     purchasevalue: 0.0,
+                                     purchasevalue: 1854.0,
                                      rightleft: 0,
                                      saledate: Date(),
                                      salereason: "",
@@ -66,7 +66,7 @@ struct SampleData {
         newString.date     = Date()
         newString.comments = "Brand new set of strings"
         newString.lifespan = 1
-
+        newString.price    = 13.22
         return newString
 
     }
