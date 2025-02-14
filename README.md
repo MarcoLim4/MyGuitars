@@ -1,40 +1,93 @@
-# MyGuitars
+# MyGuitars - SwiftUI Learning Journey
 
-There are a lot of little things I'd like to fix for this App and I am listing them all here. 
+A hands-on project showcasing the evolution from CoreData to SwiftData in a SwiftUI environment, built with MVVM architecture and of course, a nice tool to add informtaion about your Guitarsenal!
 
-Eventually, when all the issues I want to fix are done, I will update this file. For now, here is what's coming:
+## Project Overview
+
+This app serves as a practical exploration of SwiftUI's capabilities and modern iOS data persistence approaches. Initially developed with CoreData, it has been refactored to leverage SwiftData, Apple's newest framework for data persistence.
+Initially I followed Paul Hudson 100 days of SwiftUI where the goal was to learn some bassic about SwiftUI. There were some techniques I didn't know and now, might not like or agree, so I will be making some changes just to make sure I have an App that follow some best practices.
+
+## Technical Highlights
+
+- **Framework Migration**: Demonstrates the transition from CoreData to SwiftData
+- **Architecture**: Implements MVVM pattern with dependency injection
+- **UI Framework**: Built entirely in SwiftUI
+- **iOS Version**: Supports iOS 17+ (required for SwiftData)
+
+## Key Features
+
+- Modern Swift concurrency patterns
+- Clean architecture principles
+- Reactive data updates through SwiftData
+- Dependency injection for better testability
+
+## Data Layer Evolution
+
+### CoreData (Initial Implementation)
+- NSManagedObject subclasses
+- NSPersistentContainer setup
+- CRUD operations via NSManagedObjectContext
+
+### SwiftData (Current Implementation)
+- @Model macro for data models
+- ModelContainer and ModelContext management
+- Swift-native data persistence
 
 
-- [x] Code clean up. Removing some commented code, removing/updating warnings;
-- [x] iOS Bump to 18
+## Learning Takeaways
 
-### Repairs Bug
+- SwiftUI view lifecycle management
+- State management patterns
+- Data persistence best practices
+- MVVM implementation strategies
 
-- [x] Not saving the repairs properly
+## Future Improvements
 
+- [ ] Enhanced error handling
+- [ ] Unit test coverage
+- [ ] UI test implementation
+- [ ] Documentation updates
 
-### CoreData Migration to SwiftData
+## Requirements
 
-> Not sure yet if I will run a complete migration at once or entity bu entity. I'm pretty sure I will be redoing some of the screens. I will start with Strings and see how much effort. Then I will decide if I will split this in different tasks.
+- iOS 17.0+
+- Xcode 15.0+
+- Swift 5.9+
 
-- [x] Instruments
-- [x] Photos
-- [x] Repairs
-- [x] Strings
+## Getting Started
 
-### Design
+1. Clone the repository
+2. Open `YourApp.xcodeproj` in Xcode
+3. Build and run
 
-> I have a few changes I want to do on the design and this is the order I want. I will probably create a Figma file to list the changes I want to make.
+## Contributing
 
-- [ ] Cards (main screen)
-- [ ] Repairs
-- [ ] Strings
-- [ ] Instruments
+Feel free to submit issues and enhancement requests!
 
-### Unit Tests
+## License
 
-> Since I want this to be part of my portfolio, I want to add some unit tests to the project
+There is nothing proprietary here and the App is free at the App Store. If you think you can use this for something good and cool, please feel free to take it. 
 
-### New Features
+So...
 
-> Under construction 💭
+MIT License
+
+Copyright (c) 2024 - Lim4 Consulting Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
